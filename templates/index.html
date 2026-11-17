@@ -139,16 +139,16 @@ dialog::backdrop{background:rgba(0,0,12,.8)}
 
 <section id="servis">
   <div class="wrap">
-    <h2>Servis dan harga</h2>
-    <p class="sub">Harga bergantung pada model telefon. Pilih model awak untuk lihat servis dan harga.</p>
-    <p><button type="button" class="btn" id="openIphone2">Pilih model iPhone, lihat servis &amp; harga</button></p>
+    <h2>Servis kami</h2>
+    <p class="sub">Pilih model telefon awak untuk lihat servis yang ada.</p>
+    <p><button type="button" class="btn" id="openIphone2">Pilih model iPhone</button></p>
     <div class="grid">
-      <div class="svc"><h3>Tukar LCD / skrin</h3><p>Skrin pecah, line, sentuhan tak jalan.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Tukar%20LCD%20/%20skrin." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
-      <div class="svc"><h3>Tukar bateri</h3><p>Bateri kembung, cepat habis, telefon tutup sendiri.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Tukar%20bateri." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
-      <div class="svc"><h3>Charging board</h3><p>Susah cas, kena goyang kabel baru nak cas.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Charging%20board." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
-      <div class="svc"><h3>Motherboard</h3><p>Telefon mati, tak boleh hidup, masalah litar.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Motherboard." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
-      <div class="svc"><h3>Water damage</h3><p>Terjatuh dalam air. Datang secepat mungkin.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Water%20damage." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
-      <div class="svc"><h3>Kamera, speaker &amp; mic</h3><p>Gambar kabur, suara tak keluar, orang tak dengar.</p><a class="price" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20Kamera%2C%20speaker%20%26%20mic." target="_blank" rel="noopener">WhatsApp untuk harga</a></div>
+      <div class="svc"><h3>Tukar LCD / skrin</h3><p>Skrin pecah, line, sentuhan tak jalan.</p></div>
+      <div class="svc"><h3>Tukar bateri</h3><p>Bateri kembung, cepat habis, telefon tutup sendiri.</p></div>
+      <div class="svc"><h3>Charging board</h3><p>Susah cas, kena goyang kabel baru nak cas.</p></div>
+      <div class="svc"><h3>Motherboard</h3><p>Telefon mati, tak boleh hidup, masalah litar.</p></div>
+      <div class="svc"><h3>Water damage</h3><p>Terjatuh dalam air. Datang secepat mungkin.</p></div>
+      <div class="svc"><h3>Kamera, speaker &amp; mic</h3><p>Gambar kabur, suara tak keluar, orang tak dengar.</p></div>
     </div>
   </div>
 </section>
@@ -246,7 +246,7 @@ dialog::backdrop{background:rgba(0,0,12,.8)}
 </main>
 
 <dialog id="dlg" aria-labelledby="dt">
-  <div class="dh"><button type="button" id="backM" hidden>&larr; Semua model</button><div style="flex:1"><h3 id="dt">Pilih model iPhone awak</h3><p id="dsub">iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis dan harga.</p></div><button type="button" id="closeM">Tutup</button></div>
+  <div class="dh"><button type="button" id="backM" hidden>&larr; Semua model</button><div style="flex:1"><h3 id="dt">Pilih model iPhone awak</h3><p id="dsub">iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.</p></div><button type="button" id="closeM">Tutup</button></div>
   <div class="mgrid" id="mgrid"></div>
   <div id="mdet" hidden></div>
 </dialog>
@@ -332,7 +332,7 @@ M.forEach(function(m,i){
   var name=m[0]==="Air"?"iPhone Air":"iPhone "+m[0],s=SC[m[1]];
   var svg='<svg viewBox="0 0 230 190" aria-hidden="true">'+defs(i,m[4])+phone(62,s,m,i,false)+phone(168,s,m,i,true)+'</svg>';
   svgs[i]=svg;names[i]=name;
-  html+='<a class="m" href="#" data-i="'+i+'" aria-label="'+name+', lihat servis dan harga">'+svg+'<span>'+name+'</span></a>';
+  html+='<a class="m" href="#" data-i="'+i+'" aria-label="'+name+', lihat servis">'+svg+'<span>'+name+'</span></a>';
 });
 g.innerHTML=html;
 var d=document.getElementById('dlg'),det=document.getElementById('mdet'),back=document.getElementById('backM'),dt=document.getElementById('dt'),ds=document.getElementById('dsub');
@@ -340,7 +340,7 @@ var d=document.getElementById('dlg'),det=document.getElementById('mdet'),back=do
 var PRICE={};
 var SV=[["LCD / skrin",1],["Bateri",1],["Charging board",1],["Motherboard",1],["Kamera",1],["Speaker",1],["Water damage",0]];
 function wa(x){return "https://wa.me/60176933120?text="+encodeURIComponent(x);}
-function showGrid(){g.hidden=false;det.hidden=true;back.hidden=true;dt.textContent="Pilih model iPhone awak";ds.textContent="iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis dan harga.";g.scrollTop=0;}
+function showGrid(){g.hidden=false;det.hidden=true;back.hidden=true;dt.textContent="Pilih model iPhone awak";ds.textContent="iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.";g.scrollTop=0;}
 function showDetail(i){
   var n=names[i],rows="";
   SV.forEach(function(s){
