@@ -513,10 +513,48 @@ function showDetail(i){
   det.scrollTop=0;init3d();
 }
 function openD(){showGrid();d.showModal();}
+  // SAMSUNG MODEL
+var samsungModels = [
+  "Samsung Galaxy S26 Ultra",
+  "Samsung Galaxy S26+",
+  "Samsung Galaxy S26",
+  "Samsung Galaxy S25 Ultra",
+  "Samsung Galaxy S25+",
+  "Samsung Galaxy S25",
+  "Samsung Galaxy S24 Ultra",
+  "Samsung Galaxy S24+",
+  "Samsung Galaxy S24",
+  "Samsung Galaxy S23 Ultra",
+  "Samsung Galaxy S23+",
+  "Samsung Galaxy S23",
+  "Samsung Galaxy A56",
+  "Samsung Galaxy A36",
+  "Samsung Galaxy A26",
+  "Samsung Galaxy A16",
+  "Samsung Galaxy Z Fold7",
+  "Samsung Galaxy Z Flip7"
+];function showSamsung(){
+  var html = "";
+
+  samsungModels.forEach(function(name,i){
+    html += '<a class="m" href="#" data-samsung="'+i+'">';
+    html += '<span>'+name+'</span></a>';
+  });
+
+  g.innerHTML = html;
+  g.hidden = false;
+  det.hidden = true;
+  back.hidden = false;
+
+  dt.textContent = "Pilih model Samsung";
+  ds.textContent = "Pilih model untuk lihat servis pembaikan.";
+  d.showModal();
+}
 g.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
-back.addEventListener('click',showGrid);
+back.addEventListener('click',function(){   if(dt.textContent==="Pilih model Samsung"){     showSamsung();   }else{     showGrid();   } });
 document.getElementById('openIphone').addEventListener('click',openD);
 document.getElementById('openIphone2').addEventListener('click',openD);
+document.getElementById('openSamsung').addEventListener('click',showSamsung);
 document.getElementById('closeM').addEventListener('click',function(){d.close();});
 d.addEventListener('click',function(e){if(e.target===d)d.close();});
 })();
