@@ -211,7 +211,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
     <p class="sub">Tak nampak model awak? WhatsApp, kemungkinan besar boleh.</p>
     <div class="brands">
       <button type="button" class="brand b-apple" id="openIphone"><div>iPhone<small>Tekan untuk lihat model</small></div></button>
-      <div class="brand b-samsung">SAMSUNG</div>
+      <button type="button" class="brand b-samsung" id="openSamsung">   <div>SAMSUNG<small>Tekan untuk lihat model</small></div> </button>
       <div class="brand b-oppo">OPPO</div>
       <div class="brand b-vivo">vivo</div>
       <div class="brand b-xiaomi">Xiaomi</div>
@@ -301,7 +301,6 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
   <div class="mgrid" id="mgrid"></div>
   <div id="mdet" hidden></div>
 </dialog>
-<footer>
   <div class="wrap">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.</div>
 </footer>
 <a class="float" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp</a>
@@ -314,6 +313,7 @@ document.getElementById('y').textContent=new Date().getFullYear();
 // [nama, saiz, depan(n=notch,i=island), kamera, warna[asas,cerah], bezel]
 var M=[
 ["X","m","n","v",["#5b5e66","#8d9099"],4],["XR","m","n","one",["#f26a5a","#ff9a8c"],5],
+
 ["XS","m","n","v",["#d9c19a","#f1e3c6"],4],["XS Max","l","n","v",["#d9c19a","#f1e3c6"],4],
 ["11","m","n","sqv",["#c8b6e0","#e4d9f2"],4.5],["11 Pro","m","n","sq3",["#4e5d56","#7a8c83"],4],["11 Pro Max","l","n","sq3",["#4e5d56","#7a8c83"],4],
 ["12 mini","s","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12","m","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12 Pro","m","n","sq3",["#2f4f63","#587d93"],3.5],["12 Pro Max","l","n","sq3",["#2f4f63","#587d93"],3.5],
@@ -553,7 +553,7 @@ var samsungModels = [
 g.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
 back.addEventListener('click',function(){   if(dt.textContent==="Pilih model Samsung"){     showSamsung();   }else{     showGrid();   } });
 document.getElementById('openIphone').addEventListener('click',openD);
-document.getElementById('openIphone2').addEventListener('click',openD);
+var openIphone2=document.getElementById('openIphone2'); if(openIphone2) openIphone2.addEventListener('click',openD);
 document.getElementById('openSamsung').addEventListener('click',showSamsung);
 document.getElementById('closeM').addEventListener('click',function(){d.close();});
 d.addEventListener('click',function(e){if(e.target===d)d.close();});
