@@ -550,8 +550,28 @@ var samsungModels = [
   ds.textContent = "Pilih model untuk lihat servis pembaikan.";
   d.showModal();
 }
-g.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
-back.addEventListener('click',function(){   if(dt.textContent==="Pilih model Samsung"){     showSamsung();   }else{     showGrid();   } });
+  function showSamsungDetail(i){
+  var n=samsungModels[i],rows="";
+
+  SV.forEach(function(s){
+    rows+='<li><div><b>'+s[0]+'</b>'+
+    (s[1]?'<small>Warranty 1 bulan</small>':'')+
+    '</div><a class="ask" href="'+
+    wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+
+    '" target="_blank" rel="noopener">WhatsApp untuk harga</a></li>';
+  });
+
+  det.className="dtl";
+  det.innerHTML='<h3>'+n+'</h3><ul class="svl">'+rows+'</ul>';
+
+  g.hidden=true;
+  det.hidden=false;
+  back.hidden=false;
+  dt.textContent=n;
+  ds.textContent="Pilih servis, kami balas harga di WhatsApp.";
+}
+g.addEventListener('click',function(e){   var a=e.target.closest('.m');   if(!a)return;   e.preventDefault();    if(a.hasAttribute('data-samsung')){     showSamsungDetail(+a.getAttribute('data-samsung'));     return;   }    showDetail(+a.getAttribute('data-i')); });
+back.addEventListener('click',function(){   if(samsungModels.includes(dt.textContent)){     showSamsung();   }else{     showGrid();   } });
 document.getElementById('openIphone').addEventListener('click',openD);
 var openIphone2=document.getElementById('openIphone2'); if(openIphone2) openIphone2.addEventListener('click',openD);
 document.getElementById('openSamsung').addEventListener('click',showSamsung);
