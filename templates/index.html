@@ -500,7 +500,7 @@ function init3d(){
   [].forEach.call(det.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
   loop();
 }
-function showGrid(){cancelAnimationFrame(raf);g.hidden=false;det.hidden=true;back.hidden=true;dt.textContent="Pilih model iPhone awak";ds.textContent="iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.";g.scrollTop=0;}
+  function showGrid(){g.innerHTML=html;cancelAnimationFrame(raf);g.hidden=false;det.hidden=true;back.hidden=true;dt.textContent="Pilih model iPhone awak";ds.textContent="iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.";g.scrollTop=0;}
 function showDetail(i){
   var n=names[i],rows="";
   SV.forEach(function(s){
