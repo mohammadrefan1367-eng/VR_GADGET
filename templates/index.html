@@ -913,7 +913,25 @@ var T={
 "Setiap hari: 10.00 pagi – 10.00 malam":"Every day: 10.00 am – 10.00 pm",
 "Hubungi":"Contact",
 "Chat WhatsApp":"Chat on WhatsApp",
-"Buka Google Maps":"Open Google Maps"
+"Buka Google Maps":"Open Google Maps",
+"Repair iPhone & Android di Klang":"iPhone & Android repair in Klang",
+"Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.":"Ready in 30 minutes – 2 hours. Free checking, 1-month warranty.",
+"Pilih model iPhone awak":"Choose your iPhone model",
+"iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.":"iPhone X to iPhone 18 Pro Max. Tap a model to see services.",
+"Pilih model Samsung awak":"Choose your Samsung model",
+"Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.":"Tap a model to see the 3D phone and services, or type to search.",
+"Pilih servis, kami balas harga di WhatsApp.":"Pick a service, we'll reply with the price on WhatsApp.",
+"Tutup":"Close",
+"← Semua model":"← All models",
+"← Semua model Samsung":"← All Samsung models",
+"LCD / skrin":"LCD / screen",
+"Tanya di WhatsApp":"Ask on WhatsApp",
+"Perincian":"Details",
+"Depan":"Front","Belakang":"Back","Kiri":"Left","Kanan":"Right","Atas":"Top","Bawah":"Bottom",
+"Seret ke semua arah untuk pusing 360°":"Drag in any direction to rotate 360°",
+"Buka / Tutup":"Open / Close",
+"Tertutup":"Closed",
+"Terbuka":"Open"
 };
 var orig=new WeakMap(),cur='ms';
 function nodes(){
@@ -937,12 +955,14 @@ function apply(lang){
   document.documentElement.lang=lang==='en'?'en':'ms';
   document.getElementById('lbm').classList.toggle('on',lang==='ms');
   document.getElementById('len').classList.toggle('on',lang==='en');
+  document.title=lang==='en'?'VR Gadget | Official Website - iPhone & Android Repair in Klang':'VR Gadget | Website Rasmi - MOBILE PHONE REPAIR iPhone & Android di Klang';
   try{localStorage.setItem('vrlang',lang);}catch(e){}
 }
 document.getElementById('lbm').addEventListener('click',function(){apply('ms');});
 document.getElementById('len').addEventListener('click',function(){apply('en');});
 var saved='ms';try{saved=localStorage.getItem('vrlang')||'ms';}catch(e){}
 apply(saved);
+new MutationObserver(function(){if(cur==='en')apply('en');}).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 </body>
