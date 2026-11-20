@@ -1134,10 +1134,14 @@ function init3d(){
   st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
   var V={f:[0,0],b:[0,180],l:[0,90],r:[0,-90],t:[-90,0],u:[90,0]};
   [].forEach.call(body.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
-  var fb=$('sfold'); if(fb){   fb.addEventListener('click',function(e){     e.stopPropagation();     toggle();   }); }
-  loop();
+ var fb=$('sfold');
+if(fb){
+  fb.onclick=function(e){
+    e.stopPropagation();
+    alert('BUTANG FOLD BERFUNGSI');
+    toggle();
+  };
 }
-
 /* ---------- Paparan ---------- */
 function showList(){
   cancelAnimationFrame(raf);
