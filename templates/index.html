@@ -1117,7 +1117,7 @@ function init3d(){
   var st=$('sstage'),ph=$('sph'),ry=-28,rx=-6,auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=null,ty=null,drag=false,lx=0,ly=0,tm=0,moved=0;
   var mode=st.getAttribute('data-m'),gw=+st.getAttribute('data-w'),ghh=+st.getAttribute('data-hh'),gt=+st.getAttribute('data-t'),p=1,pt=1,hg=$('shg'),shf=$('sshift'),lbl=$('sfoldlbl');
   function applyFold(){var th=180*p;if(mode==='flip'){hg.style.transform='rotateX('+th+'deg)';shf.style.transform='translate3d(0,'+(ghh/2*p)+'px,'+(-gt/2*p)+'px)';}else{hg.style.transform='rotateY('+(-th)+'deg)';shf.style.transform='translate3d('+(gw/2*p)+'px,0,'+(-gt/2*p)+'px)';}}
-  function toggle(){pt=pt>.5?0:1;if(lbl)lbl.textContent=pt>.5?'Tertutup':'Terbuka';}
+  function toggle(){   pt = pt > 0.5 ? 0 : 1;   if(lbl) lbl.textContent = pt > 0.5 ? 'Tertutup' : 'Terbuka';   applyFold(); }
   if(mode)applyFold();
   function near(c,tg){return tg+Math.round((c-tg)/360)*360;}
   function loop(){
