@@ -153,6 +153,9 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .pl svg{width:100%;height:100%!important;display:block}
 .bt{position:absolute;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .bt svg{width:100%;height:100%!important;display:block}
+.lang{display:flex;gap:6px}
+.lang button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-family:inherit;cursor:pointer}
+.lang button.on{background:var(--grad);color:#080d18;border-color:transparent}
 </style>
   <script type="module"
 src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
@@ -169,6 +172,7 @@ src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.j
       <a href="#faq">Soalan lazim</a>
       <a href="#hubungi">Lokasi</a>
     </nav>
+    <div class="lang"><button type="button" id="lbm">BM</button><button type="button" id="len">EN</button></div>
   </div>
 </header>
 
@@ -898,6 +902,106 @@ function openS(){showList();dlg.showModal();}
 /* ---------- Sambung kotak SAMSUNG ---------- */
 var tile=document.querySelector('.b-samsung');
 if(tile){var nt=document.createElement('button');nt.type='button';nt.className='brand b-samsung';nt.id='openSamsung';nt.innerHTML='<div>SAMSUNG<small>Tekan untuk lihat model</small></div>';tile.parentNode.replaceChild(nt,tile);nt.addEventListener('click',openS);}
+})();
+</script>
+<script>
+(function(){
+var T={
+"Servis":"Services",
+"Warranty":"Warranty",
+"Soalan lazim":"FAQ",
+"Lokasi":"Location",
+"WhatsApp untuk harga":"WhatsApp for price",
+"30 minit – 2 jam":"30 minutes – 2 hours",
+"Tempoh siap biasa":"Usual turnaround time",
+"Semakan percuma":"Free checking",
+"Tiada caj kalau tak jadi repair":"No charge if you don't proceed",
+"Warranty 1 bulan":"1-month warranty",
+"Bateri, LCD, motherboard, kamera & speaker":"Battery, LCD, motherboard, camera & speaker",
+"Servis kami":"Our services",
+"Tukar LCD / skrin":"LCD / screen replacement",
+"Skrin pecah, line, sentuhan tak jalan.":"Cracked screen, lines, touch not working.",
+"Tukar bateri":"Battery replacement",
+"Bateri kembung, cepat habis, telefon tutup sendiri.":"Swollen or fast-draining battery, phone shuts down by itself.",
+"Charging board":"Charging board",
+"Susah cas, kena goyang kabel baru nak cas.":"Hard to charge, only works when you wiggle the cable.",
+"Motherboard":"Motherboard",
+"Telefon mati, tak boleh hidup, masalah litar.":"Dead phone, won't turn on, circuit problems.",
+"Water damage":"Water damage",
+"Terjatuh dalam air. Datang secepat mungkin.":"Dropped in water. Come in as soon as possible.",
+"Kamera, speaker & mic":"Camera, speaker & mic",
+"Gambar kabur, suara tak keluar, orang tak dengar.":"Blurry photos, no sound, others can't hear you.",
+"Model yang kami repair":"Models we repair",
+"Tak nampak model awak? WhatsApp, kemungkinan besar boleh.":"Can't see your model? WhatsApp us, we most likely can.",
+"Tekan untuk lihat model":"Tap to see models",
+"Tempoh warranty:":"Warranty period:",
+"1 bulan":"1 month",
+", dikira dari tarikh repair.":", counted from the repair date.",
+"Warranty untuk penukaran":"Warranty for replacements",
+"Bateri":"Battery",
+"LCD":"LCD",
+"Kamera":"Camera",
+"Speaker":"Speaker",
+"Tiada penukaran atau tuntutan":"No replacement or claim",
+"Barang jatuh atau retak":"Dropped or cracked device",
+"Barang masuk air":"Device exposed to water",
+"Sekiranya barang mengalami jatuh/retak atau masuk air, tiada penukaran atau penuntutan warranty. Sila bawa resit bila membuat tuntutan.":"If the device is dropped, cracked or exposed to water, no warranty replacement or claim is allowed. Please bring your receipt when making a claim.",
+"Cara kerja kami":"How it works",
+"Mudah dan telus.":"Simple and transparent.",
+"Bawa telefon ke kedai":"Bring your phone to the shop",
+" atau WhatsApp gambar kerosakan dulu.":" or WhatsApp a photo of the damage first.",
+"Kami semak dan bagi harga.":"We check and give a price.",
+" Awak setuju baru kami mula.":" We only start once you agree.",
+"Repair dibuat":"Repair is done",
+" dalam masa 30 minit hingga 2 jam untuk kebanyakan kes.":" within 30 minutes to 2 hours for most cases.",
+"Ambil telefon dan bayar.":"Collect your phone and pay.",
+" Awak dapat warranty untuk penukaran yang layak.":" You get warranty for eligible replacements.",
+"Data dalam telefon akan hilang ke?":"Will my phone data be lost?",
+"Untuk kebanyakan repair seperti skrin, bateri dan charging board, data tidak terjejas. Walau begitu, kami sarankan awak backup dulu kalau boleh.":"For most repairs such as screen, battery and charging board, your data is not affected. Still, we recommend backing up first if you can.",
+"Perlu tinggalkan telefon ke?":"Do I need to leave my phone?",
+"Kebanyakan repair siap sementara awak tunggu. Kes yang rumit seperti motherboard atau water damage mungkin perlu tinggal.":"Most repairs are done while you wait. Complex cases like motherboard or water damage may need to be left with us.",
+"Ada warranty ke?":"Is there a warranty?",
+"Ada, 1 bulan untuk penukaran bateri, LCD, charging board, motherboard, kamera dan speaker. Warranty tidak terpakai kalau barang jatuh/retak atau masuk air.":"Yes, 1 month for battery, LCD, charging board, motherboard, camera and speaker replacements. Warranty does not apply if the device is dropped/cracked or exposed to water.",
+"Kalau tak jadi repair, kena bayar ke?":"Do I pay if I don't proceed with the repair?",
+"Semakan percuma. Awak hanya bayar kalau setuju dan repair dibuat.":"Checking is free. You only pay if you agree and the repair is done.",
+"Boleh bayar guna apa?":"What payment methods are accepted?",
+"Tunai dan online transfer. Tambah QR atau e-wallet kalau ada.":"Cash and online transfer.",
+"Lokasi dan waktu buka":"Location and opening hours",
+"Alamat":"Address",
+"Waktu buka":"Opening hours",
+"Setiap hari: 10.00 pagi – 10.00 malam":"Every day: 10.00 am – 10.00 pm",
+"Hubungi":"Contact",
+"Chat WhatsApp":"Chat on WhatsApp",
+"Buka Google Maps":"Open Google Maps"
+};
+var orig=new WeakMap(),cur='ms';
+function nodes(){
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],n;
+  while(n=w.nextNode()){
+    var p=n.parentNode&&n.parentNode.nodeName;
+    if(p==='SCRIPT'||p==='STYLE')continue;
+    a.push(n);
+  }
+  return a;
+}
+function apply(lang){
+  cur=lang;
+  nodes().forEach(function(n){
+    if(!orig.has(n))orig.set(n,n.nodeValue);
+    var o=orig.get(n),k=o.trim(),lead=o.match(/^\s*/)[0],trail=o.match(/\s*$/)[0];
+    if(lang==='en'&&T[o]!==undefined){n.nodeValue=T[o];}
+    else if(lang==='en'&&T[k]!==undefined){n.nodeValue=lead+T[k]+trail;}
+    else{n.nodeValue=o;}
+  });
+  document.documentElement.lang=lang==='en'?'en':'ms';
+  document.getElementById('lbm').classList.toggle('on',lang==='ms');
+  document.getElementById('len').classList.toggle('on',lang==='en');
+  try{localStorage.setItem('vrlang',lang);}catch(e){}
+}
+document.getElementById('lbm').addEventListener('click',function(){apply('ms');});
+document.getElementById('len').addEventListener('click',function(){apply('en');});
+var saved='ms';try{saved=localStorage.getItem('vrlang')||'ms';}catch(e){}
+apply(saved);
 })();
 </script>
 </body>
