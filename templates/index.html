@@ -364,12 +364,6 @@ function home(sx,sy,sw,sh){
   for(i=0;i<4;i++)o+=cell(dx+g2+i*(ic+g2),dy+(dh-ic)/2,dk[i]);
   return o;
 }
-  var FID=0;
-function flower(sx,sy,sw,sh,c){
-  var id="fl"+(++FID),cx=sx+sw/2,cy=sy+sh*.52,pr=sh*.17,rx=sw*.075,a,i,o='<clipPath id="'+id+'"><rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+sw*.12+'"/></clipPath><g clip-path="url(#'+id+')">';
-  for(i=0;i<2;i++)for(a=-72;a<=72;a+=24)o+='<ellipse cx="'+cx+'" cy="'+(cy-pr)+'" rx="'+rx+'" ry="'+pr+'" fill="'+mix(c,"#3b2a9c",.45-Math.abs(a)/260)+'" fill-opacity=".5" transform="rotate('+(a+i*180)+' '+cx+' '+cy+')"/>';
-  return o+'<circle cx="'+cx+'" cy="'+cy+'" r="'+sw*.035+'" fill="'+mix(c,"#000000",.3)+'" opacity=".7"/></g>';
-}
 var FID=0;
 function flower(sx,sy,sw,sh,c){
   var id="fl"+(++FID),cx=sx+sw/2,cy=sy+sh*.52,pr=sh*.17,rx=sw*.075,a,i,o='<clipPath id="'+id+'"><rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+sw*.12+'"/></clipPath><g clip-path="url(#'+id+')">';
@@ -525,7 +519,6 @@ g.addEventListener('click',function(e){
 back.addEventListener('click',showGrid);
 document.getElementById('openIphone').addEventListener('click',openD);
 var openIphone2=document.getElementById('openIphone2'); if(openIphone2) openIphone2.addEventListener('click',openD);
-document.getElementById('openSamsung').addEventListener('click',showSamsung);
 document.getElementById('closeM').addEventListener('click',function(){d.close();});
 d.addEventListener('click',function(e){if(e.target===d)d.close();});
 })();
