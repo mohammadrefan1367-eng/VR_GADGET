@@ -87,7 +87,7 @@ details p{margin:10px 0 0;color:var(--muted)}
 .map iframe{width:100%;height:100%;min-height:240px;border:0}
 footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);font-size:.9rem}
 .float{position:fixed;right:16px;bottom:16px;z-index:9;background:#25d366;color:#04140d;font-weight:800;text-decoration:none;padding:14px 20px;border-radius:99px;box-shadow:0 4px 14px rgba(15,27,61,.3)}
-@media (max-width:700px){nav{display:none}.hero{grid-template-columns:1fr}.hero img{max-width:220px;order:-1}}
+@media (max-width:700px){   header .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}   nav{order:3;width:100%;display:flex;overflow-x:auto;white-space:nowrap;padding-top:6px}   nav a{margin:0 16px 0 0}   .hero{grid-template-columns:1fr}   .hero img{max-width:220px;order:-1} }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 button.brand{border:0;width:100%;font-family:inherit;cursor:pointer}
@@ -178,11 +178,14 @@ src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.j
 <main>
 <div class="wrap hero">
   <div>
-    <h1>Mobile Phone Repair Shop</h1>
+    <h1>Repair iPhone &amp; Android di Klang</h1>
+    <p>Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.</p>
+    <div class="cta">
       <a class="btn" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp untuk harga</a>
       <a class="btn alt" href="tel:+60176933120">Call 017-693 3120</a>
     </div>
   </div>
+  <img src="/static/logo.jpeg" alt="Logo VR Gadget">
 </div>
 <div class="wrap">
   <div class="facts">
@@ -301,6 +304,7 @@ src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.j
   <div class="mgrid" id="mgrid"></div>
   <div id="mdet" hidden></div>
 </dialog>
+<footer>
   <div class="wrap">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.</div>
 </footer>
 <a class="float" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp</a>
