@@ -850,5 +850,331 @@ var tile=document.querySelector('.b-samsung');
 if(tile){var nt=document.createElement('button');nt.type='button';nt.className='brand b-samsung';nt.id='openSamsung';nt.innerHTML='<div>SAMSUNG<small>Tekan untuk lihat model</small></div>';tile.parentNode.replaceChild(nt,tile);nt.addEventListener('click',openS);}
 })();
 </script>
+  <script>
+(function(){
+if(window.__vrSam)return;window.__vrSam=1;
+var PRICE={}; // ISI HARGA SAMSUNG DI SINI. Contoh: "Galaxy S24 Ultra":{"Bateri":"RM 150"}
+var SV=[["LCD / skrin",1],["Bateri",1],["Charging board",1],["Motherboard",1],["Kamera",1],["Speaker",1],["Water damage",0]];
+function $(i){return document.getElementById(i);}
+function mix(c,t,f){var n=parseInt(c.slice(1),16),a=[n>>16,n>>8&255,n&255],b=parseInt(t.slice(1),16),z=[b>>16,b>>8&255,b&255];
+  return "#"+a.map(function(v,i){return ("0"+Math.round(v+(z[i]-v)*f).toString(16)).slice(-2);}).join("");}
+function dot(cx,cy,r,f){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+f+'"/>';}
+function wa(x){return "https://wa.me/60176933120?text="+encodeURIComponent(x);}
+
+/* ---------- CSS ---------- */
+var css=document.createElement('style');
+css.textContent='.b-samsung small{letter-spacing:0;color:var(--g1)}'
++'#sback{order:3;flex-basis:100%}'
++'.sbody{overflow:auto;flex:1;min-height:0}'
++'.sbody .dtl{overflow:visible}'
++'.sbody .sl{padding:16px}'
++'.sbody .sl input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:6px}'
++'.sbody .sl h4{margin:16px 0 8px;font-size:1rem}'
++'.sbody .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}'
++'.sbody .sg .m{padding:8px 6px}'
++'.sbody .sg .m span{font-size:.8rem}'
++'.sbody .sg .m svg{height:130px;width:100%}'
++'.fph{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}'
++'.shf,.hg,.sl3{position:absolute;transform-style:preserve-3d}'
++'.hg{left:0;top:0;width:0;height:0}';
+document.head.appendChild(css);
+
+/* ---------- Dialog ---------- */
+var dlg=document.createElement('dialog');dlg.id='sdlg';dlg.setAttribute('aria-labelledby','sdt');
+dlg.innerHTML='<div class="dh"><button type="button" id="sback" hidden>&larr; Semua model Samsung</button><div style="flex:1"><h3 id="sdt">Pilih model Samsung awak</h3><p id="sdsub"></p></div><button type="button" id="sclose">Tutup</button></div><div class="sbody" id="sbody"></div>';
+document.body.appendChild(dlg);
+var body=$('sbody'),sdt=$('sdt'),sds=$('sdsub'),sback=$('sback');
+
+/* ---------- Data model ---------- */
+var PAL=[["#2b3a67","#6d83c4"],["#8d939f","#d3d7e0"],["#34373e","#767b86"],["#a596cf","#d8cfef"],["#4f917c","#a3d5c3"],["#c27565","#eeb5a8"]];
+var AR={
+ s26:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1},
+ s26p:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1.07},
+ ultra:{f:'p',cam:'row4',bz:2.1,rr:.09,sz:1.1},
+ s2x:{f:'p',cam:'mod3',bz:2.9,rr:.17,sz:1},
+ s2xp:{f:'p',cam:'mod3',bz:2.9,rr:.17,sz:1.07},
+ s2xu:{f:'p',cam:'mod3',bz:2.6,rr:.13,sz:1.1,big:1},
+ s10:{f:'pr',cam:'h3',bz:3,rr:.18,sz:1},
+ s9:{f:'n0',cam:'one',fp:1,bz:4.6,rr:.2,sz:1},
+ n20:{f:'p',cam:'mod3',bz:2.7,rr:.12,sz:1.05,pen:1},
+ n20u:{f:'p',cam:'mod3',bz:2.5,rr:.1,sz:1.1,big:1,pen:1},
+ n10:{f:'p',cam:'v3',bz:2.8,rr:.14,sz:1.05,pen:1},
+ n9:{f:'n0',cam:'h2',fp:1,bz:4.4,rr:.18,sz:1.05,pen:1},
+ n7:{f:'n0',cam:'one',bz:4.6,rr:.18,sz:1.05,pen:1},
+ n4:{f:'h',cam:'one',bz:4,rr:.14,sz:1.05,pen:1},
+ a5:{f:'p',cam:'row3',bz:3.4,rr:.15,sz:1},
+ a1:{f:'w',cam:'row3',bz:4,rr:.13,sz:1},
+ a0:{f:'w',cam:'row2',bz:4.8,rr:.12,sz:1},
+ flip:{f:'fc',cam:'none',bz:2.6,rr:.2,sz:1,hr:.58,dr:1.9,fold:'flip'},
+ fold:{f:'p',cam:'mod3',bz:3.6,rr:.13,sz:1,hr:1,dr:1.7,fold:'fold'}
+};
+function arch(g,s){
+  var n=parseInt(s.replace(/\D/g,''),10)||0,u=/Ultra/.test(s),p=/\+/.test(s);
+  if(g==='S'){
+    if(/Series/.test(s))return n>=20?'s2x':n===10?'s10':'s9';
+    if(u)return n>=22?'ultra':'s2xu';
+    if(n>=23)return p?'s26p':'s26';
+    return p?'s2xp':'s2x';
+  }
+  if(g==='Z')return /Fold/.test(s)?'fold':'flip';
+  if(g==='N'){
+    if(/Note20/.test(s))return u?'n20u':'n20';
+    if(/Note10/.test(s))return 'n10';
+    if(n>=8)return 'n9';
+    return n===7?'n7':'n4';
+  }
+  return n>=22?'a5':n>=13?'a1':'a0';
+}
+var SAM=[
+ ["Galaxy S","S","Galaxy ",["S26","S26+","S26 Ultra","S25","S25+","S25 Ultra","S24","S24+","S24 Ultra","S23","S23+","S23 Ultra","S22","S22+","S22 Ultra","S21","S21+","S21 Ultra","S21 FE","S20 Series","S10 Series","S9 Series","S8 Series"]],
+ ["Galaxy Z (Fold & Flip)","Z","Galaxy Z ",["Fold8","Fold7","Fold6","Fold5","Fold4","Fold3","Fold2","Flip8","Flip7","Flip6","Flip5","Flip4","Flip3","Flip","Flip7 FE"]],
+ ["Galaxy A","A","Galaxy ",["A57","A56","A55","A54","A53","A52","A51","A47","A46","A45","A37","A36","A35","A34","A33","A32","A27","A26","A25","A24","A23","A22","A18","A17","A16","A15","A14","A13","A08","A07","A06","A05","A04","A03","A02","A01"]],
+ ["Galaxy M","M","Galaxy ",["M56","M55","M54","M53","M52","M51","M35","M34","M33","M32","M31","M30","M23","M22","M21","M15","M14","M13","M05","M04"]],
+ ["Galaxy Note","N","Galaxy ",["Note20","Note20 Ultra","Note10","Note10+","Note9","Note8","Note7","Note5","Note4","Note3","Note2"]]
+];
+var E=[],gi=0;
+SAM.forEach(function(s){s[3].forEach(function(m){E.push({n:s[2]+m,A:AR[arch(s[1],m)],c:PAL[gi%PAL.length],g:s[0]});gi++;});});
+
+/* ---------- Geometri kamera ---------- */
+function camGeo(A,w,h){
+  var c=A.cam,L=[],R=null,X=[],FP=null,r,i;
+  if(c==='row3'||c==='row2'||c==='row4'){
+    var n=c==='row4'?4:c==='row3'?3:2,sp=c==='row4'?.088:.095,s0=c==='row4'?.062:.07;r=w*(c==='row4'?.082:.08);
+    for(i=0;i<n;i++)L.push([w*.2,h*(s0+i*sp),r]);
+    X.push([w*.44,h*s0,w*.022,"#f4f1d8"],[w*.44,h*(s0+sp),w*.011,"#1a1a24"]);
+  }else if(c==='mod3'){
+    var big=A.big,mw=w*(big?.44:.4),mh=h*(big?.25:.215);R={x:w*.06,y:h*.03,w:mw,h:mh,r:w*.1};r=w*(big?.075:.07);
+    for(i=0;i<3;i++)L.push([R.x+mw*.3,R.y+mh*(.2+i*.3),r]);
+    X.push([R.x+mw*.78,R.y+mh*.22,w*.02,"#f4f1d8"],[R.x+mw*.78,R.y+mh*.6,w*.011,"#1a1a24"]);
+  }else if(c==='h3'){
+    r=w*.065;for(i=0;i<3;i++)L.push([w*(.2+i*.17),h*.075,r]);X.push([w*.74,h*.075,w*.02,"#f4f1d8"]);
+  }else if(c==='h2'){
+    r=w*.065;L.push([w*.2,h*.07,r],[w*.38,h*.07,r]);X.push([w*.58,h*.065,w*.02,"#f4f1d8"],[w*.65,h*.065,w*.014,"#7a2a2a"]);FP=[w*.38,h*.2,w*.05];
+  }else if(c==='one'){
+    r=w*.07;L.push([w*.2,h*.07,r]);X.push([w*.38,h*.065,w*.02,"#f4f1d8"],[w*.45,h*.065,w*.014,"#7a2a2a"]);if(A.fp)FP=[w*.3,h*.17,w*.05];
+  }else if(c==='v3'){
+    R={x:w*.07,y:h*.03,w:w*.25,h:h*.23,r:w*.125};r=w*.058;
+    for(i=0;i<3;i++)L.push([R.x+R.w/2,R.y+R.h*(.2+i*.3),r]);X.push([w*.38,h*.06,w*.02,"#f4f1d8"]);
+  }
+  return {L:L,R:R,X:X,FP:FP};
+}
+function dims(A){var s=A.sz;return {w:70*s,h:146*s*(A.hr||1),s:s};}
+
+/* ---------- Gradien ---------- */
+function defs(k,col){
+  var b=col[0],l=col[1],d=mix(b,"#000000",.45);
+  return '<defs>'
+  +'<linearGradient id="fr'+k+'" x1="0" x2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".3" stop-color="'+b+'"/><stop offset=".7" stop-color="'+d+'"/><stop offset="1" stop-color="'+l+'"/></linearGradient>'
+  +'<linearGradient id="bk'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".55" stop-color="'+b+'"/><stop offset="1" stop-color="'+mix(b,"#000000",.25)+'"/></linearGradient>'
+  +'<linearGradient id="bp'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(l,"#ffffff",.3)+'"/><stop offset="1" stop-color="'+mix(b,"#ffffff",.08)+'"/></linearGradient>'
+  +'<linearGradient id="sc'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(b,"#0b1030",.6)+'"/><stop offset=".55" stop-color="'+mix(l,"#1d2a6b",.35)+'"/><stop offset="1" stop-color="'+mix(l,"#ffffff",.1)+'"/></linearGradient>'
+  +'<linearGradient id="rg'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f5ff"/><stop offset=".5" stop-color="#6a6f80"/><stop offset="1" stop-color="#d2d5e0"/></linearGradient>'
+  +'<radialGradient id="ln'+k+'" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#3b4a8a"/><stop offset=".55" stop-color="#0a0c25"/><stop offset="1" stop-color="#020210"/></radialGradient>'
+  +'<radialGradient id="sh'+k+'"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
+  +'</defs>';
+}
+function lens(cx,cy,r,k,rc){
+  return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r*1.1+'" fill="#000" opacity=".22"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+rc+'"/>'
+  +'<path d="M'+(cx-r*.7)+' '+(cy-r*.45)+' A'+r*.85+' '+r*.85+' 0 0 1 '+(cx+r*.3)+' '+(cy-r*.8)+'" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="'+r*.08+'" stroke-linecap="round"/>'
+  +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r*.78+'" fill="#0b0a12"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.64+'" fill="url(#ln'+k+')"/>'
+  +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r*.3+'" fill="#04040a" opacity=".9"/><circle cx="'+(cx-r*.28)+'" cy="'+(cy-r*.3)+'" r="'+r*.13+'" fill="#fff" opacity=".55"/>';
+}
+function screen(sx,sy,sw,sh,k,n){
+  var o='<rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+n.rx+'" fill="url(#sc'+k+')"/>';
+  o+='<circle cx="'+(sx+sw*.8)+'" cy="'+(sy+sh*.7)+'" r="'+sw*.3+'" fill="#fff" opacity=".07"/><circle cx="'+(sx+sw*.15)+'" cy="'+(sy+sh*.45)+'" r="'+sw*.22+'" fill="#fff" opacity=".05"/>';
+  var tx=sx+sw*(n.tx||.5);
+  o+='<text x="'+tx+'" y="'+(sy+sh*.24)+'" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="'+sw*(n.tx?.16:.2)+'" fill="#fff" opacity=".92">10:09</text>';
+  o+='<text x="'+tx+'" y="'+(sy+sh*.3)+'" text-anchor="middle" font-family="Arial,sans-serif" font-size="'+sw*.07+'" fill="#fff" opacity=".7">Isnin, 14 Okt</text>';
+  var ic=sw*.15,g=(sw-4*ic)/5,i;
+  for(i=0;i<4;i++)o+='<rect x="'+(sx+g+i*(ic+g))+'" y="'+(sy+sh*.86)+'" width="'+ic+'" height="'+ic+'" rx="'+ic*.3+'" fill="#fff" fill-opacity=".16"/>';
+  o+='<path d="M'+(sx+sw*.55)+' '+sy+' L'+(sx+sw)+' '+sy+' L'+(sx+sw)+' '+(sy+sh*.45)+' Z" fill="#fff" opacity=".07"/>';
+  return o;
+}
+
+/* ---------- Lukis telefon (satu muka) ---------- */
+function phone(cx,m,k,back,ns){
+  var A=m.A,D=dims(A),w=D.w,h=D.h,x=cx-w/2,y=(186-h)/2-2,rx=w*A.rr,o='',bz=A.bz,c=m.c,G=camGeo(A,w,h),i;
+  var RX=back?x-1.6:x+w-.8;
+  if(!ns)o+='<ellipse cx="'+cx+'" cy="'+(y+h+4)+'" rx="'+w*.55+'" ry="5" fill="url(#sh'+k+')"/>';
+  if(A.f!=='fc'||!back){
+    o+='<rect x="'+RX+'" y="'+(y+h*.22)+'" width="2.4" height="'+h*.1+'" rx="1" fill="url(#fr'+k+')"/><rect x="'+RX+'" y="'+(y+h*.36)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
+  }
+  o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
+  var rc=mix(c[1],"#ffffff",.35);
+  if(!back){
+    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
+    if(A.f==='fc'){ /* sisi cover Flip */
+      o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
+      var cw=w*.88,ch=h*.44,cx0=x+w*.06,cy0=y+h*.035;
+      o+='<rect x="'+cx0+'" y="'+cy0+'" width="'+cw+'" height="'+ch+'" rx="'+w*.1+'" fill="#05060c"/>';
+      o+=screen(cx0+1.2,cy0+1.2,cw-2.4,ch-2.4,k,{rx:w*.09,tx:.64});
+      var lr=w*.075;
+      o+=lens(x+w*.2,y+h*.1,lr,k,rc)+lens(x+w*.2,y+h*.23,lr,k,rc)+dot(x+w*.46,y+h*.1,w*.02,"#f4f1d8");
+      return o;
+    }
+    var sx=x+bz,sy=y+bz,sw=w-bz*2,sh=h-bz*2;
+    if(A.f==='h'){sy=y+h*.13;sh=h*.74;}
+    o+=screen(sx,sy,sw,sh,k,{rx:Math.max(2,rx-bz)});
+    if(A.f==='p')o+=dot(x+w/2,sy+3.2,1.5,"#000")+dot(x+w/2+.4,sy+3,.5,"#1b1b44");
+    else if(A.f==='pr')o+=dot(sx+sw*.86,sy+3.2,1.7,"#000");
+    else if(A.f==='w')o+='<path d="M'+(x+w/2-6)+' '+sy+' Q'+(x+w/2-6)+' '+(sy+5.5)+' '+(x+w/2)+' '+(sy+5.5)+' Q'+(x+w/2+6)+' '+(sy+5.5)+' '+(x+w/2+6)+' '+sy+' Z" fill="#06060c"/>';
+    else if(A.f==='n0')o+='<rect x="'+(x+w/2-6)+'" y="'+(y+bz*.35)+'" width="12" height="1.6" rx=".8" fill="#2c2c36"/>'+dot(x+w/2+9,y+bz*.45,1.1,"#1a1a40");
+    else if(A.f==='h'){
+      o+='<rect x="'+(x+w/2-7)+'" y="'+(y+h*.06)+'" width="14" height="1.8" rx=".9" fill="#2c2c36"/>'+dot(x+w/2-12,y+h*.065,1.2,"#1a1a40");
+      o+='<circle cx="'+(x+w/2)+'" cy="'+(y+h*.935)+'" r="'+w*.065+'" fill="none" stroke="'+rc+'" stroke-width=".8"/>';
+    }
+    return o;
+  }
+  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
+  o+='<path d="M'+(x+w*.55)+' '+y+' L'+(x+w)+' '+y+' L'+(x+w)+' '+(y+h*.5)+' Z" fill="#fff" opacity=".07"/>';
+  if(G.R)o+='<rect x="'+(x+G.R.x)+'" y="'+(y+G.R.y)+'" width="'+G.R.w+'" height="'+G.R.h+'" rx="'+G.R.r+'" fill="url(#bp'+k+')" stroke="#000" stroke-opacity=".25" stroke-width=".6"/>';
+  if(G.FP)o+='<circle cx="'+(x+G.FP[0])+'" cy="'+(y+G.FP[1])+'" r="'+G.FP[2]+'" fill="none" stroke="'+rc+'" stroke-opacity=".7" stroke-width=".8"/>';
+  G.L.forEach(function(L){o+=lens(x+L[0],y+L[1],L[2],k,rc);});
+  G.X.forEach(function(P){o+=dot(x+P[0],y+P[1],P[2],P[3]);});
+  return o;
+}
+function face(i,back,tag){
+  var m=E[i],D=dims(m.A),w=D.w,h=D.h,y=(186-h)/2-2,k=tag+i;
+  return '<svg viewBox="'+(62-w/2-3)+' '+(y-3)+' '+(w+6)+' '+(h+6)+'">'+defs(k,m.c)+phone(62,m,k,back,true)+'</svg>';
+}
+
+/* ---------- Pentas 3D ---------- */
+var raf=0;
+function stage(i){
+  var m=E[i],A=m.A,D=dims(A),K=1.9,w=D.w*K,h=D.h*K,pad=3*K,W=w+2*pad,H=h+2*pad,dep=Math.round(w*.12*(A.dr||1)),n=48,lay='',c=m.c,dk=mix(c[0],"#000000",.45),rr=D.w*A.rr*K,sl=h-2*rr,tl=w-2*rr,j;
+  for(j=0;j<n;j++){var t=Math.sin(Math.PI*(j+.5)/n),z=-dep/2+dep*(j+.5)/n;
+    lay+='<div class="lay" style="left:'+pad+'px;top:'+pad+'px;width:'+w+'px;height:'+h+'px;border-radius:'+rr+'px;background:'+mix(dk,c[1],t)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}
+  var gs='linear-gradient(90deg,'+dk+','+c[1]+','+dk+')',gv='linear-gradient(180deg,'+dk+','+c[1]+','+dk+')',bd=mix(dk,"#000000",.35),hi=mix(c[1],"#ffffff",.3);
+  function btn(y1,y2){return '<rect x="'+dep*.2+'" y="'+(y1*h-rr)+'" width="'+dep*.6+'" height="'+((y2-y1)*h)+'" rx="'+dep*.3+'" fill="'+bd+'" stroke="'+hi+'" stroke-opacity=".6" stroke-width="1"/>';}
+  var right='<svg viewBox="0 0 '+dep+' '+sl+'">'+btn(.22,.32)+btn(.36,.43)+'</svg>';
+  var left='<svg viewBox="0 0 '+dep+' '+sl+'"></svg>';
+  var cxm=tl/2,slotW=w*.14,slotH=dep*.42,cyy=dep/2,holes='',q;
+  for(q=0;q<6;q++){var off=slotW/2+dep*.45+q*dep*.28;holes+=dot(cxm-off,cyy,dep*.06,"#150a10");if(!A.pen||q<5)holes+=dot(cxm+off,cyy,dep*.06,"#150a10");}
+  var pen=A.pen?'<rect x="'+(cxm+slotW/2+dep*.45+6*dep*.28)+'" y="'+(cyy-dep*.2)+'" width="'+dep*.7+'" height="'+dep*.4+'" rx="'+dep*.2+'" fill="#0a0508" stroke="'+hi+'" stroke-opacity=".5" stroke-width=".6"/>':'';
+  var bottom='<svg viewBox="0 0 '+tl+' '+dep+'"><rect x="'+(cxm-slotW/2)+'" y="'+(cyy-slotH/2)+'" width="'+slotW+'" height="'+slotH+'" rx="'+slotH/2+'" fill="#0a0508" stroke="'+hi+'" stroke-opacity=".5" stroke-width=".8"/>'+holes+pen+'</svg>';
+  var top='<svg viewBox="0 0 '+tl+' '+dep+'">'+dot(tl*.2,cyy,dep*.07,"#150a10")+dot(tl*.8,cyy,dep*.07,"#150a10")+'</svg>';
+  function pl(css,svg,bg){return '<div class="pl" style="'+css+';background:'+bg+'">'+svg+'</div>';}
+  var planes=pl('left:'+(pad+w-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(90deg)',right,gs)
+    +pl('left:'+(pad-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(-90deg)',left,gs)
+    +pl('left:'+(pad+rr)+'px;top:'+(pad-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(90deg)',top,gv)
+    +pl('left:'+(pad+rr)+'px;top:'+(pad+h-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(-90deg)',bottom,gv);
+  /* tojolan kamera */
+  var extra='',G=A.cam==='none'?{L:[],R:null}:camGeo(A,w,h),z0=dep/2+.5,BK=face(i,true,'b'),bl=mix(c[0],c[1],.55),ringc=mix(c[0],c[1],.5),ringd=mix(ringc,"#000000",.5);
+  function crop(x,y,wd,ht,rad,Z){return '<div class="bt" style="left:'+(W-(pad+x)-wd)+'px;top:'+(pad+y)+'px;width:'+wd+'px;height:'+ht+'px;border-radius:'+rad+'px;transform:rotateY(180deg) translateZ('+Z.toFixed(2)+'px)"><div style="position:absolute;left:-'+(pad+x)+'px;top:-'+(pad+y)+'px;width:'+W+'px;height:'+H+'px">'+BK+'</div></div>';}
+  var bH=0;
+  if(G.R){bH=Math.max(3,dep*.2);var NB=12;
+    for(j=0;j<NB;j++){var tt=Math.sin(Math.PI*(j+.5)/NB),zz=-(z0+(j+.5)/NB*bH);extra+='<div class="lay" style="left:'+(W-(pad+G.R.x)-G.R.w)+'px;top:'+(pad+G.R.y)+'px;width:'+G.R.w+'px;height:'+G.R.h+'px;border-radius:'+G.R.r+'px;background:'+mix(dk,bl,.4+.6*tt)+';transform:translateZ('+zz.toFixed(2)+'px)"></div>';}
+    extra+=crop(G.R.x,G.R.y,G.R.w,G.R.h,G.R.r,z0+bH+.3);}
+  var lH=Math.max(3,dep*.2),NL=8;
+  G.L.forEach(function(L){var R=L[2]*1.08;
+    for(j=0;j<NL;j++){var t2=Math.sin(Math.PI*(j+.5)/NL),z2=-(z0+bH+(j+.5)/NL*lH);extra+='<div class="lay" style="left:'+(W-(pad+L[0])-R)+'px;top:'+(pad+L[1]-R)+'px;width:'+2*R+'px;height:'+2*R+'px;border-radius:50%;background:'+mix(ringd,ringc,.3+.7*t2)+';transform:translateZ('+z2.toFixed(2)+'px)"></div>';}
+    extra+=crop(L[0]-R,L[1]-R,2*R,2*R,R,z0+bH+lH+.3);});
+  return '<div class="stage" id="sstage" style="height:'+Math.round(H+50)+'px"><div class="gnd" style="width:'+w+'px"></div><div class="ph" id="sph" style="width:'+W+'px;height:'+H+'px;margin:-'+H/2+'px 0 0 -'+W/2+'px">'+lay+planes+extra
+    +'<div class="fc" style="transform:translateZ('+(dep/2+.5)+'px)">'+face(i,false,'f')+'</div><div class="fc" style="transform:rotateY(180deg) translateZ('+(dep/2+.5)+'px)">'+face(i,true,'k')+'</div></div></div>';
+}
+
+/* ---------- Z Fold / Z Flip: buka & tutup ---------- */
+function openFace(i,part,tag){
+  var m=E[i],A=m.A,D=dims(A),w=D.w,hh=D.h,fl=A.fold==='flip',k=tag+'o'+i,o='';
+  var W2=fl?w:2*w,H2=fl?2*hh:hh,x=62-W2/2,y=(186-H2)/2-2,rx=w*A.rr,bz=A.bz;
+  o+=defs(k,m.c);
+  o+='<rect x="'+x+'" y="'+y+'" width="'+W2+'" height="'+H2+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
+  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
+  var sx=x+bz,sy=y+bz,sw=W2-2*bz,sh=H2-2*bz;
+  o+=screen(sx,sy,sw,sh,k,{rx:Math.max(2,rx-bz)});
+  var vb;
+  if(fl){
+    o+=dot(62,sy+3.2,1.5,"#000");
+    o+='<rect x="'+sx+'" y="'+(y+hh-1.2)+'" width="'+sw+'" height="2.4" fill="#000" opacity=".28"/><rect x="'+sx+'" y="'+(y+hh+1.2)+'" width="'+sw+'" height=".6" fill="#fff" opacity=".25"/>';
+    vb=[x-3,part==='top'?y-3:y+hh-3,w+6,hh+6];
+  }else{
+    o+=dot(x+W2-bz-9,sy+3.2,1.5,"#000");
+    o+='<rect x="'+(x+w-1.2)+'" y="'+sy+'" width="2.4" height="'+sh+'" fill="#000" opacity=".28"/><rect x="'+(x+w+1.2)+'" y="'+sy+'" width=".6" height="'+sh+'" fill="#fff" opacity=".25"/>';
+    vb=[part==='left'?x-3:x+w-3,y-3,w+6,hh+6];
+  }
+  return '<svg viewBox="'+vb.join(' ')+'">'+o+'</svg>';
+}
+function foldStage(i){
+  var m=E[i],A=m.A,D=dims(A),K=1.6,w=D.w*K,hh=D.h*K,pad=3*K,fl=A.fold==='flip',dep=Math.round(D.w*K*.12*A.dr),t=dep/2,c=m.c,dk=mix(c[0],"#000000",.45),rr=D.w*A.rr*K,n=18;
+  function layers(rad){var s='',j;for(j=0;j<n;j++){var tt=Math.sin(Math.PI*(j+.5)/n),z=-t/2+t*(j+.5)/n;s+='<div class="lay" style="left:0;top:0;width:'+w+'px;height:'+hh+'px;border-radius:'+rad+';background:'+mix(dk,c[1],tt)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}return s;}
+  function fcd(inner,tf){return '<div class="fc" style="left:'+(-pad)+'px;top:'+(-pad)+'px;width:'+(w+2*pad)+'px;height:'+(hh+2*pad)+'px;transform:'+tf+'">'+inner+'</div>';}
+  var zf='translateZ('+(t/2+.4)+'px)',sz='width:'+w+'px;height:'+hh+'px';
+  var mv,fx,r1,r2;
+  if(fl){
+    r1=rr+'px '+rr+'px 0 0';r2='0 0 '+rr+'px '+rr+'px';
+    fx='<div class="sl3" style="left:'+(-w/2)+'px;top:'+(-hh)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'top','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
+    mv='<div class="sl3" style="left:'+(-w/2)+'px;top:0;'+sz+'">'+layers(r2)+fcd(openFace(i,'bottom','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) rotateZ(180deg) '+zf)+'</div>';
+  }else{
+    r1=rr+'px 0 0 '+rr+'px';r2='0 '+rr+'px '+rr+'px 0';
+    fx='<div class="sl3" style="left:'+(-w)+'px;top:'+(-hh/2)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'left','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
+    mv='<div class="sl3" style="left:0;top:'+(-hh/2)+'px;'+sz+'">'+layers(r2)+fcd(openFace(i,'right','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) '+zf)+'</div>';
+  }
+  var Hs=Math.round((fl?2*hh:hh)+2*pad+50);
+  return '<div class="stage" id="sstage" data-m="'+(fl?'flip':'fold')+'" data-w="'+w+'" data-hh="'+hh+'" data-t="'+t+'" style="height:'+Hs+'px"><div class="gnd" style="width:'+w*1.2+'px"></div><div class="fph" id="sph"><div class="shf" id="sshift">'+fx+'<div class="hg" id="shg" style="transform-origin:0 0 '+(t/2)+'px">'+mv+'</div></div></div></div>';
+}
+function init3d(){
+  cancelAnimationFrame(raf);
+  var st=$('sstage'),ph=$('sph'),ry=-28,rx=-6,auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=null,ty=null,drag=false,lx=0,ly=0,tm=0,moved=0;
+  var mode=st.getAttribute('data-m'),gw=+st.getAttribute('data-w'),ghh=+st.getAttribute('data-hh'),gt=+st.getAttribute('data-t'),p=1,pt=1,hg=$('shg'),shf=$('sshift'),lbl=$('sfoldlbl');
+  function applyFold(){var th=180*p;if(mode==='flip'){hg.style.transform='rotateX('+th+'deg)';shf.style.transform='translate3d(0,'+(ghh/2*p)+'px,'+(-gt/2*p)+'px)';}else{hg.style.transform='rotateY('+(-th)+'deg)';shf.style.transform='translate3d('+(gw/2*p)+'px,0,'+(-gt/2*p)+'px)';}}
+  function toggle(){pt=pt>.5?0:1;if(lbl)lbl.textContent=pt>.5?'Tertutup':'Terbuka';}
+  if(mode)applyFold();
+  function near(c,tg){return tg+Math.round((c-tg)/360)*360;}
+  function loop(){
+    if(!dlg.open||!$('sstage'))return;
+    if(auto&&!drag&&tx===null)ry+=.5;
+    if(tx!==null){ry+=(ty-ry)*.14;rx+=(tx-rx)*.14;if(Math.abs(ty-ry)<.3&&Math.abs(tx-rx)<.3){ry=ty;rx=tx;tx=null;ty=null;}}
+    if(mode){p+=(pt-p)*.1;if(Math.abs(pt-p)<.002)p=pt;applyFold();}
+    ph.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';
+    raf=requestAnimationFrame(loop);
+  }
+  st.addEventListener('pointerdown',function(e){drag=true;moved=0;tx=null;lx=e.clientX;ly=e.clientY;clearTimeout(tm);try{st.setPointerCapture(e.pointerId);}catch(_){}});
+  st.addEventListener('pointermove',function(e){if(!drag)return;moved+=Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly);ry+=(e.clientX-lx)*.6;rx-=(e.clientY-ly)*.6;lx=e.clientX;ly=e.clientY;});
+  function up(){if(!drag)return;if(mode&&moved<6)toggle();drag=false;auto=false;clearTimeout(tm);tm=setTimeout(function(){auto=true;},3000);}
+  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
+  var V={f:[0,0],b:[0,180],l:[0,90],r:[0,-90],t:[-90,0],u:[90,0]};
+  [].forEach.call(body.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
+  var fb=$('sfold');if(fb)fb.onclick=toggle;
+  loop();
+}
+
+/* ---------- Paparan ---------- */
+function showList(){
+  cancelAnimationFrame(raf);
+  sback.hidden=true;sdt.textContent="Pilih model Samsung awak";sds.textContent="Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.";
+  var h='<div class="sl"><input id="sq" type="search" placeholder="Cari model, contoh: S24 atau A54" autocomplete="off">';
+  SAM.forEach(function(s){
+    h+='<div class="ss"><h4>'+s[0]+'</h4><div class="sg">';
+    E.forEach(function(m,i){if(m.g===s[0])h+='<a class="m" href="#" data-i="'+i+'" aria-label="'+m.n+', lihat servis">'+face(i,true,'c')+'<span>'+m.n.replace("Galaxy ","")+'</span></a>';});
+    h+='</div></div>';
+  });
+  body.innerHTML=h+'</div>';body.scrollTop=0;
+  var q=$('sq');
+  q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();
+    [].forEach.call(body.querySelectorAll('.ss'),function(sec){var any=false;
+      [].forEach.call(sec.querySelectorAll('.m'),function(c){var ok=c.getAttribute('aria-label').toLowerCase().indexOf(v)>-1;c.hidden=!ok;if(ok)any=true;});
+      sec.hidden=!any;});});
+}
+function showDetail(i){
+  var n=E[i].n,rows="";
+  SV.forEach(function(s){
+    var p=(PRICE[n]||{})[s[0]];
+    rows+='<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'+(p?'<span class="amt">'+p+'</span>':'')+'<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'+(p?'Tanya di WhatsApp':'WhatsApp untuk harga')+'</a></li>';
+  });
+  body.innerHTML='<div class="dtl"><div style="align-self:start"><div class="dimg">'+(E[i].A.fold?foldStage(i):stage(i))+'<div class="ctl"><button type="button" data-v="f">Depan</button><button type="button" data-v="b">Belakang</button><button type="button" data-v="l">Kiri</button><button type="button" data-v="r">Kanan</button><button type="button" data-v="t">Atas</button><button type="button" data-v="u">Bawah</button></div>'+(E[i].A.fold?'<div class="ctl"><button type="button" id="sfold">Buka / Tutup</button></div><div class="hint">Keadaan: <b id="sfoldlbl">Tertutup</b> · tekan telefon atau butang untuk buka dan tutup</div>':'')+'<div class="hint">Seret ke semua arah untuk pusing 360°</div><div class="dnm">'+n+'</div></div></div><ul class="svl">'+rows+'</ul></div>';
+  sback.hidden=false;sdt.textContent=n;sds.textContent="Pilih servis, kami balas harga di WhatsApp.";body.scrollTop=0;init3d();
+}
+body.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
+sback.addEventListener('click',showList);
+$('sclose').addEventListener('click',function(){dlg.close();});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+dlg.addEventListener('close',function(){cancelAnimationFrame(raf);});
+function openS(){showList();dlg.showModal();}
+
+/* ---------- Sambung kotak SAMSUNG ---------- */
+var tile=document.querySelector('.b-samsung');
+if(tile){var nt=document.createElement('button');nt.type='button';nt.className='brand b-samsung';nt.id='openSamsung';nt.innerHTML='<div>SAMSUNG<small>Tekan untuk lihat model</small></div>';tile.parentNode.replaceChild(nt,tile);nt.addEventListener('click',openS);}
+})();
+</script>
 </body>
 </html>
