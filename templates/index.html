@@ -352,8 +352,8 @@ document.getElementById('fav').href="/static/logo.jpeg";
 document.getElementById('y').textContent=new Date().getFullYear();
 (function(){
 var M=[
-["X","m","n","xv",["#d3d6db","#f4f5f7"],4],["XR","m","n","one",["#f26a5a","#ff9a8c"],5],
-["XS","m","n","v",["#d9c19a","#f1e3c6"],4],["XS Max","l","n","v",["#d9c19a","#f1e3c6"],4],
+["X","m","n","xv",["#d3d6db","#f4f5f7"],4],["XR","m","n","xr",["#eceef2","#ffffff"],5],
+["XS","m","n","xv",["#cfae85","#f3dfc4"],4],["XS Max","l","n","xv",["#cfae85","#f3dfc4"],4],
 ["11","m","n","sqv",["#c8b6e0","#e4d9f2"],4.5],["11 Pro","m","n","sq3",["#4e5d56","#7a8c83"],4],["11 Pro Max","l","n","sq3",["#4e5d56","#7a8c83"],4],
 ["12 mini","s","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12","m","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12 Pro","m","n","sq3",["#2f4f63","#587d93"],3.5],["12 Pro Max","l","n","sq3",["#2f4f63","#587d93"],3.5],
 ["13 mini","s","n","sqd",["#f4cbd3","#fbe4e8"],3.5],["13","m","n","sqd",["#f4cbd3","#fbe4e8"],3.5],["13 Pro","m","n","sq3",["#7f9fc0","#aac3dc"],3.5],["13 Pro Max","l","n","sq3",["#7f9fc0","#aac3dc"],3.5],
@@ -466,6 +466,11 @@ function phone(cx,s,m,k,back,ns){
       +lens(bx+pw/2,by+ph*.27,lr,k)+lens(bx+pw/2,by+ph*.73,lr,k)
       +dot(bx+pw/2,by+ph*.5,1.3,F)+dot(bx+pw/2+2.6,by+ph*.5,.5,M2)
       +'<text x="'+cx+'" y="'+(y+h*.75)+'" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="500" font-size="'+w*.09+'" fill="#4a4d55" opacity=".85">iPhone</text>';}
+             else if(cam==="xr"){var r0=w*.07,c0=r0*1.15;
+    o+='<circle cx="'+(bx+c0)+'" cy="'+(by+c0)+'" r="'+(r0*1.12)+'" fill="#d5d8de" stroke="#000" stroke-opacity=".3" stroke-width=".6"/>'
+      +lens(bx+c0,by+c0,r0*.88,k)
+      +dot(bx+c0+r0*2.1,by+c0-r0*.35,1.7,F)+dot(bx+c0+r0*2.1,by+c0+r0*.5,.7,M2)
+      +'<text x="'+cx+'" y="'+(y+h*.75)+'" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="500" font-size="'+w*.09+'" fill="#4a4d55" opacity=".85">iPhone</text>';}
   else if(cam==="bar1"){var bh=h*.1;o+='<rect x="'+(x+w*.04)+'" y="'+by+'" width="'+w*.92+'" height="'+bh+'" rx="'+bh*.3+'" fill="'+bp+'"'+st+'/>'+lens(x+w*.22,by+bh/2,bh*.36,k)+dot(x+w*.78,by+bh*.35,1.8,F)+dot(x+w*.78,by+bh*.72,1,M2);}
   return o;
 }
@@ -505,8 +510,8 @@ function stage3d(i){
     +pl('left:'+(pad-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(-90deg)',left,gs)
     +pl('left:'+(pad+rr)+'px;top:'+(pad-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(90deg)',top,gv)
     +pl('left:'+(pad+rr)+'px;top:'+(pad+h-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(-90deg)',bottom,gv);
-  var cam=m[3],q48=.48*w,BG={one:{x:.07*w,y:.035*h,w:.3*w,h:.3*w,r:.1*w},v:{x:.07*w,y:.035*h,w:.31*w,h:.19*h,r:.155*w},sqv:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sqd:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sq3:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},plat3:{x:.05*w,y:.035*h,w:.9*w,h:.22*h,r:.048*h},plat3b:{x:.012*w,y:.004*h,w:.976*w,h:.285*h,r:.15*w},v2:{x:.07*w,y:.035*h,w:.34*w,h:.255*h,r:.17*w},bar1:{x:.04*w,y:.035*h,w:.92*w,h:.1*h,r:.03*h},xv:{x:.07*w,y:.035*h,w:.17*w,h:.178*h,r:.085*w}}[cam];
-  var bx0=.07*w,by0=.035*h,LP={one:[[bx0+w*.15,by0+w*.15,w*.1]],v:[[bx0+w*.155,by0+.19*h*.3,w*.085],[bx0+w*.155,by0+.19*h*.72,w*.085]],sqv:[[bx0+q48*.3,by0+q48*.29,q48*.2],[bx0+q48*.3,by0+q48*.72,q48*.2]],sqd:[[bx0+q48*.3,by0+q48*.3,q48*.2],[bx0+q48*.7,by0+q48*.7,q48*.2]],sq3:[[bx0+q48*.3,by0+q48*.28,q48*.19],[bx0+q48*.3,by0+q48*.72,q48*.19],[bx0+q48*.7,by0+q48*.5,q48*.19]],plat3:[[.05*w+.9*w*.25,.035*h+.22*h*.28,.22*h*.2],[.05*w+.9*w*.25,.035*h+.22*h*.72,.22*h*.2],[.05*w+.9*w*.5,.035*h+.22*h*.5,.22*h*.2]],plat3b:[[.012*w+.976*w*.17,.004*h+.285*h*.33,.976*w*.112],[.012*w+.976*w*.15,.004*h+.285*h*.7,.976*w*.112],[.012*w+.976*w*.45,.004*h+.285*h*.56,.976*w*.112]],v2:[[.24*w,.035*h+.139*w,.129*w],[.24*w,.035*h+.255*h-.139*w,.129*w]],bar1:[[.22*w,.035*h+.05*h,.1*h*.36]],xv:[[bx0+w*.085,by0+h*.178*.27,w*.17*.37],[bx0+w*.085,by0+h*.178*.73,w*.17*.37]]}[cam]||[];
+  var cam=m[3],q48=.48*w,BG={one:{x:.07*w,y:.035*h,w:.3*w,h:.3*w,r:.1*w},v:{x:.07*w,y:.035*h,w:.31*w,h:.19*h,r:.155*w},sqv:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sqd:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sq3:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},plat3:{x:.05*w,y:.035*h,w:.9*w,h:.22*h,r:.048*h},plat3b:{x:.012*w,y:.004*h,w:.976*w,h:.285*h,r:.15*w},v2:{x:.07*w,y:.035*h,w:.34*w,h:.255*h,r:.17*w},bar1:{x:.04*w,y:.035*h,w:.92*w,h:.1*h,r:.03*h},xv:{x:.07*w,y:.035*h,w:.17*w,h:.178*h,r:.085*w},xr:{x:.072*w,y:.035*h,w:.157*w,h:.157*w,r:.0785*w}}[cam];
+  var bx0=.07*w,by0=.035*h,LP={one:[[bx0+w*.15,by0+w*.15,w*.1]],v:[[bx0+w*.155,by0+.19*h*.3,w*.085],[bx0+w*.155,by0+.19*h*.72,w*.085]],sqv:[[bx0+q48*.3,by0+q48*.29,q48*.2],[bx0+q48*.3,by0+q48*.72,q48*.2]],sqd:[[bx0+q48*.3,by0+q48*.3,q48*.2],[bx0+q48*.7,by0+q48*.7,q48*.2]],sq3:[[bx0+q48*.3,by0+q48*.28,q48*.19],[bx0+q48*.3,by0+q48*.72,q48*.19],[bx0+q48*.7,by0+q48*.5,q48*.19]],plat3:[[.05*w+.9*w*.25,.035*h+.22*h*.28,.22*h*.2],[.05*w+.9*w*.25,.035*h+.22*h*.72,.22*h*.2],[.05*w+.9*w*.5,.035*h+.22*h*.5,.22*h*.2]],plat3b:[[.012*w+.976*w*.17,.004*h+.285*h*.33,.976*w*.112],[.012*w+.976*w*.15,.004*h+.285*h*.7,.976*w*.112],[.012*w+.976*w*.45,.004*h+.285*h*.56,.976*w*.112]],v2:[[.24*w,.035*h+.139*w,.129*w],[.24*w,.035*h+.255*h-.139*w,.129*w]],bar1:[[.22*w,.035*h+.05*h,.1*h*.36]],xv:[[bx0+w*.085,by0+h*.178*.27,w*.17*.37],[bx0+w*.085,by0+h*.178*.73,w*.17*.37]],xr:[[bx0+.0805*w,by0+.0805*w,.0616*w]]}[cam]||[];
   var bH=Math.max(4,dep*.35),lH=bH*.6,z0=dep/2+.5,BK=face(i,true),bl=mix(c[0],c[1],.55),ringc=mix(c[0],c[1],.4),ringd=mix(ringc,"#000000",.5),NB=14,NL=8,extra='';
   function crop(x,y,wd,ht,rad,Z){return '<div class="bt" style="left:'+(W-(pad+x)-wd)+'px;top:'+(pad+y)+'px;width:'+wd+'px;height:'+ht+'px;border-radius:'+rad+'px;transform:rotateY(180deg) translateZ('+Z.toFixed(2)+'px)"><div style="position:absolute;left:-'+(pad+x)+'px;top:-'+(pad+y)+'px;width:'+W+'px;height:'+H+'px">'+BK+'</div></div>';}
   if(BG){
