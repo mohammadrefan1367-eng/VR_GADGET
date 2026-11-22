@@ -198,6 +198,10 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 @media (prefers-reduced-motion:reduce){.steps li::after{transition:none}}
 section[id]{scroll-margin-top:80px}
 @media (max-width:700px){section[id]{scroll-margin-top:115px}}
+  /* Butang WhatsApp: denyut dua kali selepas page dimuat */
+.float::after{content:"";position:absolute;inset:0;border:2px solid #25d366;border-radius:99px;opacity:0;pointer-events:none;animation:wapulse 1.4s ease-out 2.5s 2}
+@keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.float::after{animation:none}}
 </style>
   <script type="application/ld+json">
 {
