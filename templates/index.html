@@ -1,664 +1,3 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VR Gadget | Website Rasmi - MOBILE PHONE REPAIR  iPhone & Android di Klang</title>
-<meta name="description" content="VR Gadget - repair iPhone & Android di Klang. Tukar LCD, bateri, charging board, motherboard. Siap cepat, ada warranty. WhatsApp untuk harga.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ms_MY">
-<meta property="og:site_name" content="VR Gadget">
-<meta property="og:title" content="VR Gadget | Repair iPhone &amp; Android di Klang">
-<meta property="og:description" content="Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan. WhatsApp untuk harga.">
-<meta property="og:url" content="https://vr-gadget.onrender.com/">
-<meta property="og:image" content="https://vr-gadget.onrender.com/static/logo.jpeg">
-<meta property="og:image:alt" content="Logo VR Gadget">
-<meta name="twitter:card" content="summary">
-<link rel="icon" type="image/jpeg" id="fav">
-<style>
-:root{
-  --bg:#080706;
-  --ink:#f5ead7;
-  --muted:#c9bda9;
-  --card:#17120d;
-  --line:#705b3b;
-
-  --g1:#d6b77a;
-  --g2:#a9824a;
-  --accent:#e8c98b;
-
-  --grad:linear-gradient(90deg,var(--g1),var(--g2));
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-a{color:inherit}
-body{
-    margin:0;
-    font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
-    background-color:#080d18 !important;
-    background-image:
-        radial-gradient(ellipse at 15% 15%, rgba(198,160,95,0.22), transparent 38%),
-        radial-gradient(ellipse at 85% 70%, rgba(30,58,92,0.45), transparent 45%),
-        linear-gradient(135deg, #070b13 0%, #101b2a 55%, #080d18 100%) !important;
-    background-attachment:fixed;
-    color:#f5f1e8;
-    line-height:1.6;
-}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;background:rgba(8,13,24,0.96);border-bottom:1px solid rgba(198,160,95,0.35);z-index:5}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.official{font-weight:700;font-size:.95rem;color:var(--g1)}
-.logo img{height:56px;width:56px;display:block;border-radius:8px}
-nav a{margin-left:18px;text-decoration:none;font-size:.95rem;color:var(--muted)}
-nav a:hover{color:var(--ink)}
-.btn{display:inline-block;background:var(--grad);color:#fff;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;border:2px solid transparent}
-.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
-.hero{padding:40px 20px 40px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
-.hero h1{font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.12;margin:0 0 14px}
-.hero p{font-size:1.08rem;color:var(--muted);max-width:34em;margin:0 0 24px}
-.hero img{width:100%;max-width:340px;justify-self:center;border-radius:16px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.facts{display:flex;gap:10px 28px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
-.facts b{display:block;font-size:1.05rem;color:var(--ink)}
-section{padding:40px 0}
-h2{font-size:1.7rem;margin:0 0 6px}
-.sub{color:var(--muted);margin:0 0 22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.svc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
-.svc h3{margin:0 0 4px;font-size:1.05rem}
-.svc p{margin:0 0 10px;color:var(--muted);font-size:.93rem}
-.price{display:inline-block;font-weight:800;color:var(--g1);text-decoration:none;border-bottom:2px solid var(--g1)}
-.note{font-size:.85rem;color:var(--muted);margin-top:14px}
-.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.brand{background:linear-gradient(145deg,#172235,#0b1220);box-shadow:0 3px 12px rgba(0,0,0,.3);color:#f5f1e8;border:1px solid rgba(198,160,95,.4);border-radius:10px;height:64px;display:grid;place-items:center;font-weight:800;font-size:1.15rem;letter-spacing:.3px;text-decoration:none}
-.brand small{display:block;font-size:.7rem;font-weight:600;color:#c6a05f;text-align:center;margin-top:-2px}
-.b-apple{color:#fff}.b-samsung{color:#6f8cff;letter-spacing:2px}.b-oppo{color:#1a7f4b}
-.b-vivo{color:#415fff}.b-xiaomi{color:#ff6900}.b-huawei{color:#cf0a2c}
-.b-realme{color:#c99a00}.b-honor{color:#00a0e9}
-.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px 14px 56px;position:relative}
-.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:grid;place-items:center}
-.warr{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
-.box h3{margin:0 0 10px;font-size:1.1rem}
-.box ul{margin:0;padding-left:20px}
-.box li{margin-bottom:6px}
-.ok{border-top:4px solid #16a34a}
-.no{border-top:4px solid #ef4444}
-.warn{margin-top:14px;padding:14px 16px;border-radius:10px;background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
-details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:700}
-details p{margin:10px 0 0;color:var(--muted)}
-.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.map{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:240px;background:var(--card)}
-.map iframe{width:100%;height:100%;min-height:240px;border:0}
-footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);font-size:.9rem}
-.float{position:fixed;right:16px;bottom:16px;z-index:9;background:#25d366;color:#04140d;font-weight:800;text-decoration:none;padding:14px 20px;border-radius:99px;box-shadow:0 4px 14px rgba(15,27,61,.3)}
-@media (max-width:700px){   header .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}   nav{order:3;width:100%;display:flex;overflow-x:auto;white-space:nowrap;padding-top:6px}   nav a{margin:0 16px 0 0}   .hero{grid-template-columns:1fr}   .hero img{max-width:220px;order:-1} }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-button.brand{border:0;width:100%;font-family:inherit;cursor:pointer}
-.b-apple small{color:var(--g1)}
-dialog{max-width:880px;width:calc(100% - 24px);max-height:90vh;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);padding:0}
-dialog[open]{display:flex;flex-direction:column}
-dialog::backdrop{background:rgba(15,27,61,.6)}
-.dh{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.dh h3{margin:0;font-size:1.1rem}
-.dh p{margin:2px 0 0;font-size:.85rem;color:var(--muted)}
-.dh button{background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer;font-family:inherit}
-.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;padding:16px;overflow:auto}
-.m{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;text-decoration:none;display:block}
-.m:hover{border-color:var(--g1)}
-.m svg{width:100%;height:auto;display:block}
-.m span{display:block;font-weight:700;font-size:.9rem;margin-top:4px}
-
-[hidden]{display:none!important}
-.dtl{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:16px;padding:16px;overflow:auto}
-@media (max-width:600px){.dtl{grid-template-columns:1fr}}
-.dimg{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;align-self:start}
-.dimg svg{width:100%;height:auto;display:block}
-.dnm{font-weight:800;margin-top:4px}
-.svl{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
-.svl li{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.svl li>div{flex:1;min-width:130px}
-.svl b{display:block}
-.svl small{color:var(--muted)}
-.amt{font-weight:800;color:var(--g1)}
-.ask{
-    background:linear-gradient(90deg,#b58a45,#e2c17b);
-    color:#080d18;
-    font-weight:700;
-    text-decoration:none;
-    padding:8px 14px;
-    border-radius:8px;
-    font-size:.9rem;
-}
-.dh{flex-wrap:wrap}
-#backM{order:3;flex-basis:100%}
-
-.dtl{grid-template-columns:minmax(220px,300px) 1fr}
-.stage{position:relative;perspective:900px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
-.stage:active{cursor:grabbing}
-.ph{position:absolute;left:50%;top:50%;transform-style:preserve-3d}
-.lay,.fc{position:absolute}
-.fc{left:0;top:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.fc svg{width:100%;height:100%!important;display:block}
-.gnd{position:absolute;left:50%;bottom:4px;height:16px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(15,27,61,.35),transparent)}
-.ctl{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
-.ctl button{background:#172235;border:1px solid rgba(198,160,95,.5);color:#f5f1e8;border-radius:8px;padding:6px 14px;font-weight:700;font-family:inherit;cursor:pointer}
-.hint{font-size:.8rem;color:var(--muted);margin-top:6px}
-.spec{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.spec h4{margin:0 0 6px;font-size:1.05rem}
-.spec dl{margin:0}
-.spec dt{margin:0;padding:9px 0 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
-.spec dt:first-of-type{border-top:0;padding-top:0}
-.spec dd{margin:0;padding:1px 0 9px;font-weight:700;font-size:.95rem}
-@media (max-width:600px){.dtl{grid-template-columns:1fr}}
-.snote{margin:0;padding-top:8px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
-.pl{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-.pl svg{width:100%;height:100%!important;display:block}
-.bt{position:absolute;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.bt svg{width:100%;height:100%!important;display:block}
-.lang{display:flex;gap:6px}
-.lang button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-family:inherit;cursor:pointer}
-.lang button.on{background:var(--grad);color:#080d18;border-color:transparent}
-  /* ===== Animasi halus ===== */
-.btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{
-  transition:transform .12s ease-out;
-}
-.btn:active,.ask:active,.float:active,button.brand:active,
-.dh button:active,.ctl button:active,.lang button:active{
-  transform:translateY(2px);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .4s ease-out,transform .4s ease-out;
-}
-.reveal.show{opacity:1;transform:none}
-
-@media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{transition:none}
-}
- /* Bar bateri */
-.batt{display:block;position:relative;width:40px;height:18px;border:2px solid var(--g1);border-radius:5px;padding:2px;margin-bottom:8px}
-.batt::after{content:"";position:absolute;right:-6px;top:50%;width:4px;height:7px;margin-top:-3.5px;background:var(--g1);border-radius:0 2px 2px 0}
-.batt i{display:block;height:100%;width:100%;border-radius:2px;background:var(--grad);transition:width 1.6s cubic-bezier(.22,.61,.36,1)}
-.batt.low i{width:14%}
-@media (prefers-reduced-motion:reduce){.batt i{transition:none}}
-/* Garisan langkah kerja */
-.steps li::after{content:"";position:absolute;z-index:1;left:29px;top:40px;width:2px;height:calc(100% - 14px);background:var(--g1);transform-origin:top;transition:transform .5s ease-out}
-.steps li:last-child::after{display:none}
-.steps.js li::after{transform:scaleY(0)}
-.steps.js li.drawn::after{transform:scaleY(1)}
-@media (prefers-reduced-motion:reduce){.steps li::after{transition:none}}
-section[id]{scroll-margin-top:80px}
-@media (max-width:700px){section[id]{scroll-margin-top:115px}}
-  /* Butang WhatsApp: denyut dua kali selepas page dimuat */
-.float::after{content:"";position:absolute;inset:0;border:2px solid #25d366;border-radius:99px;opacity:0;pointer-events:none;animation:wapulse 1.4s ease-out 2.5s 2}
-@keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.6);opacity:0}}
-@media (prefers-reduced-motion:reduce){.float::after{animation:none}}
-  /* Footer */
-footer{padding:44px 0 90px}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1.4fr;gap:36px}
-.fcol h3{margin:0 0 16px;font-size:1.15rem;color:var(--ink)}
-.flogo img{width:72px;height:72px;border-radius:10px;display:block;margin-bottom:12px}
-.fabout{margin:0 0 18px;max-width:30em;line-height:1.8}
-.fsoc{display:flex;gap:12px}
-.fsoc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--g1);transition:background .2s,color .2s,transform .12s ease-out}
-.fsoc a:hover{background:var(--g1);color:#080d18}
-.fsoc a:active{transform:translateY(2px)}
-.fsoc svg{width:20px;height:20px}
-.flinks,.fcon{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.flinks a{text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-.flinks a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--g1)}
-.flinks a:hover,.fcon a:hover{color:var(--ink)}
-.fcon li{display:flex;gap:12px;align-items:flex-start}
-.fcon svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--g1)}
-.fcon a{text-decoration:none}
-.fbot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line)}
-@media (max-width:700px){.fgrid{grid-template-columns:1fr;gap:28px}}
-</style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MobilePhoneStore",
-  "name": "VR Gadget",
-  "description": "Repair iPhone & Android di Klang. Tukar LCD, bateri, charging board, motherboard. Warranty 1 bulan.",
-  "url": "https://vr-gadget.onrender.com/",
-  "image": "https://vr-gadget.onrender.com/static/logo.jpeg",
-  "telephone": "+60176933120",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Kg Delek",
-    "addressLocality": "Klang",
-    "addressRegion": "Selangor",
-    "postalCode": "41250",
-    "addressCountry": "MY"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 3.0393879,
-    "longitude": 101.4119486
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "10:00",
-    "closes": "22:00"
-  },
-  "paymentAccepted": "Cash, Online Transfer, DuitNow QR, SPayLater, Touch 'n Go, Boost",
-  "hasMap": "https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7"
-}
-</script>
-</head>
-<body>
-
-<header>
-  <div class="wrap">
-    <a class="logo" href="#" aria-label="VR Gadget - Website Rasmi"><img id="lg1" src="/static/logo.jpeg" alt="Logo VR Gadget"><span class="official">Website Rasmi</span></a>
-    <nav>
-      <a href="#servis">Servis</a>
-      <a href="#warranty">Warranty</a>
-      <a href="#faq">Soalan lazim</a>
-      <a href="#hubungi">Lokasi</a>
-    </nav>
-    <div class="lang"><button type="button" id="lbm">BM</button><button type="button" id="len">EN</button></div>
-  </div>
-</header>
-
-<main>
-<div class="wrap hero">
-  <div>
-    <h1>Repair iPhone &amp; Android di Klang</h1>
-    <p>Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.</p>
-    <div class="cta">
-      <a class="btn" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp untuk harga</a>
-      <a class="btn alt" href="tel:+60176933120">Call 017-693 3120</a>
-    </div>
-  </div>
-  <img src="/static/logo.jpeg" alt="Logo VR Gadget">
-</div>
-<div class="wrap">
-  <div class="facts">
-   <div><span class="batt" aria-hidden="true"><i></i></span><b>30 minit – 2 jam</b>Tempoh siap biasa</div>
-    <div><b>Semakan percuma</b>Tiada caj kalau tak jadi repair</div>
-    <div><b>Warranty 1 bulan</b>Bateri, LCD, motherboard, kamera &amp; speaker</div>
-  </div>
-</div>
-<section id="servis">
-  <div class="wrap">
-    <h2>Servis kami</h2>
-    <div class="grid">
-      <div class="svc"><h3>Tukar LCD / skrin</h3><p>Skrin pecah, line, sentuhan tak jalan.</p></div>
-      <div class="svc"><h3>Tukar bateri</h3><p>Bateri kembung, cepat habis, telefon tutup sendiri.</p></div>
-      <div class="svc"><h3>Charging board</h3><p>Susah cas, kena goyang kabel baru nak cas.</p></div>
-      <div class="svc"><h3>Motherboard</h3><p>Telefon mati, tak boleh hidup, masalah litar. Anggaran siap 1 – 3 hari.</p></div>
-      <div class="svc"><h3>Water damage</h3><p>Terjatuh dalam air. Datang secepat mungkin.</p></div>
-      <div class="svc"><h3>Kamera, speaker &amp; mic</h3><p>Gambar kabur, suara tak keluar, orang tak dengar.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Model yang kami repair</h2>
-    <p class="sub">Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.</p>
-    <div class="brands">
-      <button type="button" class="brand b-apple" id="openIphone"><div>iPhone<small>Tekan untuk lihat model</small></div></button>
-      <button type="button" class="brand b-samsung" id="openSamsung">   <div>SAMSUNG<small>Tekan untuk lihat model</small></div> </button>
-      <div class="brand b-oppo">OPPO</div>
-      <div class="brand b-vivo">vivo</div>
-      <div class="brand b-xiaomi">Xiaomi</div>
-      <div class="brand b-huawei">HUAWEI</div>
-      <div class="brand b-realme">realme</div>
-      <div class="brand b-honor">HONOR</div>
-    </div>
-  </div>
-</section>
-
-<section id="warranty">
-  <div class="wrap">
-    <h2>Warranty</h2>
-    <p class="sub">Tempoh warranty: <b>1 bulan</b>, dikira dari tarikh repair.</p>
-    <div class="warr">
-      <div class="box ok">
-        <h3>Warranty untuk penukaran</h3>
-        <ul>
-          <li>Bateri</li>
-          <li>LCD</li>
-          <li>Charging board</li>
-          <li>Motherboard</li>
-          <li>Kamera</li>
-          <li>Speaker</li>
-        </ul>
-      </div>
-      <div class="box no">
-        <h3>Tiada penukaran atau tuntutan</h3>
-        <ul>
-          <li>Barang jatuh atau retak</li>
-          <li>Barang masuk air</li>
-        </ul>
-      </div>
-    </div>
-    <div class="warn">Sekiranya barang mengalami jatuh/retak atau masuk air, tiada penukaran atau penuntutan warranty. Sila bawa resit bila membuat tuntutan.</div>
-  </div>
-</section>
-
-<section id="proses">
-  <div class="wrap">
-    <h2>Cara kerja kami</h2>
-    <p class="sub">Mudah dan telus.</p>
-    <ol class="steps">
-      <li><b>Bawa telefon ke kedai</b> atau WhatsApp gambar kerosakan dulu.</li>
-      <li><b>Kami semak dan bagi harga.</b> Awak setuju baru kami mula.</li>
-      <li><b>Repair dibuat</b> dalam masa 30 minit hingga 2 jam untuk kebanyakan kes. Motherboard 1 hingga 3 hari.</li>
-      <li><b>Ambil telefon dan bayar.</b> Awak dapat warranty untuk penukaran yang layak.</li>
-    </ol>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <h2>Soalan lazim</h2>
-    <p class="sub"></p>
-    <details><summary>Data dalam telefon akan hilang ke?</summary><p>Untuk kebanyakan repair seperti skrin, bateri dan charging board, data tidak terjejas. Walau begitu, kami sarankan awak backup dulu kalau boleh.</p></details>
-    <details><summary>Perlu tinggalkan telefon ke?</summary><p>Kebanyakan repair siap sementara awak tunggu. Repair motherboard biasanya siap dalam 1 hingga 3 hari, jadi telefon perlu ditinggalkan. Water damage pun mungkin perlu tinggal.</p></details>
-    <details><summary>Ada warranty ke?</summary><p>Ada, 1 bulan untuk penukaran bateri, LCD, charging board, motherboard, kamera dan speaker. Warranty tidak terpakai kalau barang jatuh/retak atau masuk air.</p></details>
-    <details><summary>Kalau tak jadi repair, kena bayar ke?</summary><p>Semakan percuma. Awak hanya bayar kalau setuju dan repair dibuat.</p></details>
-    <details><summary>Boleh bayar guna apa?</summary><p>Kami terima tunai, pindahan bank online, DuitNow QR, SPayLater dan e-wallet (Touch 'n Go, Boost).</p></details>
-  </div>
-</section>
-
-<section id="hubungi">
-  <div class="wrap">
-    <h2>Lokasi dan waktu buka</h2>
-    <p class="sub"></p>
-    <div class="contact">
-      <div>
-        <p><b>Alamat</b><br>VR Gadget, Kg Delek,<br>Klang, Selangor</p>
-        <p><b>Waktu buka</b><br>Setiap hari: 10.00 pagi – 10.00 malam</p>
-        <p><b>Hubungi</b><br><a href="tel:+60176933120">017-693 3120</a></p>
-        <div class="cta">
-          <a class="btn" href="https://wa.me/60176933120" target="_blank" rel="noopener">Chat WhatsApp</a>
-          <a class="btn alt" href="https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7" target="_blank" rel="noopener">Buka Google Maps</a>
-          <a class="btn alt" href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener">TikTok kami</a>
-        </div>
-      </div>
-      <div class="map">
-        <iframe title="Lokasi VR Gadget" loading="lazy" src="https://www.google.com/maps?q=3.0393879,101.4119486&z=17&output=embed"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-<dialog id="dlg" aria-labelledby="dt">
-  <div class="dh"><button type="button" id="backM" hidden>&larr; Semua model</button><div style="flex:1"><h3 id="dt">Pilih model iPhone awak</h3><p id="dsub">iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.</p></div><button type="button" id="closeM">Tutup</button></div>
-  <div class="mgrid" id="mgrid"></div>
-  <div id="mdet" hidden></div>
-</dialog>
-<footer>
-<div class="wrap">
-  <div class="fgrid">
-    <div class="fcol">
-      <a class="flogo" href="#" aria-label="VR Gadget"><img src="/static/logo.jpeg" alt="Logo VR Gadget"></a>
-      <p class="fabout">Kedai repair iPhone &amp; Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.</p>
-      <div class="fsoc">
-        <a href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a>
-        <a href="https://wa.me/60176933120" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></a>
-        <a href="https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
-      </div>
-    </div>
-    <div class="fcol">
-      <h3>Pautan pantas</h3>
-      <ul class="flinks">
-        <li><a href="#servis">Servis</a></li>
-        <li><a href="#warranty">Warranty</a></li>
-        <li><a href="#proses">Cara kerja kami</a></li>
-        <li><a href="#faq">Soalan lazim</a></li>
-        <li><a href="#hubungi">Lokasi</a></li>
-      </ul>
-    </div>
-    <div class="fcol">
-      <h3>Hubungi kami</h3>
-      <ul class="fcon">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h4l2 5-2.5 1.5a11 11 0 0 0 4 4L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+60176933120">017-693 3120</a></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><a href="https://wa.me/60176933120" target="_blank" rel="noopener">Chat WhatsApp</a></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>VR Gadget, Kg Delek,<br>Klang, Selangor</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><span>Setiap hari: 10.00 pagi – 10.00 malam</span></li>
-      </ul>
-    </div>
-  </div>
-  <div class="fbot">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.</div>
-</div>
-</footer>
-<a class="float" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp</a>
-<script>
-document.getElementById('lg1').src="/static/logo.jpeg";
-document.getElementById('fav').href="/static/logo.jpeg";
-document.getElementById('y').textContent=new Date().getFullYear();
-(function(){
-var M=[
-["X","m","n","xv",["#d3d6db","#f4f5f7"],4],["XR","m","n","xr",["#eceef2","#ffffff"],5],
-["XS","m","n","xv",["#cfae85","#f3dfc4"],4],["XS Max","l","n","xv",["#cfae85","#f3dfc4"],4],
-["11","m","n","sqv",["#c8b6e0","#e4d9f2"],4.5],["11 Pro","m","n","sq3",["#4e5d56","#7a8c83"],4],["11 Pro Max","l","n","sq3",["#4e5d56","#7a8c83"],4],
-["12 mini","s","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12","m","n","sqv",["#3b6aa0","#6f9bd1"],3.5],["12 Pro","m","n","sq3",["#2f4f63","#587d93"],3.5],["12 Pro Max","l","n","sq3",["#2f4f63","#587d93"],3.5],
-["13 mini","s","n","sqd",["#f4cbd3","#fbe4e8"],3.5],["13","m","n","sqd",["#f4cbd3","#fbe4e8"],3.5],["13 Pro","m","n","sq3",["#7f9fc0","#aac3dc"],3.5],["13 Pro Max","l","n","sq3",["#7f9fc0","#aac3dc"],3.5],
-["14","m","n","sqd",["#cdbfe6","#e6dcf4"],3.4],["14 Plus","l","n","sqd",["#a9c3e0","#cfe0f2"],3.4],["14 Pro","m","i","sq3",["#4a3f5c","#766a88"],2.8],["14 Pro Max","l","i","sq3",["#4a3f5c","#766a88"],2.8],
-["15","m","i","sqd",["#f0c9d0","#f8e3e7"],2.8],["15 Plus","l","i","sqd",["#bdd0e2","#dce8f4"],2.8],["15 Pro","m","i","sq3",["#8f8a82","#b7b2a9"],2.4],["15 Pro Max","l","i","sq3",["#8f8a82","#b7b2a9"],2.4],
-["16e","m","n","one",["#2a2a2e","#55555c"],3.2],["16","m","i","v",["#8aa0e8","#b4c3f4"],2.4],["16 Plus","l","i","v2",["#6a82d6","#97aaee"],2.4,"f"],["16 Pro","m","i","sq3",["#b49a7f","#d4bfa4"],2.1],["16 Pro Max","l","i","sq3",["#b49a7f","#d4bfa4"],2.1],
-["17","m","i","v2",["#c7b6e8","#e6dcf6"],2.1,"f"],["Air","m","i","bar1",["#c5d8e8","#e2eef7"],2.1],["17 Pro","m","i","plat3",["#e0702e","#f09a5e"],2.1],["17 Pro Max","l","i","plat3",["#e0702e","#f09a5e"],2.1],
-["18 Pro","m","i","plat3b",["#682233","#98485a"],2,"p"],["18 Pro Max","l","i","plat3b",["#682233","#98485a"],2,"p"]
-];
-var SC={s:.86,m:1,l:1.1};
-function mix(c,t,f){var n=parseInt(c.slice(1),16),a=[n>>16,n>>8&255,n&255],b=parseInt(t.slice(1),16),z=[b>>16,b>>8&255,b&255];
-  return "#"+a.map(function(v,i){return ("0"+Math.round(v+(z[i]-v)*f).toString(16)).slice(-2);}).join("");}
-function lens(cx,cy,r,k){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="url(#rg'+k+')"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.78+'" fill="url(#ln'+k+')"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.4+'" fill="#05051c" opacity=".85"/><circle cx="'+(cx-r*.28)+'" cy="'+(cy-r*.3)+'" r="'+r*.15+'" fill="#fff" opacity=".6"/>';}
-function dot(cx,cy,r,f){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+f+'"/>';}
-function defs(k,col,wp){
-  var b=col[0],l=col[1],d=mix(b,"#000000",.45);
-  return '<defs>'
-  +'<linearGradient id="fr'+k+'" x1="0" x2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".3" stop-color="'+b+'"/><stop offset=".7" stop-color="'+d+'"/><stop offset="1" stop-color="'+l+'"/></linearGradient>'
-  +'<linearGradient id="bk'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".55" stop-color="'+b+'"/><stop offset="1" stop-color="'+mix(b,"#000000",.25)+'"/></linearGradient>'
-  +'<linearGradient id="bp'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(l,"#ffffff",.35)+'"/><stop offset="1" stop-color="'+mix(b,"#ffffff",.1)+'"/></linearGradient>'
-  +'<linearGradient id="sc'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(l,"#ffffff",.6)+'"/><stop offset=".55" stop-color="'+mix(l,"#ffffff",.35)+'"/><stop offset="1" stop-color="'+mix(b,"#ffffff",.15)+'"/></linearGradient>'
-  +'<linearGradient id="rg'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f5ff"/><stop offset=".5" stop-color="#62679a"/><stop offset="1" stop-color="#c8cbe6"/></linearGradient>'  
-  +'<radialGradient id="ln'+k+'" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#4a5aa8"/><stop offset=".55" stop-color="#0a0c35"/><stop offset="1" stop-color="#020210"/></radialGradient>'
-  +'<radialGradient id="sh'+k+'"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
-  +'</defs>';
-}
-function home(sx,sy,sw,sh){
-  var o='',ic=sw*.19,g=(sw-4*ic)/5,rs=ic*1.22,y0=sy+sh*.135,W="#f6dfe6",i,c;
-  var G={circle:"M12 4a8 8 0 1 0 .01 0z",star:"M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",home:"M4 11l8-7 8 7v9H4z",wave:"M2 12h4l2-6 3 12 3-9 2 3h6",list:"M9 7h11M9 12h11M9 17h11M4.5 7h.1M4.5 12h.1M4.5 17h.1",heart:"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z",envelope:"M3 6h18v12H3zM3 7l9 6 9-6",book:"M4 5h7v14H4zM13 5h7v14h-7z",calc:"M6 3h12v18H6zM9 7h6M9 11h.1M12 11h.1M15 11h.1M9 15h.1M12 15h.1M15 15h.1",folder:"M3 7h7l2 2h9v10H3z",card:"M3 6h18v12H3zM3 10h18",pencil:"M4 20l1-5L16 4l4 4L9 19z",compass:"M12 4a8 8 0 1 0 .01 0zM15 9l-2 5-4 1 2-5z",message:"M4 5h16v11H9l-5 4z",music:"M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-.1 0M19 16a2.5 2.5 0 1 1-.1 0",phone:"M6 4h4l2 5-2.5 1.5a11 11 0 0 0 4 4L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"};
-  function cell(x,y,nm){var k=ic*.5/24;return '<rect x="'+x+'" y="'+y+'" width="'+ic+'" height="'+ic+'" rx="'+ic*.27+'" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".2" stroke-width=".4"/><g transform="translate('+(x+ic/2-12*k)+' '+(y+ic/2-12*k)+') scale('+k+')" fill="none" stroke="'+W+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="'+G[nm]+'"/></g>';}
-  o+='<path d="M'+sx+' '+(sy+sh*.36)+' C'+(sx+sw*.3)+' '+(sy+sh*.28)+' '+(sx+sw*.55)+' '+(sy+sh*.62)+' '+(sx+sw)+' '+(sy+sh*.5)+'" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width=".6"/>';
-  o+='<path d="M'+sx+' '+(sy+sh*.58)+' C'+(sx+sw*.35)+' '+(sy+sh*.5)+' '+(sx+sw*.6)+' '+(sy+sh*.8)+' '+(sx+sw)+' '+(sy+sh*.7)+'" fill="none" stroke="#fff" stroke-opacity=".15" stroke-width=".6"/>';
-  o+='<text x="'+(sx+sw*.1)+'" y="'+(sy+sh*.062)+'" font-family="Arial,sans-serif" font-weight="700" font-size="'+sw*.1+'" fill="#fff">9:41</text>';
-  for(i=0;i<4;i++)o+='<rect x="'+(sx+sw*.62+i*sw*.035)+'" y="'+(sy+sh*.062-(i+1)*sh*.0045)+'" width="'+sw*.022+'" height="'+(i+1)*sh*.0045+'" rx=".3" fill="#fff"/>';
-  o+='<rect x="'+(sx+sw*.8)+'" y="'+(sy+sh*.046)+'" width="'+sw*.11+'" height="'+sh*.017+'" rx="'+sh*.005+'" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".4"/><rect x="'+(sx+sw*.812)+'" y="'+(sy+sh*.0505)+'" width="'+sw*.07+'" height="'+sh*.008+'" rx=".3" fill="#fff"/>';
-  var wx=sx+g,wy=y0,ww=2*ic+g,wh=ic+rs,cx=wx+ww/2,cy=wy+wh/2,r=Math.min(ww,wh)*.4;
-  o+='<rect x="'+wx+'" y="'+wy+'" width="'+ww+'" height="'+wh+'" rx="'+ic*.3+'" fill="#12040a" fill-opacity=".55" stroke="#fff" stroke-opacity=".15" stroke-width=".4"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width=".4"/>';
-  for(i=0;i<12;i++){var a=i*Math.PI/6;o+='<line x1="'+(cx+Math.sin(a)*r*.84)+'" y1="'+(cy-Math.cos(a)*r*.84)+'" x2="'+(cx+Math.sin(a)*r*.95)+'" y2="'+(cy-Math.cos(a)*r*.95)+'" stroke="#fff" stroke-width="'+(i%3?.35:.8)+'" stroke-linecap="round"/>';}
-  o+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+r*.5)+'" y2="'+(cy-r*.28)+'" stroke="#fff" stroke-width=".9" stroke-linecap="round"/><line x1="'+cx+'" y1="'+cy+'" x2="'+(cx-r*.1)+'" y2="'+(cy-r*.78)+'" stroke="#fff" stroke-width=".7" stroke-linecap="round"/>';
-  var seq=["compass","star","home","circle","heart","envelope","list","book","calc","wave","folder","card","pencil","star","circle","list","compass","wave","book","heart"],n=0;
-  for(i=0;i<6;i++)for(c=0;c<4;c++){if(i<2&&c<2)continue;o+=cell(sx+g+c*(ic+g),y0+i*rs,seq[n++]);}
-  for(i=0;i<3;i++)o+='<circle cx="'+(sx+sw/2+(i-1)*sw*.045)+'" cy="'+(sy+sh*.832)+'" r="'+sw*.011+'" fill="#fff" fill-opacity="'+(i?.4:.9)+'"/>';
-  var dx=sx+g*.6,dw=sw-g*1.2,dy=sy+sh*.85,dh=ic*1.25,g2=(dw-4*ic)/5,dk=["phone","compass","message","music"];
-  o+='<rect x="'+dx+'" y="'+dy+'" width="'+dw+'" height="'+dh+'" rx="'+ic*.34+'" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".15" stroke-width=".4"/>';
-  for(i=0;i<4;i++)o+=cell(dx+g2+i*(ic+g2),dy+(dh-ic)/2,dk[i]);
-  return o;
-}
-var FID=0;
-function flower(sx,sy,sw,sh,c){
-  var id="fl"+(++FID),cx=sx+sw/2,cy=sy+sh*.52,pr=sh*.17,rx=sw*.075,a,i,o='<clipPath id="'+id+'"><rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+sw*.12+'"/></clipPath><g clip-path="url(#'+id+')">';
-  for(i=0;i<2;i++)for(a=-72;a<=72;a+=24)o+='<ellipse cx="'+cx+'" cy="'+(cy-pr)+'" rx="'+rx+'" ry="'+pr+'" fill="'+mix(c,"#3b2a9c",.45-Math.abs(a)/260)+'" fill-opacity=".5" transform="rotate('+(a+i*180)+' '+cx+' '+cy+')"/>';
-  return o+'<circle cx="'+cx+'" cy="'+cy+'" r="'+sw*.035+'" fill="'+mix(c,"#000000",.3)+'" opacity=".7"/></g>';
-}
-function lens2(cx,cy,r,rc,k){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+mix(rc,"#000000",.3)+'"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.94+'" fill="'+rc+'"/><path d="M'+(cx-r*.7)+' '+(cy-r*.45)+' A'+r*.85+' '+r*.85+' 0 0 1 '+(cx+r*.3)+' '+(cy-r*.8)+'" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="'+r*.08+'" stroke-linecap="round"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.76+'" fill="#0d0b14"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.62+'" fill="url(#ln'+k+')"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.3+'" fill="#04040a" opacity=".9"/><circle cx="'+(cx-r*.28)+'" cy="'+(cy-r*.3)+'" r="'+r*.13+'" fill="#fff" opacity=".55"/>';}
-  
-function phone(cx,s,m,k,back,ns){
-  var front=m[2],cam=m[3],bez=m[5],w=70*s,h=146*s,x=cx-w/2,y=(186-h)/2-2,rx=w*.17,o='',i;
-  var L=back?x+w-.8:x-1.6, R=back?x-1.6:x+w-.8;
-  if(!ns)o+='<ellipse cx="'+cx+'" cy="'+(y+h+4)+'" rx="'+w*.55+'" ry="5" fill="url(#sh'+k+')"/>';
-  o+='<rect x="'+L+'" y="'+(y+h*.13)+'" width="2.4" height="'+h*.03+'" rx="1" fill="url(#fr'+k+')"/>';
-  o+='<rect x="'+L+'" y="'+(y+h*.2)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
-  o+='<rect x="'+L+'" y="'+(y+h*.29)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
-  o+='<rect x="'+R+'" y="'+(y+h*.25)+'" width="2.4" height="'+h*.11+'" rx="1" fill="url(#fr'+k+')"/>';
-  if(m[2]==="i"&&parseFloat(m[5])<2.5&&/^(16|17|18|Air)/.test(m[0]))o+='<rect x="'+R+'" y="'+(y+h*.6)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
-  o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
-  if(!back){
-    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-    var sx=x+bez,sy=y+bez,sw=w-bez*2,sh=h-bez*2;
-    o+='<rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+(rx-bez)+'" fill="url(#sc'+k+')"/>';
-    o+=flower(sx,sy,sw,sh,m[4][0]);
-    o+='<text x="'+cx+'" y="'+(sy+sh*.2)+'" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="'+16*s+'" fill="#1d1630" opacity=".85">9:41</text>';
-    o+='<path d="M'+(sx+sw*.55)+' '+sy+' L'+(sx+sw)+' '+sy+' L'+(sx+sw)+' '+(sy+sh*.45)+' Z" fill="#fff" opacity=".08"/>';
-    if(front==="n"){var nw=w*.4,nh=h*.042;
-      o+='<path d="M'+(cx-nw/2)+' '+(sy-.5)+' h'+nw+' v'+(nh*.45)+' q0 '+nh*.55+' -'+nh*.6+' '+nh*.55+' h-'+(nw-nh*1.2)+' q-'+nh*.6+' 0 -'+nh*.6+' -'+nh*.55+' Z" fill="#06060c"/>';
-      o+='<rect x="'+(cx-nw*.17)+'" y="'+(sy+nh*.18)+'" width="'+nw*.34+'" height="2" rx="1" fill="#2c2c36"/>'+dot(cx+nw*.3,sy+nh*.3,1.4,"#1a1a40");
-    }else{var iw=w*.27,ih=h*.03;
-      o+='<rect x="'+(cx-iw/2)+'" y="'+(sy+h*.017)+'" width="'+iw+'" height="'+ih+'" rx="'+ih/2+'" fill="#000"/>'+dot(cx+iw*.3,sy+h*.017+ih/2,1.5,"#14143a");}
-    return o;
-  }
-  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
-  o+='<path d="M'+(x+w*.55)+' '+y+' L'+(x+w)+' '+y+' L'+(x+w)+' '+(y+h*.5)+' Z" fill="#fff" opacity=".07"/>';
-  var q=w*.48,bx=x+w*.07,by=y+h*.035,bp='url(#bp'+k+')',st=' stroke="#000" stroke-opacity=".25" stroke-width=".6"';
-  var F="#f6f1cf",M2="#15152e";
-  if(cam==="one"){o+='<rect x="'+bx+'" y="'+by+'" width="'+w*.3+'" height="'+w*.3+'" rx="'+w*.1+'" fill="'+bp+'"'+st+'/>'+lens(bx+w*.15,by+w*.15,w*.1,k)+dot(bx+w*.4,by+w*.06,1.8,F);}
-  else if(cam==="v"){var pw=w*.31,ph=h*.19;o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw*.5+'" fill="'+bp+'"'+st+'/>'+lens(bx+pw/2,by+ph*.3,w*.085,k)+lens(bx+pw/2,by+ph*.72,w*.085,k)+dot(bx+pw+w*.08,by+ph*.2,1.8,F)+dot(bx+pw+w*.08,by+ph*.55,1,M2);}
-  else if(cam==="sqv"){o+='<rect x="'+bx+'" y="'+by+'" width="'+q+'" height="'+q+'" rx="'+q*.22+'" fill="'+bp+'"'+st+'/>'+lens(bx+q*.3,by+q*.29,q*.2,k)+lens(bx+q*.3,by+q*.72,q*.2,k)+dot(bx+q*.76,by+q*.26,q*.07,F)+dot(bx+q*.76,by+q*.7,q*.04,M2);}
-  else if(cam==="sqd"){o+='<rect x="'+bx+'" y="'+by+'" width="'+q+'" height="'+q+'" rx="'+q*.22+'" fill="'+bp+'"'+st+'/>'+lens(bx+q*.3,by+q*.3,q*.2,k)+lens(bx+q*.7,by+q*.7,q*.2,k)+dot(bx+q*.72,by+q*.24,q*.07,F)+dot(bx+q*.3,by+q*.72,q*.04,M2);}
-  else if(cam==="sq3"){o+='<rect x="'+bx+'" y="'+by+'" width="'+q+'" height="'+q+'" rx="'+q*.22+'" fill="'+bp+'"'+st+'/>'+lens(bx+q*.3,by+q*.28,q*.19,k)+lens(bx+q*.3,by+q*.72,q*.19,k)+lens(bx+q*.7,by+q*.5,q*.19,k)+dot(bx+q*.74,by+q*.13,q*.06,F)+dot(bx+q*.74,by+q*.87,q*.06,M2);}
-  else if(cam==="plat3"){var px=x+w*.05,py=y+h*.035,pw2=w*.9,ph2=h*.22,r=ph2*.2;
-    o+='<rect x="'+px+'" y="'+py+'" width="'+pw2+'" height="'+ph2+'" rx="'+ph2*.22+'" fill="'+bp+'"'+st+'/>'+lens(px+pw2*.25,py+ph2*.28,r,k)+lens(px+pw2*.25,py+ph2*.72,r,k)+lens(px+pw2*.5,py+ph2*.5,r,k)+dot(px+pw2*.8,py+ph2*.3,r*.4,F)+dot(px+pw2*.8,py+ph2*.72,r*.3,M2);}
-  else if(cam==="plat3b"){
-    var bb=m[4][0],ll=m[4][1],rc=mix(bb,ll,.4),px=x+w*.012,py=y+h*.004,pw2=w*.976,ph2=h*.285,r=pw2*.112;
-    var lx=x+w*.045,ly=py+ph2+h*.012,lh=y+h-h*.02-ly;
-    o+='<rect x="'+lx+'" y="'+ly+'" width="'+w*.91+'" height="'+lh+'" rx="'+w*.14+'" fill="url(#bk'+k+')" stroke="'+mix(bb,"#000000",.3)+'" stroke-opacity=".5" stroke-width=".6"/><rect x="'+lx+'" y="'+ly+'" width="'+w*.91+'" height="'+lh+'" rx="'+w*.14+'" fill="#fff" opacity=".06"/>';
-    o+='<rect x="'+px+'" y="'+py+'" width="'+pw2+'" height="'+ph2+'" rx="'+w*.15+'" fill="'+bp+'"'+st+'/>';
-    [[.17,.33],[.15,.7],[.45,.56]].forEach(function(c){var cx2=px+pw2*c[0],cy2=py+ph2*c[1];
-      o+='<circle cx="'+cx2+'" cy="'+cy2+'" r="'+r*1.12+'" fill="#000" opacity=".25"/><circle cx="'+cx2+'" cy="'+cy2+'" r="'+r+'" fill="'+rc+'"/>'
-      +'<path d="M'+(cx2-r*.72)+' '+(cy2-r*.5)+' A'+r*.88+' '+r*.88+' 0 0 1 '+(cx2+r*.35)+' '+(cy2-r*.82)+'" fill="none" stroke="'+mix(rc,"#ffffff",.5)+'" stroke-opacity=".6" stroke-width="'+r*.09+'" stroke-linecap="round"/>'
-      +'<circle cx="'+cx2+'" cy="'+cy2+'" r="'+r*.82+'" fill="'+mix(rc,"#000000",.6)+'"/><circle cx="'+cx2+'" cy="'+cy2+'" r="'+r*.73+'" fill="#12101c"/>'
-      +'<circle cx="'+cx2+'" cy="'+cy2+'" r="'+r*.33+'" fill="#04040a" opacity=".9"/><circle cx="'+(cx2-r*.3)+'" cy="'+(cy2-r*.32)+'" r="'+r*.14+'" fill="#fff" opacity=".5"/><circle cx="'+(cx2+r*.26)+'" cy="'+(cy2+r*.3)+'" r="'+r*.1+'" fill="#7a5cff" opacity=".35"/>';});
-    o+='<circle cx="'+(px+pw2*.77)+'" cy="'+(py+ph2*.32)+'" r="'+pw2*.05+'" fill="#b9bcc6" stroke="#eef0f6" stroke-width=".8"/><circle cx="'+(px+pw2*.77)+'" cy="'+(py+ph2*.32)+'" r="'+pw2*.028+'" fill="#fff" opacity=".85"/>'
-      +dot(px+pw2*.78,py+ph2*.5,.6,"#1a0a10")+'<circle cx="'+(px+pw2*.77)+'" cy="'+(py+ph2*.78)+'" r="'+pw2*.047+'" fill="#05050c" stroke="'+mix(bb,"#000000",.3)+'" stroke-width=".6"/>';
-  }
-     else if(cam==="v2"){var pw=w*.34,ph=h*.255,lr=pw*.38,rc=mix(m[4][1],"#ffffff",.2);
-    o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw/2+'" fill="'+bp+'"'+st+'/>'+lens2(bx+pw/2,by+lr+.7,lr,rc,k)+lens2(bx+pw/2,by+ph-lr-.7,lr,rc,k)
-      +'<circle cx="'+(bx+pw+w*.075)+'" cy="'+(by+ph*.42)+'" r="'+w*.04+'" fill="#e9ebf3" stroke="'+mix(m[4][0],"#000000",.2)+'" stroke-width=".7"/><circle cx="'+(bx+pw+w*.075)+'" cy="'+(by+ph*.42)+'" r="'+w*.022+'" fill="#fff8d6"/>'+dot(bx+pw+w*.075,by+ph*.2,.6,"#2a2a40");} 
-         else if(cam==="xv"){var pw=w*.17,ph=h*.178,lr=pw*.37;
-    o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw/2+'" fill="#c9ccd2" stroke="#000" stroke-opacity=".3" stroke-width=".6"/>'
-      +'<rect x="'+(bx+.9)+'" y="'+(by+.9)+'" width="'+(pw-1.8)+'" height="'+(ph-1.8)+'" rx="'+(pw/2-.9)+'" fill="#0b0b12"/>'
-      +lens(bx+pw/2,by+ph*.27,lr,k)+lens(bx+pw/2,by+ph*.73,lr,k)
-      +dot(bx+pw/2,by+ph*.5,1.3,F)+dot(bx+pw/2+2.6,by+ph*.5,.5,M2)
-      +'<text x="'+cx+'" y="'+(y+h*.75)+'" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="500" font-size="'+w*.09+'" fill="#4a4d55" opacity=".85">iPhone</text>';}
-             else if(cam==="xr"){var r0=w*.07,c0=r0*1.15;
-    o+='<circle cx="'+(bx+c0)+'" cy="'+(by+c0)+'" r="'+(r0*1.12)+'" fill="#d5d8de" stroke="#000" stroke-opacity=".3" stroke-width=".6"/>'
-      +lens(bx+c0,by+c0,r0*.88,k)
-      +dot(bx+c0+r0*2.1,by+c0-r0*.35,1.7,F)+dot(bx+c0+r0*2.1,by+c0+r0*.5,.7,M2)
-      +'<text x="'+cx+'" y="'+(y+h*.75)+'" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="500" font-size="'+w*.09+'" fill="#4a4d55" opacity=".85">iPhone</text>';}
-  else if(cam==="bar1"){var bh=h*.1;o+='<rect x="'+(x+w*.04)+'" y="'+by+'" width="'+w*.92+'" height="'+bh+'" rx="'+bh*.3+'" fill="'+bp+'"'+st+'/>'+lens(x+w*.22,by+bh/2,bh*.36,k)+dot(x+w*.78,by+bh*.35,1.8,F)+dot(x+w*.78,by+bh*.72,1,M2);}
-  return o;
-}
-var g=document.getElementById('mgrid'),html='',svgs=[],names=[];
-M.forEach(function(m,i){
-  var name=m[0]==="Air"?"iPhone Air":"iPhone "+m[0],s=SC[m[1]];
-  var svg='<svg viewBox="0 0 230 190" aria-hidden="true">'+defs(i,m[4],m[6])+phone(62,s,m,i,false)+phone(168,s,m,i,true)+'</svg>';
-  svgs[i]=svg;names[i]=name;
-  html+='<a class="m" href="#" data-i="'+i+'" aria-label="'+name+', lihat servis">'+svg+'<span>'+name+'</span></a>';
-});
-g.innerHTML=html;
-var d=document.getElementById('dlg'),det=document.getElementById('mdet'),back=document.getElementById('backM'),dt=document.getElementById('dt'),ds=document.getElementById('dsub');
-var PRICE={};
-var SV=[["LCD / skrin",1],["Bateri",1],["Charging board",1],["Motherboard",1],["Kamera",1],["Speaker",1],["Water damage",0]];
-var SPEC={"iPhone 18 Pro Max":[["Skrin","OLED Super Retina XDR"],["Saiz skrin","6.9 inci"],["Kadar muat semula","1–120Hz"],["Cip","Apple A20 Pro"],["RAM*","12GB"],["Storan","256GB, 512GB, 1TB, 2TB"],["Sistem operasi","iOS 27"],["Kamera utama","48MP Fusion"],["Kamera Ultra Wide","48MP"],["Kamera Telephoto","48MP"],["Kamera hadapan","18MP"],["Bateri","Sehingga 45 jam video playback (eSIM)"],["Pengecasan","USB-C, MagSafe"],["Rangkaian","5G"],["Wi-Fi","Wi-Fi 7"],["Bluetooth","Bluetooth 6"],["Dynamic Island","Versi baharu"],["Ketahanan","Reka bentuk Pro"],["Bahan","Aluminium unibody, Ceramic Shield 2 (depan), Ceramic Shield (belakang)"],["Warna","Hitam, Perak, Glacier, Burgundy"],["Saiz","163.4 x 78.0 x 8.75 mm"],["Berat","249 g"]]};
-var SPECNOTE={"iPhone 18 Pro Max":"*Apple tidak mengumumkan RAM secara rasmi. Angka 12GB daripada laman spesifikasi pihak ketiga."};
-function specHtml(n){var s=SPEC[n];if(!s)return "";return '<div class="spec"><h4>Perincian</h4><dl>'+s.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>';}).join("")+'</dl>'+(SPECNOTE[n]?'<p class="snote">'+SPECNOTE[n]+'</p>':'')+'</div>';}
-function wa(x){return "https://wa.me/60176933120?text="+encodeURIComponent(x);}
-var raf=0;
-function face(i,back){var m=M[i],s=SC[m[1]],w=70*s,h=146*s,y=(186-h)/2-2,k=(back?"b":"f")+i;
-  return '<svg viewBox="'+(62-w/2-3)+' '+(y-3)+' '+(w+6)+' '+(h+6)+'">'+defs(k,m[4],m[6])+phone(62,s,m,k,back,true)+'</svg>';}
-function stage3d(i){
-  var m=M[i],s=SC[m[1]],K=1.9,w=70*s*K,h=146*s*K,pad=3*K,W=w+2*pad,H=h+2*pad,dep=Math.round(w*.12),n=48,lay='',c=m[4],dk=mix(c[0],"#000000",.45),rr=70*s*.17*K,sl=h-2*rr,tl=w-2*rr,j;
-  for(j=0;j<n;j++){var t=Math.sin(Math.PI*(j+.5)/n),z=-dep/2+dep*(j+.5)/n;
-    lay+='<div class="lay" style="left:'+pad+'px;top:'+pad+'px;width:'+w+'px;height:'+h+'px;border-radius:'+rr+'px;background:'+mix(dk,c[1],t)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}
-  var gs='linear-gradient(90deg,'+dk+','+c[1]+','+dk+')',gv='linear-gradient(180deg,'+dk+','+c[1]+','+dk+')',bd=mix(dk,"#000000",.35),hi=mix(c[1],"#ffffff",.3);
-  function btn(y1,y2){return '<rect x="'+dep*.2+'" y="'+(y1*h-rr)+'" width="'+dep*.6+'" height="'+((y2-y1)*h)+'" rx="'+dep*.3+'" fill="'+bd+'" stroke="'+hi+'" stroke-opacity=".6" stroke-width="1"/>';}
-  var right='<svg viewBox="0 0 '+dep+' '+sl+'">'+btn(.33,.46)+btn(.63,.75)+'</svg>';
-  var left='<svg viewBox="0 0 '+dep+' '+sl+'">'+btn(.125,.165)+btn(.205,.285)+btn(.30,.38)+'</svg>';
-  var cxm=tl/2,slotW=w*.19,slotH=dep*.5,cyy=dep/2,holes='',q;
-  for(q=0;q<5;q++){var off=slotW/2+dep*.5+q*dep*.3;holes+=dot(cxm-off,cyy,dep*.07,"#150a10")+dot(cxm+off,cyy,dep*.07,"#150a10");}
-  var bottom='<svg viewBox="0 0 '+tl+' '+dep+'"><rect x="'+(cxm-slotW/2)+'" y="'+(cyy-slotH/2)+'" width="'+slotW+'" height="'+slotH+'" rx="'+slotH/2+'" fill="#0a0508" stroke="'+hi+'" stroke-opacity=".5" stroke-width=".8"/>'+holes+dot(cxm-slotW/2-dep*.28,cyy,dep*.06,hi)+dot(cxm+slotW/2+dep*.28,cyy,dep*.06,hi)+'</svg>';
-  var top='<svg viewBox="0 0 '+tl+' '+dep+'">'+dot(tl*.8,cyy,dep*.07,"#150a10")+'</svg>';
-  function pl(css,svg,bg){return '<div class="pl" style="'+css+';background:'+bg+'">'+svg+'</div>';}
-  var planes=pl('left:'+(pad+w-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(90deg)',right,gs)
-    +pl('left:'+(pad-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(-90deg)',left,gs)
-    +pl('left:'+(pad+rr)+'px;top:'+(pad-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(90deg)',top,gv)
-    +pl('left:'+(pad+rr)+'px;top:'+(pad+h-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(-90deg)',bottom,gv);
-  var cam=m[3],q48=.48*w,BG={one:{x:.07*w,y:.035*h,w:.3*w,h:.3*w,r:.1*w},v:{x:.07*w,y:.035*h,w:.31*w,h:.19*h,r:.155*w},sqv:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sqd:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},sq3:{x:.07*w,y:.035*h,w:q48,h:q48,r:.22*q48},plat3:{x:.05*w,y:.035*h,w:.9*w,h:.22*h,r:.048*h},plat3b:{x:.012*w,y:.004*h,w:.976*w,h:.285*h,r:.15*w},v2:{x:.07*w,y:.035*h,w:.34*w,h:.255*h,r:.17*w},bar1:{x:.04*w,y:.035*h,w:.92*w,h:.1*h,r:.03*h},xv:{x:.07*w,y:.035*h,w:.17*w,h:.178*h,r:.085*w},xr:{x:.072*w,y:.035*h,w:.157*w,h:.157*w,r:.0785*w}}[cam];
-  var bx0=.07*w,by0=.035*h,LP={one:[[bx0+w*.15,by0+w*.15,w*.1]],v:[[bx0+w*.155,by0+.19*h*.3,w*.085],[bx0+w*.155,by0+.19*h*.72,w*.085]],sqv:[[bx0+q48*.3,by0+q48*.29,q48*.2],[bx0+q48*.3,by0+q48*.72,q48*.2]],sqd:[[bx0+q48*.3,by0+q48*.3,q48*.2],[bx0+q48*.7,by0+q48*.7,q48*.2]],sq3:[[bx0+q48*.3,by0+q48*.28,q48*.19],[bx0+q48*.3,by0+q48*.72,q48*.19],[bx0+q48*.7,by0+q48*.5,q48*.19]],plat3:[[.05*w+.9*w*.25,.035*h+.22*h*.28,.22*h*.2],[.05*w+.9*w*.25,.035*h+.22*h*.72,.22*h*.2],[.05*w+.9*w*.5,.035*h+.22*h*.5,.22*h*.2]],plat3b:[[.012*w+.976*w*.17,.004*h+.285*h*.33,.976*w*.112],[.012*w+.976*w*.15,.004*h+.285*h*.7,.976*w*.112],[.012*w+.976*w*.45,.004*h+.285*h*.56,.976*w*.112]],v2:[[.24*w,.035*h+.139*w,.129*w],[.24*w,.035*h+.255*h-.139*w,.129*w]],bar1:[[.22*w,.035*h+.05*h,.1*h*.36]],xv:[[bx0+w*.085,by0+h*.178*.27,w*.17*.37],[bx0+w*.085,by0+h*.178*.73,w*.17*.37]],xr:[[bx0+.0805*w,by0+.0805*w,.0616*w]]}[cam]||[];
-  var bH=Math.max(4,dep*.35),lH=bH*.6,z0=dep/2+.5,BK=face(i,true),bl=mix(c[0],c[1],.55),ringc=mix(c[0],c[1],.4),ringd=mix(ringc,"#000000",.5),NB=14,NL=8,extra='';
-  function crop(x,y,wd,ht,rad,Z){return '<div class="bt" style="left:'+(W-(pad+x)-wd)+'px;top:'+(pad+y)+'px;width:'+wd+'px;height:'+ht+'px;border-radius:'+rad+'px;transform:rotateY(180deg) translateZ('+Z.toFixed(2)+'px)"><div style="position:absolute;left:-'+(pad+x)+'px;top:-'+(pad+y)+'px;width:'+W+'px;height:'+H+'px">'+BK+'</div></div>';}
-  if(BG){
-    for(j=0;j<NB;j++){var tt=Math.sin(Math.PI*(j+.5)/NB),zz=-(z0+(j+.5)/NB*bH);extra+='<div class="lay" style="left:'+(W-(pad+BG.x)-BG.w)+'px;top:'+(pad+BG.y)+'px;width:'+BG.w+'px;height:'+BG.h+'px;border-radius:'+BG.r+'px;background:'+mix(dk,bl,.4+.6*tt)+';transform:translateZ('+zz.toFixed(2)+'px)"></div>';}
-    extra+=crop(BG.x,BG.y,BG.w,BG.h,BG.r,z0+bH+.3);
-    LP.forEach(function(L){var R=L[2]*1.06;
-      for(j=0;j<NL;j++){var t2=Math.sin(Math.PI*(j+.5)/NL),z2=-(z0+bH+(j+.5)/NL*lH);extra+='<div class="lay" style="left:'+(W-(pad+L[0])-R)+'px;top:'+(pad+L[1]-R)+'px;width:'+2*R+'px;height:'+2*R+'px;border-radius:50%;background:'+mix(ringd,ringc,.3+.7*t2)+';transform:translateZ('+z2.toFixed(2)+'px)"></div>';}
-      extra+=crop(L[0]-R,L[1]-R,2*R,2*R,R,z0+bH+lH+.3);});
-  }
-  return '<div class="stage" id="stage" style="height:'+Math.round(H+50)+'px"><div class="gnd" style="width:'+w+'px"></div><div class="ph" id="ph" style="width:'+W+'px;height:'+H+'px;margin:-'+H/2+'px 0 0 -'+W/2+'px">'+lay+planes+extra
-    +'<div class="fc" style="transform:translateZ('+(dep/2+.5)+'px)">'+face(i,false)+'</div><div class="fc" style="transform:rotateY(180deg) translateZ('+(dep/2+.5)+'px)">'+face(i,true)+'</div></div></div>';
-}
-function init3d(){
-  cancelAnimationFrame(raf);
-  var st=document.getElementById('stage'),ph=document.getElementById('ph'),ry=-28,rx=-6,auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=null,ty=null,drag=false,lx=0,ly=0,tm=0;
-  function near(c,tg){return tg+Math.round((c-tg)/360)*360;}
-  function loop(){
-    if(det.hidden||!d.open)return;
-    if(auto&&!drag&&tx===null)ry+=.5;
-    if(tx!==null){ry+=(ty-ry)*.14;rx+=(tx-rx)*.14;if(Math.abs(ty-ry)<.3&&Math.abs(tx-rx)<.3){ry=ty;rx=tx;tx=null;ty=null;}}
-    ph.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';
-    raf=requestAnimationFrame(loop);
-  }
-  st.addEventListener('pointerdown',function(e){drag=true;tx=null;lx=e.clientX;ly=e.clientY;clearTimeout(tm);try{st.setPointerCapture(e.pointerId);}catch(_){}});
-  st.addEventListener('pointermove',function(e){if(!drag)return;ry+=(e.clientX-lx)*.6;rx-=(e.clientY-ly)*.6;lx=e.clientX;ly=e.clientY;});
-  function up(){if(!drag)return;drag=false;auto=false;clearTimeout(tm);tm=setTimeout(function(){auto=true;},3000);}
-  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
-  var V={f:[0,0],b:[0,180],l:[0,90],r:[0,-90],t:[-90,0],u:[90,0]};
-  [].forEach.call(det.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
-  loop();
-}
-  function showGrid(){g.innerHTML=html;cancelAnimationFrame(raf);g.hidden=false;det.hidden=true;back.hidden=true;dt.textContent="Pilih model iPhone awak";ds.textContent="iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.";g.scrollTop=0;}
-function showDetail(i){
-  var n=names[i],rows="";
-  SV.forEach(function(s){
-    var p=(PRICE[n]||{})[s[0]];
-    rows+='<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'+(p?'<span class="amt">'+p+'</span>':'')+'<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'+(p?'Tanya di WhatsApp':'WhatsApp untuk harga')+'</a></li>';
-  });
-  det.className="dtl";
-  det.innerHTML='<div style="align-self:start"><div class="dimg">'+stage3d(i)+'<div class="ctl"><button type="button" data-v="f">Depan</button><button type="button" data-v="b">Belakang</button><button type="button" data-v="l">Kiri</button><button type="button" data-v="r">Kanan</button><button type="button" data-v="t">Atas</button><button type="button" data-v="u">Bawah</button></div><div class="hint">Seret ke semua arah untuk pusing 360°</div><div class="dnm">'+n+'</div></div>'+specHtml(n)+'</div><ul class="svl">'+rows+'</ul>';
-  g.hidden=true;det.hidden=false;back.hidden=false;dt.textContent=n;ds.textContent="Pilih servis, kami balas harga di WhatsApp.";
-  det.scrollTop=0;init3d();
-}
-function openD(){showGrid();d.showModal();}
-
-g.addEventListener('click',function(e){
-  var a=e.target.closest('.m');
-  if(!a)return;
-  e.preventDefault();
-  showDetail(+a.getAttribute('data-i'));
-});
-back.addEventListener('click',showGrid);
-document.getElementById('openIphone').addEventListener('click',openD);
-document.getElementById('closeM').addEventListener('click',function(){d.close();});
-d.addEventListener('click',function(e){if(e.target===d)d.close();});
-})();
-</script>
 <script>
 (function(){
 if(window.__vrSam)return;window.__vrSam=1;
@@ -726,16 +65,19 @@ function arch(g,s){
   if(g==='S'){
     if(/Series/.test(s))return n>=20?'s2x':n===10?'s10':'s9';
     if(u)return n>=22?'ultra':'s2xu';
-    if(n>=26)return p?'x26p':'x26';    
+    if(n>=26)return p?'x26p':'x26';
     return p?'s2xp':'s2x';
   }
-  if(g==='Z'){   if(/Fold/.test(s))return 'fold';
-  if(/^Flip(5|6|7 FE)$/.test(s))return 'flip2';
-  if(/^Flip(7|8)$/.test(s))return 'flip3';
-  return 'flip'; }if(g==='N'){
-  if(/Note20/.test(s))return u?'n20u':'n20';
-  if(/Note10/.test(s))return 'n10';
-  if(n>=8)return 'n9';
+  if(g==='Z'){
+    if(/Fold/.test(s))return 'fold';
+    if(/^Flip(5|6|7 FE)$/.test(s))return 'flip2';
+    if(/^Flip(7|8)$/.test(s))return 'flip3';
+    return 'flip';
+  }
+  if(g==='N'){
+    if(/Note20/.test(s))return u?'n20u':'n20';
+    if(/Note10/.test(s))return 'n10';
+    if(n>=8)return 'n9';
     return n===7?'n7':'n4';
   }
   return n>=22?'a5':n>=13?'a1':'a0';
@@ -750,7 +92,8 @@ var SAM=[
 var E=[],gi=0;
 var COL={"Galaxy S26":["#5f629f","#9da0d6"],"Galaxy S26+":["#5f629f","#9da0d6"],
 "Galaxy Z Flip":["#a98fcf","#d9ccec"],"Galaxy Z Flip3":["#b7a2d6","#e0d3f0"],"Galaxy Z Flip4":["#a68dc8","#d8c9ea"],
-"Galaxy Z Flip5":["#7fbfa8","#c4e6d9"],"Galaxy Z Flip6":["#5d78ad","#a5badf"],"Galaxy Z Flip7":["#34447a","#6f82bb"],"Galaxy Z Flip7 FE":["#2a2a30","#5a5a64"]}; SAM.forEach(function(s){s[3].forEach(function(m){E.push({n:s[2]+m,A:AR[arch(s[1],m)],c:COL[s[2]+m]||PAL[gi%PAL.length],g:s[0]});gi++;});});
+"Galaxy Z Flip5":["#7fbfa8","#c4e6d9"],"Galaxy Z Flip6":["#5d78ad","#a5badf"],"Galaxy Z Flip7":["#34447a","#6f82bb"],"Galaxy Z Flip7 FE":["#2a2a30","#5a5a64"]};
+SAM.forEach(function(s){s[3].forEach(function(m){E.push({n:s[2]+m,A:AR[arch(s[1],m)],c:COL[s[2]+m]||PAL[gi%PAL.length],g:s[0]});gi++;});});
 
 /* ---------- Geometri kamera ---------- */
 function camGeo(A,w,h){
@@ -820,7 +163,7 @@ function phone(cx,m,k,back,ns){
   var rc=A.blk?"#3b3b45":mix(c[1],"#ffffff",.35);
   if(!back){
     o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-        if(A.f==='fc'){ /* sisi cover Flip */
+    if(A.f==='fc'){ /* sisi cover Flip */
       o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
       var cv=A.cv||1,lr=w*(cv===3?.055:.07);
       if(cv===1){
@@ -906,170 +249,292 @@ function openFace(i,part,tag){
   var W2=fl?w:2*w,H2=fl?2*hh:hh,x=62-W2/2,y=(186-H2)/2-2,rx=w*A.rr,bz=A.bz;
   o+=defs(k,m.c);
   o+='<rect x="'+x+'" y="'+y+'" width="'+W2+'" height="'+H2+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
-  if(!fl){
-    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-    var sx2=x+bz, sy2=y+bz, sw2=W2-bz*2, sh2=H2-bz*2;
-    o+=screen(sx2,sy2,sw2,sh2,k,{rx:Math.max(2,rx-bz),tx:.5});
-    o+='<line x1="'+(x+w)+'" y1="'+(y+bz)+'" x2="'+(x+w)+'" y2="'+(y+H2-bz)+'" stroke="#000" stroke-opacity=".25" stroke-width="1.2" stroke-dasharray="3 3"/>';
-    o+=dot(x+w*.5, y+hh*.04, 1.8, "#000")+dot(x+w*.5+.3, y+hh*.038, .6, "#1b1b44");
-    o+=dot(x+w*1.5, y+hh*.04, 1.8, "#000")+dot(x+w*1.5+.3, y+hh*.038, .6, "#1b1b44");
-  } else {
-    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
-    o+='<path d="M'+(x+w*.55)+' '+y+' L'+(x+w)+' '+y+' L'+(x+w)+' '+(y+h*.5)+' Z" fill="#fff" opacity=".07"/>';
-    var G=camGeo(A,w,h);
-    if(G.R)o+='<rect x="'+(x+G.R.x)+'" y="'+(y+G.R.y)+'" width="'+G.R.w+'" height="'+G.R.h+'" rx="'+G.R.r+'" fill="url(#bp'+k+')" stroke="#000" stroke-opacity=".25" stroke-width=".6"/>';
-    if(G.FP)o+='<circle cx="'+(x+G.FP[0])+'" cy="'+(y+G.FP[1])+'" r="'+G.FP[2]+'" fill="none" stroke="'+rc+'" stroke-opacity=".7" stroke-width=".8"/>';
-    G.L.forEach(function(L){o+=lens(x+L[0],y+L[1],L[2],k,rc);});
-    G.X.forEach(function(P){o+=dot(x+P[0],y+P[1],P[2],P[3]);});
+  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
+  var sx=x+bz,sy=y+bz,sw=W2-2*bz,sh=H2-2*bz;
+  o+=screen(sx,sy,sw,sh,k,{rx:Math.max(2,rx-bz)});
+  var vb;
+  if(fl){
+    o+=dot(62,sy+3.2,1.5,"#000");
+    o+='<rect x="'+sx+'" y="'+(y+hh-1.2)+'" width="'+sw+'" height="2.4" fill="#000" opacity=".28"/><rect x="'+sx+'" y="'+(y+hh+1.2)+'" width="'+sw+'" height=".6" fill="#fff" opacity=".25"/>';
+    vb=[x-3,part==='top'?y-3:y+hh-3,w+6,hh+6];
+  }else{
+    o+=dot(x+W2-bz-9,sy+3.2,1.5,"#000");
+    o+='<rect x="'+(x+w-1.2)+'" y="'+sy+'" width="2.4" height="'+sh+'" fill="#000" opacity=".28"/><rect x="'+(x+w+1.2)+'" y="'+sy+'" width=".6" height="'+sh+'" fill="#fff" opacity=".25"/>';
+    vb=[part==='left'?x-3:x+w-3,y-3,w+6,hh+6];
   }
-  return o;
+  return '<svg viewBox="'+vb.join(' ')+'">'+o+'</svg>';
 }
-
-/* ---------- Render grid model Samsung ---------- */
-function sGrid(){
-  var byGroup = {};
-  E.forEach(function(m, i){
-    if(!byGroup[m.g]) byGroup[m.g] = [];
-    byGroup[m.g].push({m:m, i:i});
-  });
-
-  var html = '<div class="sl"><input type="text" id="sq" placeholder="Cari model... (contoh: S24, Flip, A55)" autocomplete="off">';
-  var order = ["Galaxy S","Galaxy Z (Fold & Flip)","Galaxy A","Galaxy M","Galaxy Note"];
-  order.forEach(function(g){
-    if(!byGroup[g]) return;
-    html += '<h4>'+g+'</h4><div class="sg" data-g="'+g+'">';
-    byGroup[g].forEach(function(o){
-      var nm = o.m.n;
-      var s = (function(A){ return {w:70*(A.sz||1), h:146*(A.sz||1)*(A.hr||1)}; })(o.m.A);
-      var svg = '<svg viewBox="0 0 230 190" aria-hidden="true">'+defs(o.i, o.m.c)+phone(62,o.m,o.i,false)+phone(168,o.m,o.i,true)+'</svg>';
-      html += '<a class="m" href="#" data-i="'+o.i+'" data-n="'+nm+'" aria-label="'+nm+'">'+svg+'<span>'+nm+'</span></a>';
-    });
-    html += '</div>';
-  });
-  html += '</div>';
-  body.innerHTML = html;
-
-  // cari filter
-  var inp = document.getElementById('sq');
-  inp.addEventListener('input', function(){
-    var q = this.value.toLowerCase().trim();
-    body.querySelectorAll('.sg').forEach(function(grp){
-      var any = false;
-      grp.querySelectorAll('.m').forEach(function(a){
-        var hit = !q || a.getAttribute('data-n').toLowerCase().indexOf(q) >= 0;
-        a.style.display = hit ? '' : 'none';
-        if(hit) any = true;
-      });
-      var h = grp.previousElementSibling;
-      if(h && h.tagName === 'H4') h.style.display = any ? '' : 'none';
-      grp.style.display = any ? '' : 'none';
-    });
-  });
-
-  // klik model → detail
-  body.querySelectorAll('.m').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      showSDetail(+a.getAttribute('data-i'));
-    });
-  });
-
-  sdt.textContent = "Pilih model Samsung awak";
-  sds.textContent = "Ketik model untuk lihat servis & harga.";
-  sback.hidden = true;
+function foldStage(i){
+  var m=E[i],A=m.A,D=dims(A),K=1.6,w=D.w*K,hh=D.h*K,pad=3*K,fl=A.fold==='flip',dep=Math.round(D.w*K*.12*A.dr),t=dep/2,c=m.c,dk=mix(c[0],"#000000",.45),rr=D.w*A.rr*K,n=18;
+  function layers(rad){var s='',j;for(j=0;j<n;j++){var tt=Math.sin(Math.PI*(j+.5)/n),z=-t/2+t*(j+.5)/n;s+='<div class="lay" style="left:0;top:0;width:'+w+'px;height:'+hh+'px;border-radius:'+rad+';background:'+mix(dk,c[1],tt)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}return s;}
+  function fcd(inner,tf){return '<div class="fc" style="left:'+(-pad)+'px;top:'+(-pad)+'px;width:'+(w+2*pad)+'px;height:'+(hh+2*pad)+'px;transform:'+tf+'">'+inner+'</div>';}
+  var zf='translateZ('+(t/2+.4)+'px)',sz='width:'+w+'px;height:'+hh+'px';
+  var mv,fx,r1,r2;
+  if(fl){
+    r1=rr+'px '+rr+'px 0 0';r2='0 0 '+rr+'px '+rr+'px';
+    fx='<div class="sl3" style="left:'+(-w/2)+'px;top:'+(-hh)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'top','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
+    mv='<div class="sl3" style="left:'+(-w/2)+'px;top:0;'+sz+'">'+layers(r2)+fcd(openFace(i,'bottom','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) rotateZ(180deg) '+zf)+'</div>';
+  }else{
+    r1=rr+'px 0 0 '+rr+'px';r2='0 '+rr+'px '+rr+'px 0';
+    fx='<div class="sl3" style="left:'+(-w)+'px;top:'+(-hh/2)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'left','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
+    mv='<div class="sl3" style="left:0;top:'+(-hh/2)+'px;'+sz+'">'+layers(r2)+fcd(openFace(i,'right','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) '+zf)+'</div>';
+  }
+  var Hs=Math.round((fl?2*hh:hh)+2*pad+50);
+  return '<div class="stage" id="sstage" data-m="'+(fl?'flip':'fold')+'" data-w="'+w+'" data-hh="'+hh+'" data-t="'+t+'" style="height:'+Hs+'px"><div class="gnd" style="width:'+w*1.2+'px"></div><div class="fph" id="sph"><div class="shf" id="sshift">'+fx+'<div class="hg" id="shg" style="transform-origin:0 0 '+(t/2)+'px">'+mv+'</div></div></div></div>';
 }
-
-/* ---------- Detail servis Samsung ---------- */
-function showSDetail(i){
-  var n = E[i].n;
-  var rows = "";
-  SV.forEach(function(s){
-    var p = (PRICE[n]||{})[s[0]];
-    var label = p || "WhatsApp untuk harga";
-    rows += '<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'
-      + (p?'<span class="amt">'+p+'</span>':'')
-      + '<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'
-      + (p?'Tanya di WhatsApp':'WhatsApp untuk harga') + '</a></li>';
-  });
-  body.innerHTML = '<div class="dtl" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:16px;padding:16px">'
-    + '<div style="align-self:start"><div class="dimg">'+stage(i)
-    + '<div class="ctl">'
-    + '<button type="button" data-v="f">Depan</button>'
-    + '<button type="button" data-v="b">Belakang</button>'
-    + '<button type="button" data-v="l">Kiri</button>'
-    + '<button type="button" data-v="r">Kanan</button>'
-    + '<button type="button" data-v="t">Atas</button>'
-    + '<button type="button" data-v="u">Bawah</button>'
-    + '</div><div class="hint">Seret untuk pusing 360°</div>'
-    + '<div class="dnm">'+n+'</div></div></div>'
-    + '<ul class="svl">'+rows+'</ul></div>';
-
-  sdt.textContent = n;
-  sds.textContent = "Pilih servis, kami balas harga di WhatsApp.";
-  sback.hidden = false;
-  init3D();
-}
-
-/* ---------- Init 3D pentas Samsung ---------- */
-function init3D(){
+function init3d(){
   cancelAnimationFrame(raf);
-  var st = document.getElementById('sstage');
-  var ph = document.getElementById('sph');
-  if(!st || !ph) return;
-  var ry = -28, rx = -6;
-  var auto = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var tx = null, ty = null, drag = false, lx = 0, ly = 0, tm = 0;
-
-  function near(c, tg){ return tg + Math.round((c - tg) / 360) * 360; }
+  var st=$('sstage'),ph=$('sph'),ry=-28,rx=-6,auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=null,ty=null,drag=false,lx=0,ly=0,tm=0,moved=0;
+  var mode=st.getAttribute('data-m'),gw=+st.getAttribute('data-w'),ghh=+st.getAttribute('data-hh'),gt=+st.getAttribute('data-t'),p=1,pt=1,hg=$('shg'),shf=$('sshift'),lbl=$('sfoldlbl');
+  function applyFold(){var th=180*p;if(mode==='flip'){hg.style.transform='rotateX('+th+'deg)';shf.style.transform='translate3d(0,'+(ghh/2*p)+'px,'+(-gt/2*p)+'px)';}else{hg.style.transform='rotateY('+(-th)+'deg)';shf.style.transform='translate3d('+(gw/2*p)+'px,0,'+(-gt/2*p)+'px)';}}
+  function toggle(){pt=pt>.5?0:1;if(lbl)lbl.textContent=pt>.5?'Tertutup':'Terbuka';}
+  if(mode)applyFold();
+  function near(c,tg){return tg+Math.round((c-tg)/360)*360;}
   function loop(){
-    if(!document.getElementById('sdlg').open) return;
-    if(auto && !drag && tx === null) ry += .5;
-    if(tx !== null){
-      ry += (ty - ry) * .14; rx += (tx - rx) * .14;
-      if(Math.abs(ty - ry) < .3 && Math.abs(tx - rx) < .3){ ry = ty; rx = tx; tx = null; ty = null; }
-    }
-    ph.style.transform = 'rotateX('+rx+'deg) rotateY('+ry+'deg)';
-    raf = requestAnimationFrame(loop);
+    if(!dlg.open||!$('sstage'))return;
+    if(auto&&!drag&&tx===null)ry+=.5;
+    if(tx!==null){ry+=(ty-ry)*.14;rx+=(tx-rx)*.14;if(Math.abs(ty-ry)<.3&&Math.abs(tx-rx)<.3){ry=ty;rx=tx;tx=null;ty=null;}}
+    if(mode){p+=(pt-p)*.1;if(Math.abs(pt-p)<.002)p=pt;applyFold();}
+    ph.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';
+    raf=requestAnimationFrame(loop);
   }
-
-  st.addEventListener('pointerdown', function(e){
-    drag = true; tx = null; lx = e.clientX; ly = e.clientY; clearTimeout(tm);
-    try{ st.setPointerCapture(e.pointerId); }catch(_){}
-  });
-  st.addEventListener('pointermove', function(e){
-    if(!drag) return;
-    ry += (e.clientX - lx) * .6;
-    rx -= (e.clientY - ly) * .6;
-    lx = e.clientX; ly = e.clientY;
-  });
-  function up(){ if(!drag) return; drag = false; auto = false; clearTimeout(tm); tm = setTimeout(function(){ auto = true; }, 3000); }
-  st.addEventListener('pointerup', up);
-  st.addEventListener('pointercancel', up);
-
-  var V = {f:[0,0], b:[0,180], l:[0,90], r:[0,-90], t:[-90,0], u:[90,0]};
-  body.querySelectorAll('[data-v]').forEach(function(btn){
-    btn.onclick = function(){
-      var v = V[btn.getAttribute('data-v')];
-      auto = false;
-      tx = near(rx, v[0]);
-      ty = near(ry, v[1]);
-    };
-  });
+  st.addEventListener('pointerdown',function(e){drag=true;moved=0;tx=null;lx=e.clientX;ly=e.clientY;clearTimeout(tm);try{st.setPointerCapture(e.pointerId);}catch(_){}});
+  st.addEventListener('pointermove',function(e){if(!drag)return;moved+=Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly);ry+=(e.clientX-lx)*.6;rx-=(e.clientY-ly)*.6;lx=e.clientX;ly=e.clientY;});
+  function up(){if(!drag)return;if(mode&&moved<6)toggle();drag=false;auto=false;clearTimeout(tm);tm=setTimeout(function(){auto=true;},3000);}
+  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
+  var V={f:[0,0],b:[0,180],l:[0,90],r:[0,-90],t:[-90,0],u:[90,0]};
+  [].forEach.call(body.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
+  var fb=$('sfold');if(fb)fb.onclick=toggle;
   loop();
 }
 
-/* ---------- Buka dialog Samsung ---------- */
-function openS(){
-  sGrid();
-  dlg.showModal();
+/* ---------- Paparan ---------- */
+function showList(){
+  cancelAnimationFrame(raf);
+  sback.hidden=true;sdt.textContent="Pilih model Samsung awak";sds.textContent="Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.";
+  var h='<div class="sl"><input id="sq" type="search" placeholder="Cari model, contoh: S24 atau A54" autocomplete="off">';
+  SAM.forEach(function(s){
+    h+='<div class="ss"><h4>'+s[0]+'</h4><div class="sg">';
+    E.forEach(function(m,i){if(m.g===s[0])h+='<a class="m" href="#" data-i="'+i+'" aria-label="'+m.n+', lihat servis">'+face(i,E[i].A.f!=='fc','c')+'<span>'+m.n.replace("Galaxy ","")+'</span></a>';});
+    h+='</div></div>';
+  });
+  body.innerHTML=h+'</div>';body.scrollTop=0;
+  var q=$('sq');
+  q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();
+    [].forEach.call(body.querySelectorAll('.ss'),function(sec){var any=false;
+      [].forEach.call(sec.querySelectorAll('.m'),function(c){var ok=c.getAttribute('aria-label').toLowerCase().indexOf(v)>-1;c.hidden=!ok;if(ok)any=true;});
+      sec.hidden=!any;});});
 }
+function showDetail(i){
+  var n=E[i].n,rows="";
+  SV.forEach(function(s){
+    var p=(PRICE[n]||{})[s[0]];
+    rows+='<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'+(p?'<span class="amt">'+p+'</span>':'')+'<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'+(p?'Tanya di WhatsApp':'WhatsApp untuk harga')+'</a></li>';
+  });
+  body.innerHTML='<div class="dtl"><div style="align-self:start"><div class="dimg">'+(E[i].A.fold?foldStage(i):stage(i))+'<div class="ctl"><button type="button" data-v="f">Depan</button><button type="button" data-v="b">Belakang</button><button type="button" data-v="l">Kiri</button><button type="button" data-v="r">Kanan</button><button type="button" data-v="t">Atas</button><button type="button" data-v="u">Bawah</button></div>'+(E[i].A.fold?'<div class="ctl"><button type="button" id="sfold">Buka / Tutup</button></div><div class="hint">Keadaan: <b id="sfoldlbl">Tertutup</b> · tekan telefon atau butang untuk buka dan tutup</div>':'')+'<div class="hint">Seret ke semua arah untuk pusing 360°</div><div class="dnm">'+n+'</div><div class="hint">Ilustrasi sahaja, rekaan sebenar mungkin berbeza.</div></div></div><ul class="svl">'+rows+'</ul></div>';
+  sback.hidden=false;sdt.textContent=n;sds.textContent="Pilih servis, kami balas harga di WhatsApp.";body.scrollTop=0;init3d();
+}
+body.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
+sback.addEventListener('click',showList);
+$('sclose').addEventListener('click',function(){dlg.close();});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+dlg.addEventListener('close',function(){cancelAnimationFrame(raf);});
+function openS(){showList();dlg.showModal();}
 
-/* ---------- Daftar event ---------- */
-document.getElementById('openSamsung').addEventListener('click', openS);
-document.getElementById('sclose').addEventListener('click', function(){ dlg.close(); });
-sback.addEventListener('click', sGrid);
-dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+/* ---------- Sambung kotak SAMSUNG ---------- */
+var tile=document.querySelector('.b-samsung');
+if(tile){var nt=document.createElement('button');nt.type='button';nt.className='brand b-samsung';nt.id='openSamsung';nt.innerHTML='<div>SAMSUNG<small>Tekan untuk lihat model</small></div>';tile.parentNode.replaceChild(nt,tile);nt.addEventListener('click',openS);}
+})();
+</script>
+<script>
+(function(){
+var T={
+"Servis":"Services",
+"Warranty":"Warranty",
+"Soalan lazim":"FAQ",
+"Lokasi":"Location",
+"WhatsApp untuk harga":"WhatsApp for price",
+"30 minit – 2 jam":"30 minutes – 2 hours",
+"Tempoh siap biasa":"Usual turnaround time",
+"Semakan percuma":"Free checking",
+"Tiada caj kalau tak jadi repair":"No charge if you don't proceed",
+"Warranty 1 bulan":"1-month warranty",
+"Bateri, LCD, motherboard, kamera & speaker":"Battery, LCD, motherboard, camera & speaker",
+"Servis kami":"Our services",
+"Tukar LCD / skrin":"LCD / screen replacement",
+"Skrin pecah, line, sentuhan tak jalan.":"Cracked screen, lines, touch not working.",
+"Tukar bateri":"Battery replacement",
+"Bateri kembung, cepat habis, telefon tutup sendiri.":"Swollen or fast-draining battery, phone shuts down by itself.",
+"Charging board":"Charging board",
+"Susah cas, kena goyang kabel baru nak cas.":"Hard to charge, only works when you wiggle the cable.",
+"Motherboard":"Motherboard",
+"Telefon mati, tak boleh hidup, masalah litar. Anggaran siap 1 – 3 hari.":"Dead phone, won't turn on, circuit problems. Estimated 1 – 3 days.",
+"Water damage":"Water damage",
+"Terjatuh dalam air. Datang secepat mungkin.":"Dropped in water. Come in as soon as possible.",
+"Kamera, speaker & mic":"Camera, speaker & mic",
+"Gambar kabur, suara tak keluar, orang tak dengar.":"Blurry photos, no sound, others can't hear you.",
+"Model yang kami repair":"Models we repair",
+"Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.":"Can't find your model? Send us the model name on WhatsApp and we'll confirm first.",
+"Tekan untuk lihat model":"Tap to see models",
+"Tempoh warranty:":"Warranty period:",
+"1 bulan":"1 month",
+", dikira dari tarikh repair.":", counted from the repair date.",
+"Warranty untuk penukaran":"Warranty for replacements",
+"Bateri":"Battery",
+"LCD":"LCD",
+"Kamera":"Camera",
+"Speaker":"Speaker",
+"Tiada penukaran atau tuntutan":"No replacement or claim",
+"Barang jatuh atau retak":"Dropped or cracked device",
+"Barang masuk air":"Device exposed to water",
+"Sekiranya barang mengalami jatuh/retak atau masuk air, tiada penukaran atau penuntutan warranty. Sila bawa resit bila membuat tuntutan.":"If the device is dropped, cracked or exposed to water, no warranty replacement or claim is allowed. Please bring your receipt when making a claim.",
+"Cara kerja kami":"How it works",
+"Mudah dan telus.":"Simple and transparent.",
+"Bawa telefon ke kedai":"Bring your phone to the shop",
+" atau WhatsApp gambar kerosakan dulu.":" or WhatsApp a photo of the damage first.",
+"Kami semak dan bagi harga.":"We check and give a price.",
+" Awak setuju baru kami mula.":" We only start once you agree.",
+"Repair dibuat":"Repair is done",
+" dalam masa 30 minit hingga 2 jam untuk kebanyakan kes. Motherboard 1 hingga 3 hari.":" within 30 minutes to 2 hours for most cases. Motherboard takes 1 to 3 days.",
+"Ambil telefon dan bayar.":"Collect your phone and pay.",
+" Awak dapat warranty untuk penukaran yang layak.":" You get warranty for eligible replacements.",
+"Data dalam telefon akan hilang ke?":"Will my phone data be lost?",
+"Untuk kebanyakan repair seperti skrin, bateri dan charging board, data tidak terjejas. Walau begitu, kami sarankan awak backup dulu kalau boleh.":"For most repairs such as screen, battery and charging board, your data is not affected. Still, we recommend backing up first if you can.",
+"Perlu tinggalkan telefon ke?":"Do I need to leave my phone?",
+"Kebanyakan repair siap sementara awak tunggu. Repair motherboard biasanya siap dalam 1 hingga 3 hari, jadi telefon perlu ditinggalkan. Water damage pun mungkin perlu tinggal.":"Most repairs are done while you wait. Motherboard repairs usually take 1 to 3 days, so the phone needs to be left with us. Water damage may also need to be left.",
+"Ada warranty ke?":"Is there a warranty?",
+"Ada, 1 bulan untuk penukaran bateri, LCD, charging board, motherboard, kamera dan speaker. Warranty tidak terpakai kalau barang jatuh/retak atau masuk air.":"Yes, 1 month for battery, LCD, charging board, motherboard, camera and speaker replacements. Warranty does not apply if the device is dropped/cracked or exposed to water.",
+"Kalau tak jadi repair, kena bayar ke?":"Do I pay if I don't proceed with the repair?",
+"Semakan percuma. Awak hanya bayar kalau setuju dan repair dibuat.":"Checking is free. You only pay if you agree and the repair is done.",
+"Boleh bayar guna apa?":"What payment methods are accepted?",
+"Kami terima tunai, pindahan bank online, DuitNow QR, SPayLater dan e-wallet (Touch 'n Go, Boost).":"We accept cash, online bank transfer, DuitNow QR, SPayLater and e-wallets (Touch 'n Go, Boost).",
+"Lokasi dan waktu buka":"Location and opening hours",
+"Alamat":"Address",
+"Waktu buka":"Opening hours",
+"Setiap hari: 10.00 pagi – 10.00 malam":"Every day: 10.00 am – 10.00 pm",
+"Hubungi":"Contact",
+"Chat WhatsApp":"Chat on WhatsApp",
+"Buka Google Maps":"Open Google Maps",
+"Repair iPhone & Android di Klang":"iPhone & Android repair in Klang",
+"Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.":"Ready in 30 minutes – 2 hours. Free checking, 1-month warranty.",
+"Pilih model iPhone awak":"Choose your iPhone model",
+"iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.":"iPhone X to iPhone 18 Pro Max. Tap a model to see services.",
+"Pilih model Samsung awak":"Choose your Samsung model",
+"Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.":"Tap a model to see the 3D phone and services, or type to search.",
+"Pilih servis, kami balas harga di WhatsApp.":"Pick a service, we'll reply with the price on WhatsApp.",
+"Tutup":"Close",
+"← Semua model":"← All models",
+"← Semua model Samsung":"← All Samsung models",
+"LCD / skrin":"LCD / screen",
+"Tanya di WhatsApp":"Ask on WhatsApp",
+"Perincian":"Details",
+"Depan":"Front","Belakang":"Back","Kiri":"Left","Kanan":"Right","Atas":"Top","Bawah":"Bottom",
+"Seret ke semua arah untuk pusing 360°":"Drag in any direction to rotate 360°",
+"Buka / Tutup":"Open / Close",
+"Tertutup":"Closed",
+"Terbuka":"Open",
+"Website Rasmi":"Official Website",
+"VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.":"VR Gadget. Official website. Android and iPhone repair, Klang.",
+"Pautan pantas":"Quick links",
+"Hubungi kami":"Contact us",
+"Kedai repair iPhone & Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.":"iPhone & Android repair shop in Kg Delek, Klang. Free checking, 1-month warranty.",
+"TikTok kami":"Our TikTok",
+"Ilustrasi sahaja, rekaan sebenar mungkin berbeza.":"Illustration only, the actual design may differ."
+};
+var orig=new WeakMap(),cur='ms';
+function nodes(){
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],n;
+  while(n=w.nextNode()){
+    var p=n.parentNode&&n.parentNode.nodeName;
+    if(p==='SCRIPT'||p==='STYLE')continue;
+    a.push(n);
+  }
+  return a;
+}
+function apply(lang){
+  cur=lang;
+  nodes().forEach(function(n){
+    if(!orig.has(n))orig.set(n,n.nodeValue);
+    var o=orig.get(n),k=o.trim(),lead=o.match(/^\s*/)[0],trail=o.match(/\s*$/)[0];
+    if(lang==='en'&&T[o]!==undefined){n.nodeValue=T[o];}
+    else if(lang==='en'&&T[k]!==undefined){n.nodeValue=lead+T[k]+trail;}
+    else{n.nodeValue=o;}
+  });
+  document.documentElement.lang=lang==='en'?'en':'ms';
+  document.getElementById('lbm').classList.toggle('on',lang==='ms');
+  document.getElementById('len').classList.toggle('on',lang==='en');
+  document.title=lang==='en'?'VR Gadget | Official Website - iPhone & Android Repair in Klang':'VR Gadget | Website Rasmi - MOBILE PHONE REPAIR iPhone & Android di Klang';
+  try{localStorage.setItem('vrlang',lang);}catch(e){}
+}
+document.getElementById('lbm').addEventListener('click',function(){apply('ms');});
+document.getElementById('len').addEventListener('click',function(){apply('en');});
+var saved='ms';try{saved=localStorage.getItem('vrlang')||'ms';}catch(e){}
+apply(saved);
+new MutationObserver(function(){if(cur==='en')apply('en');}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  var els=[].slice.call(document.querySelectorAll(
+    '.facts > div, .svc, .box, .steps li, details, .contact > div'
+  ));
+  var vh=window.innerHeight;
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+
+  els.forEach(function(el){
+    if(el.getBoundingClientRect().top < vh) return; // sudah nampak masa load, jangan sorok
+    el.classList.add('reveal');
+    if(el.classList.contains('svc')){
+      var i=[].indexOf.call(el.parentNode.children,el);
+      el.style.transitionDelay=((i%3)*60)+'ms';
+    }
+    io.observe(el);
+  });
+})();
+</script>
+<script>
+(function(){
+  var b=document.querySelector('.batt');
+  if(!b||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  b.classList.add('low');
+  var io=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      setTimeout(function(){ b.classList.remove('low'); },350);
+      io.disconnect();
+    }
+  },{threshold:.6});
+  io.observe(b);
+})();
+</script>
+<script>
+(function(){
+  var ol=document.querySelector('.steps');
+  if(!ol||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var li=[].slice.call(ol.children);
+  ol.classList.add('js');
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=li.indexOf(e.target);
+      io.unobserve(e.target);
+      if(i>0) setTimeout(function(){ li[i-1].classList.add('drawn'); },250+i*250);
+    });
+  },{threshold:.5});
+
+  li.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
