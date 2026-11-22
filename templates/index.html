@@ -509,7 +509,176 @@ function phone(cx,s,m,k,back,ns){
   o+='<rect x="'+L+'" y="'+(y+h*.29)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
   o+='<rect x="'+R+'" y="'+(y+h*.25)+'" width="2.4" height="'+h*.11+'" rx="1" fill="url(#fr'+k+')"/>';
   if(m[2]==="i"&&parseFloat(m[5])<2.5&&/^(16|17|18|Air)/.test(m[0]))o+='<rect x="'+R+'" y="'+(y+h*.6)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
-  o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
+ o+='<rect x="'+x+'" y="'+y+'" width="'+W2+'" height="'+H2+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
+
+  // ===== Bahagian depan lipatan (Fold/Flip) =====
+  var cx0 = fl ? x : x, cy0 = fl ? y : y;
+  var cw  = fl ? W2 : w, ch = fl ? hh : hh;
+  // skrin penuh terbuka
+  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
+  var sx2=x+bz, sy2=y+bz, sw2=W2-bz*2, sh2=H2-bz*2;
+  o+=screen(sx2,sy2,sw2,sh2,k,{rx:Math.max(2,rx-bz),tx:.5});
+  // garisan lipatan tengah (Fold)
+  if(!fl){
+    o+='<line x1="'+(x+w)+'" y1="'+(y+bz)+'" x2="'+(x+w)+'" y2="'+(y+H2-bz)+'" stroke="#000" stroke-opacity=".25" stroke-width="1.2" stroke-dasharray="3 3"/>';
+  }
+  // kamera depan (punch hole)
+  if(fl){
+    o+=dot(x+w/2, y+hh*.045, 1.8, "#000")+dot(x+w/2+.3, y+hh*.042, .6, "#1b1b44");
+  }else{
+    o+=dot(x+w*.5, y+hh*.04, 1.8, "#000")+dot(x+w*.5+.3, y+hh*.038, .6, "#1b1b44");
+    o+=dot(x+w*1.5, y+hh*.04, 1.8, "#000")+dot(x+w*1.5+.3, y+hh*.038, .6, "#1b1b44");
+  }
+  return o;
+}
+
+/* ---------- Render grid model Samsung ---------- */
+function sGrid(){
+  var byGroup = {};
+  E.forEach(function(m, i){
+    if(!byGroup[m.g]) byGroup[m.g] = [];
+    byGroup[m.g].push({m:m, i:i});
+  });
+
+  var html = '<div class="sl"><input type="text" id="sq" placeholder="Cari model... (contoh: S24, Flip, A55)" autocomplete="off">';
+  var order = ["Galaxy S","Galaxy Z (Fold & Flip)","Galaxy A","Galaxy M","Galaxy Note"];
+  order.forEach(function(g){
+    if(!byGroup[g]) return;
+    html += '<h4>'+g+'</h4><div class="sg" data-g="'+g+'">';
+    byGroup[g].forEach(function(o){
+      var nm = o.m.n;
+      var s = (function(A){ return {w:70*(A.sz||1), h:146*(A.sz||1)*(A.hr||1)}; })(o.m.A);
+      var svg = '<svg viewBox="0 0 230 190" aria-hidden="true">'+defs(o.i, o.m.c)+phone(62,o.m,o.i,false)+phone(168,o.m,o.i,true)+'</svg>';
+      html += '<a class="m" href="#" data-i="'+o.i+'" data-n="'+nm+'" aria-label="'+nm+'">'+svg+'<span>'+nm+'</span></a>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+
+  // cari filter
+  var inp = document.getElementById('sq');
+  inp.addEventListener('input', function(){
+    var q = this.value.toLowerCase().trim();
+    body.querySelectorAll('.sg').forEach(function(grp){
+      var any = false;
+      grp.querySelectorAll('.m').forEach(function(a){
+        var hit = !q || a.getAttribute('data-n').toLowerCase().indexOf(q) >= 0;
+        a.style.display = hit ? '' : 'none';
+        if(hit) any = true;
+      });
+      var h = grp.previousElementSibling;
+      if(h && h.tagName === 'H4') h.style.display = any ? '' : 'none';
+      grp.style.display = any ? '' : 'none';
+    });
+  });
+
+  // klik model → detail
+  body.querySelectorAll('.m').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      showSDetail(+a.getAttribute('data-i'));
+    });
+  });
+
+  sdt.textContent = "Pilih model Samsung awak";
+  sds.textContent = "Ketik model untuk lihat servis & harga.";
+  sback.hidden = true;
+}
+
+/* ---------- Detail servis Samsung ---------- */
+function showSDetail(i){
+  var n = E[i].n;
+  var rows = "";
+  SV.forEach(function(s){
+    var p = (PRICE[n]||{})[s[0]];
+    var label = p || "WhatsApp untuk harga";
+    rows += '<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'
+      + (p?'<span class="amt">'+p+'</span>':'')
+      + '<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'
+      + (p?'Tanya di WhatsApp':'WhatsApp untuk harga') + '</a></li>';
+  });
+  body.innerHTML = '<div class="dtl" style="display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:16px;padding:16px">'
+    + '<div style="align-self:start"><div class="dimg">'+stage(i)
+    + '<div class="ctl">'
+    + '<button type="button" data-v="f">Depan</button>'
+    + '<button type="button" data-v="b">Belakang</button>'
+    + '<button type="button" data-v="l">Kiri</button>'
+    + '<button type="button" data-v="r">Kanan</button>'
+    + '<button type="button" data-v="t">Atas</button>'
+    + '<button type="button" data-v="u">Bawah</button>'
+    + '</div><div class="hint">Seret untuk pusing 360°</div>'
+    + '<div class="dnm">'+n+'</div></div></div>'
+    + '<ul class="svl">'+rows+'</ul></div>';
+
+  sdt.textContent = n;
+  sds.textContent = "Pilih servis, kami balas harga di WhatsApp.";
+  sback.hidden = false;
+  init3D();
+}
+
+/* ---------- Init 3D pentas Samsung ---------- */
+function init3D(){
+  cancelAnimationFrame(raf);
+  var st = document.getElementById('sstage');
+  var ph = document.getElementById('sph');
+  if(!st || !ph) return;
+  var ry = -28, rx = -6;
+  var auto = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tx = null, ty = null, drag = false, lx = 0, ly = 0, tm = 0;
+
+  function near(c, tg){ return tg + Math.round((c - tg) / 360) * 360; }
+  function loop(){
+    if(!document.getElementById('sdlg').open) return;
+    if(auto && !drag && tx === null) ry += .5;
+    if(tx !== null){
+      ry += (ty - ry) * .14; rx += (tx - rx) * .14;
+      if(Math.abs(ty - ry) < .3 && Math.abs(tx - rx) < .3){ ry = ty; rx = tx; tx = null; ty = null; }
+    }
+    ph.style.transform = 'rotateX('+rx+'deg) rotateY('+ry+'deg)';
+    raf = requestAnimationFrame(loop);
+  }
+
+  st.addEventListener('pointerdown', function(e){
+    drag = true; tx = null; lx = e.clientX; ly = e.clientY; clearTimeout(tm);
+    try{ st.setPointerCapture(e.pointerId); }catch(_){}
+  });
+  st.addEventListener('pointermove', function(e){
+    if(!drag) return;
+    ry += (e.clientX - lx) * .6;
+    rx -= (e.clientY - ly) * .6;
+    lx = e.clientX; ly = e.clientY;
+  });
+  function up(){ if(!drag) return; drag = false; auto = false; clearTimeout(tm); tm = setTimeout(function(){ auto = true; }, 3000); }
+  st.addEventListener('pointerup', up);
+  st.addEventListener('pointercancel', up);
+
+  var V = {f:[0,0], b:[0,180], l:[0,90], r:[0,-90], t:[-90,0], u:[90,0]};
+  body.querySelectorAll('[data-v]').forEach(function(btn){
+    btn.onclick = function(){
+      var v = V[btn.getAttribute('data-v')];
+      auto = false;
+      tx = near(rx, v[0]);
+      ty = near(ry, v[1]);
+    };
+  });
+  loop();
+}
+
+/* ---------- Buka dialog Samsung ---------- */
+function openS(){
+  sGrid();
+  dlg.showModal();
+}
+
+/* ---------- Daftar event ---------- */
+document.getElementById('openSamsung').addEventListener('click', openS);
+document.getElementById('sclose').addEventListener('click', function(){ dlg.close(); });
+sback.addEventListener('click', sGrid);
+dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+
+})();
+</script>
   if(!back){
     o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
     var sx=x+bez,sy=y+bez,sw=w-bez*2,sh=h-bez*2;
