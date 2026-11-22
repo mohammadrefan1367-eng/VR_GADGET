@@ -184,6 +184,18 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{transition:none}
 }
+ /* Bar bateri */
+.batt{display:block;position:relative;width:40px;height:18px;border:2px solid var(--g1);border-radius:5px;padding:2px;margin-bottom:8px}
+.batt::after{content:"";position:absolute;right:-6px;top:50%;width:4px;height:7px;margin-top:-3.5px;background:var(--g1);border-radius:0 2px 2px 0}
+.batt i{display:block;height:100%;width:100%;border-radius:2px;background:var(--grad);transition:width 1.6s cubic-bezier(.22,.61,.36,1)}
+.batt.low i{width:14%}
+@media (prefers-reduced-motion:reduce){.batt i{transition:none}}
+/* Garisan langkah kerja */
+.steps li::after{content:"";position:absolute;left:29px;top:40px;width:2px;height:calc(100% - 16px);background:var(--g1);transform-origin:top;transition:transform .5s ease-out}
+.steps li:last-child::after{display:none}
+.steps.js li::after{transform:scaleY(0)}
+.steps.js li.drawn::after{transform:scaleY(1)}
+@media (prefers-reduced-motion:reduce){.steps li::after{transition:none}}
 </style>
   <script type="application/ld+json">
 {
@@ -247,7 +259,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 </div>
 <div class="wrap">
   <div class="facts">
-    <div><b>30 minit – 2 jam</b>Tempoh siap biasa</div>
+   <div><span class="batt" aria-hidden="true"><i></i></span><b>30 minit – 2 jam</b>Tempoh siap biasa</div>
     <div><b>Semakan percuma</b>Tiada caj kalau tak jadi repair</div>
     <div><b>Warranty 1 bulan</b>Bateri, LCD, motherboard, kamera &amp; speaker</div>
   </div>
@@ -1070,6 +1082,43 @@ new MutationObserver(function(){if(cur==='en')apply('en');}).observe(document.bo
     }
     io.observe(el);
   });
+})();
+</script>
+  <script>
+(function(){
+  var b=document.querySelector('.batt');
+  if(!b||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  b.classList.add('low');
+  var io=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      setTimeout(function(){ b.classList.remove('low'); },350);
+      io.disconnect();
+    }
+  },{threshold:.6});
+  io.observe(b);
+})();
+</script>
+  <script>
+(function(){
+  var ol=document.querySelector('.steps');
+  if(!ol||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var li=[].slice.call(ol.children);
+  ol.classList.add('js');
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=li.indexOf(e.target);
+      io.unobserve(e.target);
+      if(i>0) setTimeout(function(){ li[i-1].classList.add('drawn'); },250+i*250);
+    });
+  },{threshold:.5});
+
+  li.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
