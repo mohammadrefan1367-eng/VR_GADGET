@@ -1,541 +1,293 @@
-<script>
-(function(){
-if(window.__vrSam)return;window.__vrSam=1;
-var PRICE={}; // ISI HARGA SAMSUNG DI SINI. Contoh: "Galaxy S24 Ultra":{"Bateri":"RM 150"}
-var SV=[["LCD / skrin",1],["Bateri",1],["Charging board",1],["Motherboard",1],["Kamera",1],["Speaker",1],["Water damage",0]];
-function $(i){return document.getElementById(i);}
-function mix(c,t,f){var n=parseInt(c.slice(1),16),a=[n>>16,n>>8&255,n&255],b=parseInt(t.slice(1),16),z=[b>>16,b>>8&255,b&255];
-  return "#"+a.map(function(v,i){return ("0"+Math.round(v+(z[i]-v)*f).toString(16)).slice(-2);}).join("");}
-function dot(cx,cy,r,f){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+f+'"/>';}
-function wa(x){return "https://wa.me/60176933120?text="+encodeURIComponent(x);}
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VR Gadget | Website Rasmi - MOBILE PHONE REPAIR  iPhone & Android di Klang</title>
+<meta name="description" content="VR Gadget - repair iPhone & Android di Klang. Tukar LCD, bateri, charging board, motherboard. Siap cepat, ada warranty. WhatsApp untuk harga.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VR Gadget | Repair iPhone &amp; Android di Klang">
+<meta property="og:description" content="Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan. WhatsApp untuk harga.">
+<meta property="og:url" content="https://vr-gadget.onrender.com/">
+<meta property="og:image" content="https://vr-gadget.onrender.com/static/logo.jpeg">
+<link rel="icon" type="image/jpeg" href="/static/logo.jpeg">
+<style>
+:root{--bg:#080706;--ink:#f5ead7;--muted:#c9bda9;--card:#17120d;--line:#705b3b;--g1:#d6b77a;--g2:#a9824a;--accent:#e8c98b;--grad:linear-gradient(90deg,var(--g1),var(--g2))}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:inherit}
+body{margin:0;font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;background-color:#080d18;background-image:radial-gradient(ellipse at 15% 15%,rgba(198,160,95,.22),transparent 38%),radial-gradient(ellipse at 85% 70%,rgba(30,58,92,.45),transparent 45%),linear-gradient(135deg,#070b13 0%,#101b2a 55%,#080d18 100%);background-attachment:fixed;color:#f5f1e8;line-height:1.6}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:rgba(8,13,24,.96);border-bottom:1px solid rgba(198,160,95,.35);z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.official{font-weight:700;font-size:.95rem;color:var(--g1)}
+.logo img{height:56px;width:56px;display:block;border-radius:8px}
+nav a{margin-left:18px;text-decoration:none;font-size:.95rem;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;gap:6px}
+.lang button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-family:inherit;cursor:pointer}
+.lang button.on{background:var(--grad);color:#080d18;border-color:transparent}
+.btn{display:inline-block;background:var(--grad);color:#fff;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;border:2px solid transparent}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+.hero{padding:40px 20px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.12;margin:0 0 14px}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:34em;margin:0 0 24px}
+.hero img{width:100%;max-width:340px;justify-self:center;border-radius:16px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.facts{display:flex;gap:10px 28px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+.facts b{display:block;font-size:1.05rem;color:var(--ink)}
+section{padding:40px 0;scroll-margin-top:80px}
+h2{font-size:1.7rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.svc,.box,details,.steps li{background:var(--card);border:1px solid var(--line);border-radius:10px}
+.svc{padding:18px}
+.svc h3{margin:0 0 4px;font-size:1.05rem}
+.svc p{margin:0;color:var(--muted);font-size:.93rem}
+.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.brand{background:linear-gradient(145deg,#172235,#0b1220);box-shadow:0 3px 12px rgba(0,0,0,.3);color:#f5f1e8;border:1px solid rgba(198,160,95,.4);border-radius:10px;height:64px;display:grid;place-items:center;font-weight:800;font-size:1.15rem;letter-spacing:.3px}
+button.brand{border:0;width:100%;font-family:inherit;cursor:pointer}
+.brand small{display:block;font-size:.7rem;font-weight:600;color:#c6a05f;text-align:center;margin-top:-2px}
+.b-apple{color:#fff}.b-samsung{color:#6f8cff;letter-spacing:2px}.b-oppo{color:#1a7f4b}.b-vivo{color:#415fff}.b-xiaomi{color:#ff6900}.b-huawei{color:#cf0a2c}.b-realme{color:#c99a00}.b-honor{color:#00a0e9}
+.warr{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.box{padding:20px}
+.box h3{margin:0 0 10px;font-size:1.1rem}
+.box ul{margin:0;padding-left:20px}
+.box li{margin-bottom:6px}
+.ok{border-top:4px solid #16a34a}.no{border-top:4px solid #ef4444}
+.warn{margin-top:14px;padding:14px 16px;border-radius:10px;background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;padding:14px 16px 14px 56px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:grid;place-items:center}
+details{padding:14px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:var(--muted)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.map{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:240px;background:var(--card)}
+.map iframe{width:100%;height:100%;min-height:240px;border:0}
+footer{border-top:1px solid var(--line);padding:44px 0 90px;color:var(--muted);font-size:.9rem}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1.4fr;gap:36px}
+.fcol h3{margin:0 0 16px;font-size:1.15rem;color:var(--ink)}
+.flogo img{width:72px;height:72px;border-radius:10px;display:block;margin-bottom:12px}
+.fabout{margin:0 0 18px;max-width:30em;line-height:1.8}
+.fsoc{display:flex;gap:12px}
+.fsoc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--g1);transition:background .2s,color .2s}
+.fsoc a:hover{background:var(--g1);color:#080d18}
+.fsoc svg{width:20px;height:20px}
+.flinks,.fcon{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.flinks a{text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.flinks a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--g1)}
+.flinks a:hover,.fcon a:hover{color:var(--ink)}
+.fcon li{display:flex;gap:12px;align-items:flex-start}
+.fcon svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--g1)}
+.fcon a{text-decoration:none}
+.fbot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line)}
+.float{position:fixed;right:16px;bottom:16px;z-index:9;background:#25d366;color:#04140d;font-weight:800;text-decoration:none;padding:14px 20px;border-radius:99px;box-shadow:0 4px 14px rgba(15,27,61,.3)}
+@media(max-width:700px){header .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}nav{order:3;width:100%;display:flex;overflow-x:auto;white-space:nowrap;padding-top:6px}nav a{margin:0 16px 0 0}.hero{grid-template-columns:1fr}.hero img{max-width:220px;order:-1}section{scroll-margin-top:115px}.fgrid{grid-template-columns:1fr;gap:28px}}
 
-/* ---------- CSS ---------- */
-var css=document.createElement('style');
-css.textContent='.b-samsung small{letter-spacing:0;color:var(--g1)}'
-+'#sback{order:3;flex-basis:100%}'
-+'.sbody{overflow:auto;flex:1;min-height:0}'
-+'.sbody .dtl{overflow:visible}'
-+'.sbody .sl{padding:16px}'
-+'.sbody .sl input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:6px}'
-+'.sbody .sl h4{margin:16px 0 8px;font-size:1rem}'
-+'.sbody .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}'
-+'.sbody .sg .m{padding:8px 6px}'
-+'.sbody .sg .m span{font-size:.8rem}'
-+'.sbody .sg .m svg{height:130px;width:100%}'
-+'.fph{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}'
-+'.shf,.hg,.sl3{position:absolute;transform-style:preserve-3d}'
-+'.hg{left:0;top:0;width:0;height:0}';
-document.head.appendChild(css);
+/* Animasi halus */
+.btn,.float,button.brand,.lang button,.dh button,.ask{transition:transform .12s ease-out}
+.btn:active,.float:active,button.brand:active,.lang button:active,.dh button:active,.ask:active{transform:translateY(2px)}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .4s ease-out,transform .4s ease-out}
+.reveal.show{opacity:1;transform:none}
+.batt{display:block;position:relative;width:40px;height:18px;border:2px solid var(--g1);border-radius:5px;padding:2px;margin-bottom:8px}
+.batt::after{content:"";position:absolute;right:-6px;top:50%;width:4px;height:7px;margin-top:-3.5px;background:var(--g1);border-radius:0 2px 2px 0}
+.batt i{display:block;height:100%;width:100%;border-radius:2px;background:var(--grad);transition:width 1.6s cubic-bezier(.22,.61,.36,1)}
+.batt.low i{width:14%}
+.steps li::after{content:"";position:absolute;z-index:1;left:29px;top:40px;width:2px;height:calc(100% - 14px);background:var(--g1);transform-origin:top;transition:transform .5s ease-out}
+.steps li:last-child::after{display:none}
+.steps.js li::after{transform:scaleY(0)}
+.steps.js li.drawn::after{transform:scaleY(1)}
+.float::after{content:"";position:absolute;inset:0;border:2px solid #25d366;border-radius:99px;opacity:0;pointer-events:none;animation:wapulse 1.4s ease-out 2.5s 2}
+@keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.batt i,.steps li::after,.btn,.float,button.brand,.lang button{transition:none}.float::after{animation:none}}
 
-/* ---------- Dialog ---------- */
-var dlg=document.createElement('dialog');dlg.id='sdlg';dlg.setAttribute('aria-labelledby','sdt');
-dlg.innerHTML='<div class="dh"><button type="button" id="sback" hidden>&larr; Semua model Samsung</button><div style="flex:1"><h3 id="sdt">Pilih model Samsung awak</h3><p id="sdsub"></p></div><button type="button" id="sclose">Tutup</button></div><div class="sbody" id="sbody"></div>';
-document.body.appendChild(dlg);
-var body=$('sbody'),sdt=$('sdt'),sds=$('sdsub'),sback=$('sback');
+/* Dialog dan telefon 3D (digunakan oleh skrip Samsung) */
+[hidden]{display:none!important}
+dialog{max-width:880px;width:calc(100% - 24px);max-height:90vh;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);padding:0}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(15,27,61,.6)}
+.dh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dh h3{margin:0;font-size:1.1rem}.dh p{margin:2px 0 0;font-size:.85rem;color:var(--muted)}
+.dh button{background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer;font-family:inherit}
+.m{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;text-decoration:none;display:block}
+.m:hover{border-color:var(--g1)}.m svg{width:100%;height:auto;display:block}.m span{display:block;font-weight:700;font-size:.9rem;margin-top:4px}
+.dtl{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:16px;padding:16px;overflow:auto}
+@media(max-width:600px){.dtl{grid-template-columns:1fr}}
+.dimg{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;align-self:start}
+.dnm{font-weight:800;margin-top:4px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:6px}
+.svl{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
+.svl li{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.svl li>div{flex:1;min-width:130px}.svl b{display:block}.svl small{color:var(--muted)}
+.amt{font-weight:800;color:var(--g1)}
+.ask{background:linear-gradient(90deg,#b58a45,#e2c17b);color:#080d18;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:.9rem}
+.ctl{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
+.ctl button{background:#172235;border:1px solid rgba(198,160,95,.5);color:#f5f1e8;border-radius:8px;padding:6px 14px;font-weight:700;font-family:inherit;cursor:pointer}
+.stage{position:relative;perspective:900px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage:active{cursor:grabbing}
+.ph{position:absolute;left:50%;top:50%;transform-style:preserve-3d}
+.lay,.fc,.pl,.bt{position:absolute}
+.fc{left:0;top:0;width:100%;height:100%}
+.fc,.pl,.bt{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.pl,.bt{overflow:hidden}
+.fc svg{width:100%;height:100%!important;display:block}
+.pl svg,.bt svg{width:100%;height:100%!important;display:block}
+.dimg svg{width:100%;height:auto;display:block}
+.gnd{position:absolute;left:50%;bottom:4px;height:16px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(15,27,61,.35),transparent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="VR Gadget - Website Rasmi"><img src="/static/logo.jpeg" alt="Logo VR Gadget"><span class="official">Website Rasmi</span></a>
+    <nav><a href="#servis">Servis</a><a href="#warranty">Warranty</a><a href="#faq">Soalan lazim</a><a href="#hubungi">Lokasi</a></nav>
+    <div class="lang"><button type="button" id="lbm">BM</button><button type="button" id="len">EN</button></div>
+  </div>
+</header>
 
-/* ---------- Data model ---------- */
-var PAL=[["#2b3a67","#6d83c4"],["#8d939f","#d3d7e0"],["#34373e","#767b86"],["#a596cf","#d8cfef"],["#4f917c","#a3d5c3"],["#c27565","#eeb5a8"]];
-var AR={
- s26:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1},
- s26p:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1.07},
- x26:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1,blk:1,dr:.85,bt:[[.17,.27],[.31,.36]]},
- x26p:{f:'p',cam:'row3',bz:2.4,rr:.16,sz:1.07,blk:1,dr:.85,bt:[[.17,.27],[.31,.36]]},
- ultra:{f:'p',cam:'row4',bz:2.1,rr:.09,sz:1.1},
- s2x:{f:'p',cam:'mod3',bz:2.9,rr:.17,sz:1},
- s2xp:{f:'p',cam:'mod3',bz:2.9,rr:.17,sz:1.07},
- s2xu:{f:'p',cam:'mod3',bz:2.6,rr:.13,sz:1.1,big:1},
- s10:{f:'pr',cam:'h3',bz:3,rr:.18,sz:1},
- s9:{f:'n0',cam:'one',fp:1,bz:4.6,rr:.2,sz:1},
- n20:{f:'p',cam:'mod3',bz:2.7,rr:.12,sz:1.05,pen:1},
- n20u:{f:'p',cam:'mod3',bz:2.5,rr:.1,sz:1.1,big:1,pen:1},
- n10:{f:'p',cam:'v3',bz:2.8,rr:.14,sz:1.05,pen:1},
- n9:{f:'n0',cam:'h2',fp:1,bz:4.4,rr:.18,sz:1.05,pen:1},
- n7:{f:'n0',cam:'one',bz:4.6,rr:.18,sz:1.05,pen:1},
- n4:{f:'h',cam:'one',bz:4,rr:.14,sz:1.05,pen:1},
- a5:{f:'p',cam:'row3',bz:3.4,rr:.15,sz:1},
- a1:{f:'w',cam:'row3',bz:4,rr:.13,sz:1},
- a0:{f:'w',cam:'row2',bz:4.8,rr:.12,sz:1},
- flip:{f:'fc',cam:'none',cv:1,bz:2.6,rr:.2,sz:1,hr:.58,dr:1.9,fold:'flip'},
- flip2:{f:'fc',cam:'none',cv:2,bz:2.6,rr:.2,sz:1,hr:.58,dr:1.9,fold:'flip'},
- flip3:{f:'fc',cam:'none',cv:3,bz:2.6,rr:.2,sz:1,hr:.58,dr:1.9,fold:'flip'},
- fold:{f:'p',cam:'mod3',bz:3.6,rr:.13,sz:1,hr:1,dr:1.7,fold:'fold'}
-};
-function arch(g,s){
-  var n=parseInt(s.replace(/\D/g,''),10)||0,u=/Ultra/.test(s),p=/\+/.test(s);
-  if(g==='S'){
-    if(/Series/.test(s))return n>=20?'s2x':n===10?'s10':'s9';
-    if(u)return n>=22?'ultra':'s2xu';
-    if(n>=26)return p?'x26p':'x26';
-    return p?'s2xp':'s2x';
-  }
-  if(g==='Z'){
-    if(/Fold/.test(s))return 'fold';
-    if(/^Flip(5|6|7 FE)$/.test(s))return 'flip2';
-    if(/^Flip(7|8)$/.test(s))return 'flip3';
-    return 'flip';
-  }
-  if(g==='N'){
-    if(/Note20/.test(s))return u?'n20u':'n20';
-    if(/Note10/.test(s))return 'n10';
-    if(n>=8)return 'n9';
-    return n===7?'n7':'n4';
-  }
-  return n>=22?'a5':n>=13?'a1':'a0';
-}
-var SAM=[
- ["Galaxy S","S","Galaxy ",["S26","S26+","S26 Ultra","S25","S25+","S25 Ultra","S24","S24+","S24 Ultra","S23","S23+","S23 Ultra","S22","S22+","S22 Ultra","S21","S21+","S21 Ultra","S21 FE","S20 Series","S10 Series","S9 Series","S8 Series"]],
- ["Galaxy Z (Fold & Flip)","Z","Galaxy Z ",["Fold8","Fold7","Fold6","Fold5","Fold4","Fold3","Fold2","Flip8","Flip7","Flip6","Flip5","Flip4","Flip3","Flip","Flip7 FE"]],
- ["Galaxy A","A","Galaxy ",["A57","A56","A55","A54","A53","A52","A51","A47","A46","A45","A37","A36","A35","A34","A33","A32","A27","A26","A25","A24","A23","A22","A18","A17","A16","A15","A14","A13","A08","A07","A06","A05","A04","A03","A02","A01"]],
- ["Galaxy M","M","Galaxy ",["M56","M55","M54","M53","M52","M51","M35","M34","M33","M32","M31","M30","M23","M22","M21","M15","M14","M13","M05","M04"]],
- ["Galaxy Note","N","Galaxy ",["Note20","Note20 Ultra","Note10","Note10+","Note9","Note8","Note7","Note5","Note4","Note3","Note2"]]
-];
-var E=[],gi=0;
-var COL={"Galaxy S26":["#5f629f","#9da0d6"],"Galaxy S26+":["#5f629f","#9da0d6"],
-"Galaxy Z Flip":["#a98fcf","#d9ccec"],"Galaxy Z Flip3":["#b7a2d6","#e0d3f0"],"Galaxy Z Flip4":["#a68dc8","#d8c9ea"],
-"Galaxy Z Flip5":["#7fbfa8","#c4e6d9"],"Galaxy Z Flip6":["#5d78ad","#a5badf"],"Galaxy Z Flip7":["#34447a","#6f82bb"],"Galaxy Z Flip7 FE":["#2a2a30","#5a5a64"]};
-SAM.forEach(function(s){s[3].forEach(function(m){E.push({n:s[2]+m,A:AR[arch(s[1],m)],c:COL[s[2]+m]||PAL[gi%PAL.length],g:s[0]});gi++;});});
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Repair iPhone &amp; Android di Klang</h1>
+    <p>Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp untuk harga</a>
+      <a class="btn alt" href="tel:+60176933120">Call 017-693 3120</a>
+    </div>
+  </div>
+  <img src="/static/logo.jpeg" alt="Logo VR Gadget">
+</div>
+<div class="wrap">
+  <div class="facts">
+    <div><span class="batt" aria-hidden="true"><i></i></span><b>30 minit – 2 jam</b>Tempoh siap biasa</div>
+    <div><b>Semakan percuma</b>Tiada caj kalau tak jadi repair</div>
+    <div><b>Warranty 1 bulan</b>Bateri, LCD, motherboard, kamera &amp; speaker</div>
+  </div>
+</div>
 
-/* ---------- Geometri kamera ---------- */
-function camGeo(A,w,h){
-  var c=A.cam,L=[],R=null,X=[],FP=null,r,i;
-  if(c==='row3'||c==='row2'||c==='row4'){
-    var n=c==='row4'?4:c==='row3'?3:2,sp=c==='row4'?.088:.095,s0=c==='row4'?.062:.07;r=w*(c==='row4'?.082:.08);
-    for(i=0;i<n;i++)L.push([w*.2,h*(s0+i*sp),r]);
-    X.push([w*.44,h*s0,w*.022,"#f4f1d8"],[w*.44,h*(s0+sp),w*.011,"#1a1a24"]);
-  }else if(c==='mod3'){
-    var big=A.big,mw=w*(big?.44:.4),mh=h*(big?.25:.215);R={x:w*.06,y:h*.03,w:mw,h:mh,r:w*.1};r=w*(big?.075:.07);
-    for(i=0;i<3;i++)L.push([R.x+mw*.3,R.y+mh*(.2+i*.3),r]);
-    X.push([R.x+mw*.78,R.y+mh*.22,w*.02,"#f4f1d8"],[R.x+mw*.78,R.y+mh*.6,w*.011,"#1a1a24"]);
-  }else if(c==='h3'){
-    r=w*.065;for(i=0;i<3;i++)L.push([w*(.2+i*.17),h*.075,r]);X.push([w*.74,h*.075,w*.02,"#f4f1d8"]);
-  }else if(c==='h2'){
-    r=w*.065;L.push([w*.2,h*.07,r],[w*.38,h*.07,r]);X.push([w*.58,h*.065,w*.02,"#f4f1d8"],[w*.65,h*.065,w*.014,"#7a2a2a"]);FP=[w*.38,h*.2,w*.05];
-  }else if(c==='one'){
-    r=w*.07;L.push([w*.2,h*.07,r]);X.push([w*.38,h*.065,w*.02,"#f4f1d8"],[w*.45,h*.065,w*.014,"#7a2a2a"]);if(A.fp)FP=[w*.3,h*.17,w*.05];
-  }else if(c==='v3'){
-    R={x:w*.07,y:h*.03,w:w*.25,h:h*.23,r:w*.125};r=w*.058;
-    for(i=0;i<3;i++)L.push([R.x+R.w/2,R.y+R.h*(.2+i*.3),r]);X.push([w*.38,h*.06,w*.02,"#f4f1d8"]);
-  }
-  return {L:L,R:R,X:X,FP:FP};
-}
-function dims(A){var s=A.sz;return {w:70*s,h:146*s*(A.hr||1),s:s};}
+<section id="servis">
+  <div class="wrap">
+    <h2>Servis kami</h2>
+    <div class="grid">
+      <div class="svc"><h3>Tukar LCD / skrin</h3><p>Skrin pecah, line, sentuhan tak jalan.</p></div>
+      <div class="svc"><h3>Tukar bateri</h3><p>Bateri kembung, cepat habis, telefon tutup sendiri.</p></div>
+      <div class="svc"><h3>Charging board</h3><p>Susah cas, kena goyang kabel baru nak cas.</p></div>
+      <div class="svc"><h3>Motherboard</h3><p>Telefon mati, tak boleh hidup, masalah litar. Anggaran siap 1 – 3 hari.</p></div>
+      <div class="svc"><h3>Water damage</h3><p>Terjatuh dalam air. Datang secepat mungkin.</p></div>
+      <div class="svc"><h3>Kamera, speaker &amp; mic</h3><p>Gambar kabur, suara tak keluar, orang tak dengar.</p></div>
+    </div>
+  </div>
+</section>
 
-/* ---------- Gradien ---------- */
-function defs(k,col){
-  var b=col[0],l=col[1],d=mix(b,"#000000",.45);
-  return '<defs>'
-  +'<linearGradient id="fr'+k+'" x1="0" x2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".3" stop-color="'+b+'"/><stop offset=".7" stop-color="'+d+'"/><stop offset="1" stop-color="'+l+'"/></linearGradient>'
-  +'<linearGradient id="bk'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+l+'"/><stop offset=".55" stop-color="'+b+'"/><stop offset="1" stop-color="'+mix(b,"#000000",.25)+'"/></linearGradient>'
-  +'<linearGradient id="bp'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(l,"#ffffff",.3)+'"/><stop offset="1" stop-color="'+mix(b,"#ffffff",.08)+'"/></linearGradient>'
-  +'<linearGradient id="sc'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+mix(b,"#0b1030",.6)+'"/><stop offset=".55" stop-color="'+mix(l,"#1d2a6b",.35)+'"/><stop offset="1" stop-color="'+mix(l,"#ffffff",.1)+'"/></linearGradient>'
-  +'<linearGradient id="rg'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f5ff"/><stop offset=".5" stop-color="#6a6f80"/><stop offset="1" stop-color="#d2d5e0"/></linearGradient>'
-  +'<radialGradient id="ln'+k+'" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#3b4a8a"/><stop offset=".55" stop-color="#0a0c25"/><stop offset="1" stop-color="#020210"/></radialGradient>'
-  +'<radialGradient id="sh'+k+'"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
-  +'</defs>';
-}
-function lens(cx,cy,r,k,rc){
-  return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r*1.1+'" fill="#000" opacity=".22"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+rc+'"/>'
-  +'<path d="M'+(cx-r*.7)+' '+(cy-r*.45)+' A'+r*.85+' '+r*.85+' 0 0 1 '+(cx+r*.3)+' '+(cy-r*.8)+'" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="'+r*.08+'" stroke-linecap="round"/>'
-  +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r*.78+'" fill="#0b0a12"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.64+'" fill="url(#ln'+k+')"/>'
-  +'<circle cx="'+cx+'" cy="'+cy+'" r="'+r*.3+'" fill="#04040a" opacity=".9"/><circle cx="'+(cx-r*.28)+'" cy="'+(cy-r*.3)+'" r="'+r*.13+'" fill="#fff" opacity=".55"/>';
-}
-function screen(sx,sy,sw,sh,k,n){
-  var o='<rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+n.rx+'" fill="url(#sc'+k+')"/>';
-  o+='<circle cx="'+(sx+sw*.8)+'" cy="'+(sy+sh*.7)+'" r="'+sw*.3+'" fill="#fff" opacity=".07"/><circle cx="'+(sx+sw*.15)+'" cy="'+(sy+sh*.45)+'" r="'+sw*.22+'" fill="#fff" opacity=".05"/>';
-  var tx=sx+sw*(n.tx||.5);
-  o+='<text x="'+tx+'" y="'+(sy+sh*.24)+'" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="'+sw*(n.tx?.16:.2)+'" fill="#fff" opacity=".92">10:09</text>';
-  o+='<text x="'+tx+'" y="'+(sy+sh*.3)+'" text-anchor="middle" font-family="Arial,sans-serif" font-size="'+sw*.07+'" fill="#fff" opacity=".7">Isnin, 14 Okt</text>';
-  var ic=sw*.15,g=(sw-4*ic)/5,i;
-  for(i=0;i<4;i++)o+='<rect x="'+(sx+g+i*(ic+g))+'" y="'+(sy+sh*.86)+'" width="'+ic+'" height="'+ic+'" rx="'+ic*.3+'" fill="#fff" fill-opacity=".16"/>';
-  o+='<path d="M'+(sx+sw*.55)+' '+sy+' L'+(sx+sw)+' '+sy+' L'+(sx+sw)+' '+(sy+sh*.45)+' Z" fill="#fff" opacity=".07"/>';
-  return o;
-}
+<section>
+  <div class="wrap">
+    <h2>Model yang kami repair</h2>
+    <p class="sub">Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.</p>
+    <div class="brands">
+      <div class="brand b-apple">iPhone</div>
+      <div class="brand b-samsung">SAMSUNG</div>
+      <div class="brand b-oppo">OPPO</div>
+      <div class="brand b-vivo">vivo</div>
+      <div class="brand b-xiaomi">Xiaomi</div>
+      <div class="brand b-huawei">HUAWEI</div>
+      <div class="brand b-realme">realme</div>
+      <div class="brand b-honor">HONOR</div>
+    </div>
+  </div>
+</section>
 
-/* ---------- Lukis telefon (satu muka) ---------- */
-function phone(cx,m,k,back,ns){
-  var A=m.A,D=dims(A),w=D.w,h=D.h,x=cx-w/2,y=(186-h)/2-2,rx=w*A.rr,o='',bz=A.bz,c=m.c,G=camGeo(A,w,h),i;
-  var RX=back?x-1.6:x+w-.8;
-  if(!ns)o+='<ellipse cx="'+cx+'" cy="'+(y+h+4)+'" rx="'+w*.55+'" ry="5" fill="url(#sh'+k+')"/>';
-  if(A.f!=='fc'||!back){
-    o+='<rect x="'+RX+'" y="'+(y+h*.22)+'" width="2.4" height="'+h*.1+'" rx="1" fill="url(#fr'+k+')"/><rect x="'+RX+'" y="'+(y+h*.36)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
-  }
-  o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
-  var rc=A.blk?"#3b3b45":mix(c[1],"#ffffff",.35);
-  if(!back){
-    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-    if(A.f==='fc'){ /* sisi cover Flip */
-      o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
-      var cv=A.cv||1,lr=w*(cv===3?.055:.07);
-      if(cv===1){
-        var dx=x+w*.52,dy=y+h*.045,dw=w*.34,dh=h*.5;
-        o+='<rect x="'+dx+'" y="'+dy+'" width="'+dw+'" height="'+dh+'" rx="'+w*.07+'" fill="#05060c"/>';
-        o+=screen(dx+1,dy+1,dw-2,dh-2,k,{rx:w*.06});
-        o+=lens(x+w*.24,y+h*.12,lr,k,rc)+lens(x+w*.24,y+h*.3,lr,k,rc)+dot(x+w*.37,y+h*.21,w*.018,"#f4f1d8");
-      }else{
-        var cx0=x+w*.06,cy0=y+h*.035,cw=w*.88,ch=h*(cv===3?.86:.74),nw=w*(cv===3?.2:.3),nh=h*(cv===3?.24:.34),cid='cp'+k,
-            pth='M'+(cx0+nw)+' '+cy0+'H'+(cx0+cw)+'V'+(cy0+ch)+'H'+cx0+'V'+(cy0+nh)+'H'+(cx0+nw)+'Z';
-        o+='<clipPath id="'+cid+'"><path d="'+pth+'"/></clipPath>';
-        o+='<path d="'+pth+'" fill="#05060c" stroke="#05060c" stroke-width="4" stroke-linejoin="round"/>';
-        o+='<g clip-path="url(#'+cid+')">'+screen(cx0,cy0,cw,ch,k,{rx:0,tx:.6})+'</g>';
-        o+=lens(cx0+nw*.5,cy0+nh*.27,lr,k,rc)+lens(cx0+nw*.5,cy0+nh*.73,lr,k,rc);
-      }
-      return o;
-    }
-    var sx=x+bz,sy=y+bz,sw=w-bz*2,sh=h-bz*2;
-    if(A.f==='h'){sy=y+h*.13;sh=h*.74;}
-    o+=screen(sx,sy,sw,sh,k,{rx:Math.max(2,rx-bz)});
-    if(A.f==='p')o+=dot(x+w/2,sy+3.2,1.5,"#000")+dot(x+w/2+.4,sy+3,.5,"#1b1b44");
-    else if(A.f==='pr')o+=dot(sx+sw*.86,sy+3.2,1.7,"#000");
-    else if(A.f==='w')o+='<path d="M'+(x+w/2-6)+' '+sy+' Q'+(x+w/2-6)+' '+(sy+5.5)+' '+(x+w/2)+' '+(sy+5.5)+' Q'+(x+w/2+6)+' '+(sy+5.5)+' '+(x+w/2+6)+' '+sy+' Z" fill="#06060c"/>';
-    else if(A.f==='n0')o+='<rect x="'+(x+w/2-6)+'" y="'+(y+bz*.35)+'" width="12" height="1.6" rx=".8" fill="#2c2c36"/>'+dot(x+w/2+9,y+bz*.45,1.1,"#1a1a40");
-    else if(A.f==='h'){
-      o+='<rect x="'+(x+w/2-7)+'" y="'+(y+h*.06)+'" width="14" height="1.8" rx=".9" fill="#2c2c36"/>'+dot(x+w/2-12,y+h*.065,1.2,"#1a1a40");
-      o+='<circle cx="'+(x+w/2)+'" cy="'+(y+h*.935)+'" r="'+w*.065+'" fill="none" stroke="'+rc+'" stroke-width=".8"/>';
-    }
-    return o;
-  }
-  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(w-2.8)+'" height="'+(h-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
-  o+='<path d="M'+(x+w*.55)+' '+y+' L'+(x+w)+' '+y+' L'+(x+w)+' '+(y+h*.5)+' Z" fill="#fff" opacity=".07"/>';
-  if(G.R)o+='<rect x="'+(x+G.R.x)+'" y="'+(y+G.R.y)+'" width="'+G.R.w+'" height="'+G.R.h+'" rx="'+G.R.r+'" fill="url(#bp'+k+')" stroke="#000" stroke-opacity=".25" stroke-width=".6"/>';
-  if(G.FP)o+='<circle cx="'+(x+G.FP[0])+'" cy="'+(y+G.FP[1])+'" r="'+G.FP[2]+'" fill="none" stroke="'+rc+'" stroke-opacity=".7" stroke-width=".8"/>';
-  G.L.forEach(function(L){o+=lens(x+L[0],y+L[1],L[2],k,rc);});
-  G.X.forEach(function(P){o+=dot(x+P[0],y+P[1],P[2],P[3]);});
-  return o;
-}
-function face(i,back,tag){
-  var m=E[i],D=dims(m.A),w=D.w,h=D.h,y=(186-h)/2-2,k=tag+i;
-  return '<svg viewBox="'+(62-w/2-3)+' '+(y-3)+' '+(w+6)+' '+(h+6)+'">'+defs(k,m.c)+phone(62,m,k,back,true)+'</svg>';
-}
+<section id="warranty">
+  <div class="wrap">
+    <h2>Warranty</h2>
+    <p class="sub">Tempoh warranty: <b>1 bulan</b>, dikira dari tarikh repair.</p>
+    <div class="warr">
+      <div class="box ok"><h3>Warranty untuk penukaran</h3><ul><li>Bateri</li><li>LCD</li><li>Charging board</li><li>Motherboard</li><li>Kamera</li><li>Speaker</li></ul></div>
+      <div class="box no"><h3>Tiada penukaran atau tuntutan</h3><ul><li>Barang jatuh atau retak</li><li>Barang masuk air</li></ul></div>
+    </div>
+    <div class="warn">Sekiranya barang mengalami jatuh/retak atau masuk air, tiada penukaran atau penuntutan warranty. Sila bawa resit bila membuat tuntutan.</div>
+  </div>
+</section>
 
-/* ---------- Pentas 3D ---------- */
-var raf=0;
-function stage(i){
-  var m=E[i],A=m.A,D=dims(A),K=1.9,w=D.w*K,h=D.h*K,pad=3*K,W=w+2*pad,H=h+2*pad,dep=Math.round(w*.12*(A.dr||1)),n=48,lay='',c=m.c,dk=mix(c[0],"#000000",.45),rr=D.w*A.rr*K,sl=h-2*rr,tl=w-2*rr,j;
-  for(j=0;j<n;j++){var t=Math.sin(Math.PI*(j+.5)/n),z=-dep/2+dep*(j+.5)/n;
-    lay+='<div class="lay" style="left:'+pad+'px;top:'+pad+'px;width:'+w+'px;height:'+h+'px;border-radius:'+rr+'px;background:'+mix(dk,c[1],t)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}
-  var gs='linear-gradient(90deg,'+dk+','+c[1]+','+dk+')',gv='linear-gradient(180deg,'+dk+','+c[1]+','+dk+')',bd=mix(dk,"#000000",.35),hi=mix(c[1],"#ffffff",.3);
-  function btn(y1,y2){return '<rect x="'+dep*.2+'" y="'+(y1*h-rr)+'" width="'+dep*.6+'" height="'+((y2-y1)*h)+'" rx="'+dep*.3+'" fill="'+bd+'" stroke="'+hi+'" stroke-opacity=".6" stroke-width="1"/>';}
-  var BT=A.bt||[[.22,.32],[.36,.43]];
-  var right='<svg viewBox="0 0 '+dep+' '+sl+'">'+btn(BT[0][0],BT[0][1])+btn(BT[1][0],BT[1][1])+'</svg>';
-  var left='<svg viewBox="0 0 '+dep+' '+sl+'"></svg>';
-  var cxm=tl/2,slotW=w*.14,slotH=dep*.42,cyy=dep/2,holes='',q;
-  for(q=0;q<6;q++){var off=slotW/2+dep*.45+q*dep*.28;holes+=dot(cxm-off,cyy,dep*.06,"#150a10");if(!A.pen||q<5)holes+=dot(cxm+off,cyy,dep*.06,"#150a10");}
-  var pen=A.pen?'<rect x="'+(cxm+slotW/2+dep*.45+6*dep*.28)+'" y="'+(cyy-dep*.2)+'" width="'+dep*.7+'" height="'+dep*.4+'" rx="'+dep*.2+'" fill="#0a0508" stroke="'+hi+'" stroke-opacity=".5" stroke-width=".6"/>':'';
-  var bottom='<svg viewBox="0 0 '+tl+' '+dep+'"><rect x="'+(cxm-slotW/2)+'" y="'+(cyy-slotH/2)+'" width="'+slotW+'" height="'+slotH+'" rx="'+slotH/2+'" fill="#0a0508" stroke="'+hi+'" stroke-opacity=".5" stroke-width=".8"/>'+holes+pen+'</svg>';
-  var top='<svg viewBox="0 0 '+tl+' '+dep+'">'+dot(tl*.2,cyy,dep*.07,"#150a10")+dot(tl*.8,cyy,dep*.07,"#150a10")+'</svg>';
-  function pl(css,svg,bg){return '<div class="pl" style="'+css+';background:'+bg+'">'+svg+'</div>';}
-  var planes=pl('left:'+(pad+w-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(90deg)',right,gs)
-    +pl('left:'+(pad-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(-90deg)',left,gs)
-    +pl('left:'+(pad+rr)+'px;top:'+(pad-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(90deg)',top,gv)
-    +pl('left:'+(pad+rr)+'px;top:'+(pad+h-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(-90deg)',bottom,gv);
-  /* tojolan kamera */
-  var extra='',G=A.cam==='none'?{L:[],R:null}:camGeo(A,w,h),z0=dep/2+.5,BK=face(i,true,'b'),bl=mix(c[0],c[1],.55),ringc=A.blk?"#2e2e36":mix(c[0],c[1],.5),ringd=A.blk?"#101015":mix(ringc,"#000000",.5);
-  function crop(x,y,wd,ht,rad,Z){return '<div class="bt" style="left:'+(W-(pad+x)-wd)+'px;top:'+(pad+y)+'px;width:'+wd+'px;height:'+ht+'px;border-radius:'+rad+'px;transform:rotateY(180deg) translateZ('+Z.toFixed(2)+'px)"><div style="position:absolute;left:-'+(pad+x)+'px;top:-'+(pad+y)+'px;width:'+W+'px;height:'+H+'px">'+BK+'</div></div>';}
-  var bH=0;
-  if(G.R){bH=Math.max(3,dep*.2);var NB=12;
-    for(j=0;j<NB;j++){var tt=Math.sin(Math.PI*(j+.5)/NB),zz=-(z0+(j+.5)/NB*bH);extra+='<div class="lay" style="left:'+(W-(pad+G.R.x)-G.R.w)+'px;top:'+(pad+G.R.y)+'px;width:'+G.R.w+'px;height:'+G.R.h+'px;border-radius:'+G.R.r+'px;background:'+mix(dk,bl,.4+.6*tt)+';transform:translateZ('+zz.toFixed(2)+'px)"></div>';}
-    extra+=crop(G.R.x,G.R.y,G.R.w,G.R.h,G.R.r,z0+bH+.3);}
-  var lH=Math.max(3,dep*(A.blk?.55:.2)),NL=A.blk?10:8;
-  G.L.forEach(function(L){var R=L[2]*1.08;
-    for(j=0;j<NL;j++){var t2=Math.sin(Math.PI*(j+.5)/NL),z2=-(z0+bH+(j+.5)/NL*lH);extra+='<div class="lay" style="left:'+(W-(pad+L[0])-R)+'px;top:'+(pad+L[1]-R)+'px;width:'+2*R+'px;height:'+2*R+'px;border-radius:50%;background:'+mix(ringd,ringc,.3+.7*t2)+';transform:translateZ('+z2.toFixed(2)+'px)"></div>';}
-    extra+=crop(L[0]-R,L[1]-R,2*R,2*R,R,z0+bH+lH+.3);});
-  return '<div class="stage" id="sstage" style="height:'+Math.round(H+50)+'px"><div class="gnd" style="width:'+w+'px"></div><div class="ph" id="sph" style="width:'+W+'px;height:'+H+'px;margin:-'+H/2+'px 0 0 -'+W/2+'px">'+lay+planes+extra
-    +'<div class="fc" style="transform:translateZ('+(dep/2+.5)+'px)">'+face(i,false,'f')+'</div><div class="fc" style="transform:rotateY(180deg) translateZ('+(dep/2+.5)+'px)">'+face(i,true,'k')+'</div></div></div>';
-}
+<section id="proses">
+  <div class="wrap">
+    <h2>Cara kerja kami</h2>
+    <p class="sub">Mudah dan telus.</p>
+    <ol class="steps">
+      <li><b>Bawa telefon ke kedai</b> atau WhatsApp gambar kerosakan dulu.</li>
+      <li><b>Kami semak dan bagi harga.</b> Awak setuju baru kami mula.</li>
+      <li><b>Repair dibuat</b> dalam masa 30 minit hingga 2 jam untuk kebanyakan kes. Motherboard 1 hingga 3 hari.</li>
+      <li><b>Ambil telefon dan bayar.</b> Awak dapat warranty untuk penukaran yang layak.</li>
+    </ol>
+  </div>
+</section>
 
-/* ---------- Z Fold / Z Flip: buka & tutup ---------- */
-function openFace(i,part,tag){
-  var m=E[i],A=m.A,D=dims(A),w=D.w,hh=D.h,fl=A.fold==='flip',k=tag+'o'+i,o='';
-  var W2=fl?w:2*w,H2=fl?2*hh:hh,x=62-W2/2,y=(186-H2)/2-2,rx=w*A.rr,bz=A.bz;
-  o+=defs(k,m.c);
-  o+='<rect x="'+x+'" y="'+y+'" width="'+W2+'" height="'+H2+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
-  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-  var sx=x+bz,sy=y+bz,sw=W2-2*bz,sh=H2-2*bz;
-  o+=screen(sx,sy,sw,sh,k,{rx:Math.max(2,rx-bz)});
-  var vb;
-  if(fl){
-    o+=dot(62,sy+3.2,1.5,"#000");
-    o+='<rect x="'+sx+'" y="'+(y+hh-1.2)+'" width="'+sw+'" height="2.4" fill="#000" opacity=".28"/><rect x="'+sx+'" y="'+(y+hh+1.2)+'" width="'+sw+'" height=".6" fill="#fff" opacity=".25"/>';
-    vb=[x-3,part==='top'?y-3:y+hh-3,w+6,hh+6];
-  }else{
-    o+=dot(x+W2-bz-9,sy+3.2,1.5,"#000");
-    o+='<rect x="'+(x+w-1.2)+'" y="'+sy+'" width="2.4" height="'+sh+'" fill="#000" opacity=".28"/><rect x="'+(x+w+1.2)+'" y="'+sy+'" width=".6" height="'+sh+'" fill="#fff" opacity=".25"/>';
-    vb=[part==='left'?x-3:x+w-3,y-3,w+6,hh+6];
-  }
-  return '<svg viewBox="'+vb.join(' ')+'">'+o+'</svg>';
-}
-function foldStage(i){
-  var m=E[i],A=m.A,D=dims(A),K=1.6,w=D.w*K,hh=D.h*K,pad=3*K,fl=A.fold==='flip',dep=Math.round(D.w*K*.12*A.dr),t=dep/2,c=m.c,dk=mix(c[0],"#000000",.45),rr=D.w*A.rr*K,n=18;
-  function layers(rad){var s='',j;for(j=0;j<n;j++){var tt=Math.sin(Math.PI*(j+.5)/n),z=-t/2+t*(j+.5)/n;s+='<div class="lay" style="left:0;top:0;width:'+w+'px;height:'+hh+'px;border-radius:'+rad+';background:'+mix(dk,c[1],tt)+';transform:translateZ('+z.toFixed(2)+'px)"></div>';}return s;}
-  function fcd(inner,tf){return '<div class="fc" style="left:'+(-pad)+'px;top:'+(-pad)+'px;width:'+(w+2*pad)+'px;height:'+(hh+2*pad)+'px;transform:'+tf+'">'+inner+'</div>';}
-  var zf='translateZ('+(t/2+.4)+'px)',sz='width:'+w+'px;height:'+hh+'px';
-  var mv,fx,r1,r2;
-  if(fl){
-    r1=rr+'px '+rr+'px 0 0';r2='0 0 '+rr+'px '+rr+'px';
-    fx='<div class="sl3" style="left:'+(-w/2)+'px;top:'+(-hh)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'top','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
-    mv='<div class="sl3" style="left:'+(-w/2)+'px;top:0;'+sz+'">'+layers(r2)+fcd(openFace(i,'bottom','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) rotateZ(180deg) '+zf)+'</div>';
-  }else{
-    r1=rr+'px 0 0 '+rr+'px';r2='0 '+rr+'px '+rr+'px 0';
-    fx='<div class="sl3" style="left:'+(-w)+'px;top:'+(-hh/2)+'px;'+sz+'">'+layers(r1)+fcd(openFace(i,'left','m'),zf)+fcd(face(i,true,'k'),'rotateY(180deg) '+zf)+'</div>';
-    mv='<div class="sl3" style="left:0;top:'+(-hh/2)+'px;'+sz+'">'+layers(r2)+fcd(openFace(i,'right','x'),zf)+fcd(face(i,false,'f'),'rotateY(180deg) '+zf)+'</div>';
-  }
-  var Hs=Math.round((fl?2*hh:hh)+2*pad+50);
-  return '<div class="stage" id="sstage" data-m="'+(fl?'flip':'fold')+'" data-w="'+w+'" data-hh="'+hh+'" data-t="'+t+'" style="height:'+Hs+'px"><div class="gnd" style="width:'+w*1.2+'px"></div><div class="fph" id="sph"><div class="shf" id="sshift">'+fx+'<div class="hg" id="shg" style="transform-origin:0 0 '+(t/2)+'px">'+mv+'</div></div></div></div>';
-}
-function init3d(){
-  cancelAnimationFrame(raf);
-  var st=$('sstage'),ph=$('sph'),ry=-28,rx=-6,auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches,tx=null,ty=null,drag=false,lx=0,ly=0,tm=0,moved=0;
-  var mode=st.getAttribute('data-m'),gw=+st.getAttribute('data-w'),ghh=+st.getAttribute('data-hh'),gt=+st.getAttribute('data-t'),p=1,pt=1,hg=$('shg'),shf=$('sshift'),lbl=$('sfoldlbl');
-  function applyFold(){var th=180*p;if(mode==='flip'){hg.style.transform='rotateX('+th+'deg)';shf.style.transform='translate3d(0,'+(ghh/2*p)+'px,'+(-gt/2*p)+'px)';}else{hg.style.transform='rotateY('+(-th)+'deg)';shf.style.transform='translate3d('+(gw/2*p)+'px,0,'+(-gt/2*p)+'px)';}}
-  function toggle(){pt=pt>.5?0:1;if(lbl)lbl.textContent=pt>.5?'Tertutup':'Terbuka';}
-  if(mode)applyFold();
-  function near(c,tg){return tg+Math.round((c-tg)/360)*360;}
-  function loop(){
-    if(!dlg.open||!$('sstage'))return;
-    if(auto&&!drag&&tx===null)ry+=.5;
-    if(tx!==null){ry+=(ty-ry)*.14;rx+=(tx-rx)*.14;if(Math.abs(ty-ry)<.3&&Math.abs(tx-rx)<.3){ry=ty;rx=tx;tx=null;ty=null;}}
-    if(mode){p+=(pt-p)*.1;if(Math.abs(pt-p)<.002)p=pt;applyFold();}
-    ph.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';
-    raf=requestAnimationFrame(loop);
-  }
-  st.addEventListener('pointerdown',function(e){drag=true;moved=0;tx=null;lx=e.clientX;ly=e.clientY;clearTimeout(tm);try{st.setPointerCapture(e.pointerId);}catch(_){}});
-  st.addEventListener('pointermove',function(e){if(!drag)return;moved+=Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly);ry+=(e.clientX-lx)*.6;rx-=(e.clientY-ly)*.6;lx=e.clientX;ly=e.clientY;});
-  function up(){if(!drag)return;if(mode&&moved<6)toggle();drag=false;auto=false;clearTimeout(tm);tm=setTimeout(function(){auto=true;},3000);}
-  st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);
-  var V={f:[0,0],b:[0,180],l:[0,90],r:[0,-90],t:[-90,0],u:[90,0]};
-  [].forEach.call(body.querySelectorAll('[data-v]'),function(bt){bt.onclick=function(){var v=V[bt.getAttribute('data-v')];auto=false;tx=near(rx,v[0]);ty=near(ry,v[1]);};});
-  var fb=$('sfold');if(fb)fb.onclick=toggle;
-  loop();
-}
+<section id="faq">
+  <div class="wrap">
+    <h2>Soalan lazim</h2>
+    <p class="sub"></p>
+    <details><summary>Data dalam telefon akan hilang ke?</summary><p>Untuk kebanyakan repair seperti skrin, bateri dan charging board, data tidak terjejas. Walau begitu, kami sarankan awak backup dulu kalau boleh.</p></details>
+    <details><summary>Perlu tinggalkan telefon ke?</summary><p>Kebanyakan repair siap sementara awak tunggu. Repair motherboard biasanya siap dalam 1 hingga 3 hari, jadi telefon perlu ditinggalkan. Water damage pun mungkin perlu tinggal.</p></details>
+    <details><summary>Ada warranty ke?</summary><p>Ada, 1 bulan untuk penukaran bateri, LCD, charging board, motherboard, kamera dan speaker. Warranty tidak terpakai kalau barang jatuh/retak atau masuk air.</p></details>
+    <details><summary>Kalau tak jadi repair, kena bayar ke?</summary><p>Semakan percuma. Awak hanya bayar kalau setuju dan repair dibuat.</p></details>
+    <details><summary>Boleh bayar guna apa?</summary><p>Kami terima tunai, pindahan bank online, DuitNow QR, SPayLater dan e-wallet (Touch 'n Go, Boost).</p></details>
+  </div>
+</section>
 
-/* ---------- Paparan ---------- */
-function showList(){
-  cancelAnimationFrame(raf);
-  sback.hidden=true;sdt.textContent="Pilih model Samsung awak";sds.textContent="Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.";
-  var h='<div class="sl"><input id="sq" type="search" placeholder="Cari model, contoh: S24 atau A54" autocomplete="off">';
-  SAM.forEach(function(s){
-    h+='<div class="ss"><h4>'+s[0]+'</h4><div class="sg">';
-    E.forEach(function(m,i){if(m.g===s[0])h+='<a class="m" href="#" data-i="'+i+'" aria-label="'+m.n+', lihat servis">'+face(i,E[i].A.f!=='fc','c')+'<span>'+m.n.replace("Galaxy ","")+'</span></a>';});
-    h+='</div></div>';
-  });
-  body.innerHTML=h+'</div>';body.scrollTop=0;
-  var q=$('sq');
-  q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();
-    [].forEach.call(body.querySelectorAll('.ss'),function(sec){var any=false;
-      [].forEach.call(sec.querySelectorAll('.m'),function(c){var ok=c.getAttribute('aria-label').toLowerCase().indexOf(v)>-1;c.hidden=!ok;if(ok)any=true;});
-      sec.hidden=!any;});});
-}
-function showDetail(i){
-  var n=E[i].n,rows="";
-  SV.forEach(function(s){
-    var p=(PRICE[n]||{})[s[0]];
-    rows+='<li><div><b>'+s[0]+'</b>'+(s[1]?'<small>Warranty 1 bulan</small>':'')+'</div>'+(p?'<span class="amt">'+p+'</span>':'')+'<a class="ask" href="'+wa("Hi VR Gadget, saya nak tanya harga "+s[0]+" untuk "+n+".")+'" target="_blank" rel="noopener">'+(p?'Tanya di WhatsApp':'WhatsApp untuk harga')+'</a></li>';
-  });
-  body.innerHTML='<div class="dtl"><div style="align-self:start"><div class="dimg">'+(E[i].A.fold?foldStage(i):stage(i))+'<div class="ctl"><button type="button" data-v="f">Depan</button><button type="button" data-v="b">Belakang</button><button type="button" data-v="l">Kiri</button><button type="button" data-v="r">Kanan</button><button type="button" data-v="t">Atas</button><button type="button" data-v="u">Bawah</button></div>'+(E[i].A.fold?'<div class="ctl"><button type="button" id="sfold">Buka / Tutup</button></div><div class="hint">Keadaan: <b id="sfoldlbl">Tertutup</b> · tekan telefon atau butang untuk buka dan tutup</div>':'')+'<div class="hint">Seret ke semua arah untuk pusing 360°</div><div class="dnm">'+n+'</div><div class="hint">Ilustrasi sahaja, rekaan sebenar mungkin berbeza.</div></div></div><ul class="svl">'+rows+'</ul></div>';
-  sback.hidden=false;sdt.textContent=n;sds.textContent="Pilih servis, kami balas harga di WhatsApp.";body.scrollTop=0;init3d();
-}
-body.addEventListener('click',function(e){var a=e.target.closest('.m');if(!a)return;e.preventDefault();showDetail(+a.getAttribute('data-i'));});
-sback.addEventListener('click',showList);
-$('sclose').addEventListener('click',function(){dlg.close();});
-dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
-dlg.addEventListener('close',function(){cancelAnimationFrame(raf);});
-function openS(){showList();dlg.showModal();}
+<section id="hubungi">
+  <div class="wrap">
+    <h2>Lokasi dan waktu buka</h2>
+    <p class="sub"></p>
+    <div class="contact">
+      <div>
+        <p><b>Alamat</b><br>VR Gadget, Kg Delek,<br>Klang, Selangor</p>
+        <p><b>Waktu buka</b><br>Setiap hari: 10.00 pagi – 10.00 malam</p>
+        <p><b>Hubungi</b><br><a href="tel:+60176933120">017-693 3120</a></p>
+        <div class="cta">
+          <a class="btn" href="https://wa.me/60176933120" target="_blank" rel="noopener">Chat WhatsApp</a>
+          <a class="btn alt" href="https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7" target="_blank" rel="noopener">Buka Google Maps</a>
+          <a class="btn alt" href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener">TikTok kami</a>
+        </div>
+      </div>
+      <div class="map"><iframe title="Lokasi VR Gadget" loading="lazy" src="https://www.google.com/maps?q=3.0393879,101.4119486&z=17&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+</main>
 
-/* ---------- Sambung kotak SAMSUNG ---------- */
-var tile=document.querySelector('.b-samsung');
-if(tile){var nt=document.createElement('button');nt.type='button';nt.className='brand b-samsung';nt.id='openSamsung';nt.innerHTML='<div>SAMSUNG<small>Tekan untuk lihat model</small></div>';tile.parentNode.replaceChild(nt,tile);nt.addEventListener('click',openS);}
-})();
-</script>
-<script>
-(function(){
-var T={
-"Servis":"Services",
-"Warranty":"Warranty",
-"Soalan lazim":"FAQ",
-"Lokasi":"Location",
-"WhatsApp untuk harga":"WhatsApp for price",
-"30 minit – 2 jam":"30 minutes – 2 hours",
-"Tempoh siap biasa":"Usual turnaround time",
-"Semakan percuma":"Free checking",
-"Tiada caj kalau tak jadi repair":"No charge if you don't proceed",
-"Warranty 1 bulan":"1-month warranty",
-"Bateri, LCD, motherboard, kamera & speaker":"Battery, LCD, motherboard, camera & speaker",
-"Servis kami":"Our services",
-"Tukar LCD / skrin":"LCD / screen replacement",
-"Skrin pecah, line, sentuhan tak jalan.":"Cracked screen, lines, touch not working.",
-"Tukar bateri":"Battery replacement",
-"Bateri kembung, cepat habis, telefon tutup sendiri.":"Swollen or fast-draining battery, phone shuts down by itself.",
-"Charging board":"Charging board",
-"Susah cas, kena goyang kabel baru nak cas.":"Hard to charge, only works when you wiggle the cable.",
-"Motherboard":"Motherboard",
-"Telefon mati, tak boleh hidup, masalah litar. Anggaran siap 1 – 3 hari.":"Dead phone, won't turn on, circuit problems. Estimated 1 – 3 days.",
-"Water damage":"Water damage",
-"Terjatuh dalam air. Datang secepat mungkin.":"Dropped in water. Come in as soon as possible.",
-"Kamera, speaker & mic":"Camera, speaker & mic",
-"Gambar kabur, suara tak keluar, orang tak dengar.":"Blurry photos, no sound, others can't hear you.",
-"Model yang kami repair":"Models we repair",
-"Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.":"Can't find your model? Send us the model name on WhatsApp and we'll confirm first.",
-"Tekan untuk lihat model":"Tap to see models",
-"Tempoh warranty:":"Warranty period:",
-"1 bulan":"1 month",
-", dikira dari tarikh repair.":", counted from the repair date.",
-"Warranty untuk penukaran":"Warranty for replacements",
-"Bateri":"Battery",
-"LCD":"LCD",
-"Kamera":"Camera",
-"Speaker":"Speaker",
-"Tiada penukaran atau tuntutan":"No replacement or claim",
-"Barang jatuh atau retak":"Dropped or cracked device",
-"Barang masuk air":"Device exposed to water",
-"Sekiranya barang mengalami jatuh/retak atau masuk air, tiada penukaran atau penuntutan warranty. Sila bawa resit bila membuat tuntutan.":"If the device is dropped, cracked or exposed to water, no warranty replacement or claim is allowed. Please bring your receipt when making a claim.",
-"Cara kerja kami":"How it works",
-"Mudah dan telus.":"Simple and transparent.",
-"Bawa telefon ke kedai":"Bring your phone to the shop",
-" atau WhatsApp gambar kerosakan dulu.":" or WhatsApp a photo of the damage first.",
-"Kami semak dan bagi harga.":"We check and give a price.",
-" Awak setuju baru kami mula.":" We only start once you agree.",
-"Repair dibuat":"Repair is done",
-" dalam masa 30 minit hingga 2 jam untuk kebanyakan kes. Motherboard 1 hingga 3 hari.":" within 30 minutes to 2 hours for most cases. Motherboard takes 1 to 3 days.",
-"Ambil telefon dan bayar.":"Collect your phone and pay.",
-" Awak dapat warranty untuk penukaran yang layak.":" You get warranty for eligible replacements.",
-"Data dalam telefon akan hilang ke?":"Will my phone data be lost?",
-"Untuk kebanyakan repair seperti skrin, bateri dan charging board, data tidak terjejas. Walau begitu, kami sarankan awak backup dulu kalau boleh.":"For most repairs such as screen, battery and charging board, your data is not affected. Still, we recommend backing up first if you can.",
-"Perlu tinggalkan telefon ke?":"Do I need to leave my phone?",
-"Kebanyakan repair siap sementara awak tunggu. Repair motherboard biasanya siap dalam 1 hingga 3 hari, jadi telefon perlu ditinggalkan. Water damage pun mungkin perlu tinggal.":"Most repairs are done while you wait. Motherboard repairs usually take 1 to 3 days, so the phone needs to be left with us. Water damage may also need to be left.",
-"Ada warranty ke?":"Is there a warranty?",
-"Ada, 1 bulan untuk penukaran bateri, LCD, charging board, motherboard, kamera dan speaker. Warranty tidak terpakai kalau barang jatuh/retak atau masuk air.":"Yes, 1 month for battery, LCD, charging board, motherboard, camera and speaker replacements. Warranty does not apply if the device is dropped/cracked or exposed to water.",
-"Kalau tak jadi repair, kena bayar ke?":"Do I pay if I don't proceed with the repair?",
-"Semakan percuma. Awak hanya bayar kalau setuju dan repair dibuat.":"Checking is free. You only pay if you agree and the repair is done.",
-"Boleh bayar guna apa?":"What payment methods are accepted?",
-"Kami terima tunai, pindahan bank online, DuitNow QR, SPayLater dan e-wallet (Touch 'n Go, Boost).":"We accept cash, online bank transfer, DuitNow QR, SPayLater and e-wallets (Touch 'n Go, Boost).",
-"Lokasi dan waktu buka":"Location and opening hours",
-"Alamat":"Address",
-"Waktu buka":"Opening hours",
-"Setiap hari: 10.00 pagi – 10.00 malam":"Every day: 10.00 am – 10.00 pm",
-"Hubungi":"Contact",
-"Chat WhatsApp":"Chat on WhatsApp",
-"Buka Google Maps":"Open Google Maps",
-"Repair iPhone & Android di Klang":"iPhone & Android repair in Klang",
-"Siap 30 minit – 2 jam. Semakan percuma, warranty 1 bulan.":"Ready in 30 minutes – 2 hours. Free checking, 1-month warranty.",
-"Pilih model iPhone awak":"Choose your iPhone model",
-"iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.":"iPhone X to iPhone 18 Pro Max. Tap a model to see services.",
-"Pilih model Samsung awak":"Choose your Samsung model",
-"Tekan model untuk lihat telefon 3D dan servis, atau taip untuk cari.":"Tap a model to see the 3D phone and services, or type to search.",
-"Pilih servis, kami balas harga di WhatsApp.":"Pick a service, we'll reply with the price on WhatsApp.",
-"Tutup":"Close",
-"← Semua model":"← All models",
-"← Semua model Samsung":"← All Samsung models",
-"LCD / skrin":"LCD / screen",
-"Tanya di WhatsApp":"Ask on WhatsApp",
-"Perincian":"Details",
-"Depan":"Front","Belakang":"Back","Kiri":"Left","Kanan":"Right","Atas":"Top","Bawah":"Bottom",
-"Seret ke semua arah untuk pusing 360°":"Drag in any direction to rotate 360°",
-"Buka / Tutup":"Open / Close",
-"Tertutup":"Closed",
-"Terbuka":"Open",
-"Website Rasmi":"Official Website",
-"VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.":"VR Gadget. Official website. Android and iPhone repair, Klang.",
-"Pautan pantas":"Quick links",
-"Hubungi kami":"Contact us",
-"Kedai repair iPhone & Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.":"iPhone & Android repair shop in Kg Delek, Klang. Free checking, 1-month warranty.",
-"TikTok kami":"Our TikTok",
-"Ilustrasi sahaja, rekaan sebenar mungkin berbeza.":"Illustration only, the actual design may differ."
-};
-var orig=new WeakMap(),cur='ms';
-function nodes(){
-  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),a=[],n;
-  while(n=w.nextNode()){
-    var p=n.parentNode&&n.parentNode.nodeName;
-    if(p==='SCRIPT'||p==='STYLE')continue;
-    a.push(n);
-  }
-  return a;
-}
-function apply(lang){
-  cur=lang;
-  nodes().forEach(function(n){
-    if(!orig.has(n))orig.set(n,n.nodeValue);
-    var o=orig.get(n),k=o.trim(),lead=o.match(/^\s*/)[0],trail=o.match(/\s*$/)[0];
-    if(lang==='en'&&T[o]!==undefined){n.nodeValue=T[o];}
-    else if(lang==='en'&&T[k]!==undefined){n.nodeValue=lead+T[k]+trail;}
-    else{n.nodeValue=o;}
-  });
-  document.documentElement.lang=lang==='en'?'en':'ms';
-  document.getElementById('lbm').classList.toggle('on',lang==='ms');
-  document.getElementById('len').classList.toggle('on',lang==='en');
-  document.title=lang==='en'?'VR Gadget | Official Website - iPhone & Android Repair in Klang':'VR Gadget | Website Rasmi - MOBILE PHONE REPAIR iPhone & Android di Klang';
-  try{localStorage.setItem('vrlang',lang);}catch(e){}
-}
-document.getElementById('lbm').addEventListener('click',function(){apply('ms');});
-document.getElementById('len').addEventListener('click',function(){apply('en');});
-var saved='ms';try{saved=localStorage.getItem('vrlang')||'ms';}catch(e){}
-apply(saved);
-new MutationObserver(function(){if(cur==='en')apply('en');}).observe(document.body,{childList:true,subtree:true});
-})();
-</script>
-<script>
-(function(){
-  if(!('IntersectionObserver' in window)) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var els=[].slice.call(document.querySelectorAll(
-    '.facts > div, .svc, .box, .steps li, details, .contact > div'
-  ));
-  var vh=window.innerHeight;
-
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
-    });
-  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-
-  els.forEach(function(el){
-    if(el.getBoundingClientRect().top < vh) return; // sudah nampak masa load, jangan sorok
-    el.classList.add('reveal');
-    if(el.classList.contains('svc')){
-      var i=[].indexOf.call(el.parentNode.children,el);
-      el.style.transitionDelay=((i%3)*60)+'ms';
-    }
-    io.observe(el);
-  });
-})();
-</script>
-<script>
-(function(){
-  var b=document.querySelector('.batt');
-  if(!b||!('IntersectionObserver' in window)) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  b.classList.add('low');
-  var io=new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){
-      setTimeout(function(){ b.classList.remove('low'); },350);
-      io.disconnect();
-    }
-  },{threshold:.6});
-  io.observe(b);
-})();
-</script>
-<script>
-(function(){
-  var ol=document.querySelector('.steps');
-  if(!ol||!('IntersectionObserver' in window)) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var li=[].slice.call(ol.children);
-  ol.classList.add('js');
-
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var i=li.indexOf(e.target);
-      io.unobserve(e.target);
-      if(i>0) setTimeout(function(){ li[i-1].classList.add('drawn'); },250+i*250);
-    });
-  },{threshold:.5});
-
-  li.forEach(function(el){ io.observe(el); });
-})();
-</script>
+<footer>
+<div class="wrap">
+  <div class="fgrid">
+    <div class="fcol">
+      <a class="flogo" href="#" aria-label="VR Gadget"><img src="/static/logo.jpeg" alt="Logo VR Gadget"></a>
+      <p class="fabout">Kedai repair iPhone &amp; Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.</p>
+      <div class="fsoc">
+        <a href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a>
+        <a href="https://wa.me/60176933120" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></a>
+        <a href="https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h3>Pautan pantas</h3>
+      <ul class="flinks"><li><a href="#servis">Servis</a></li><li><a href="#warranty">Warranty</a></li><li><a href="#proses">Cara kerja kami</a></li><li><a href="#faq">Soalan lazim</a></li><li><a href="#hubungi">Lokasi</a></li></ul>
+    </div>
+    <div class="fcol">
+      <h3>Hubungi kami</h3>
+      <ul class="fcon">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h4l2 5-2.5 1.5a11 11 0 0 0 4 4L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+60176933120">017-693 3120</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><a href="https://wa.me/60176933120" target="_blank" rel="noopener">Chat WhatsApp</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>VR Gadget, Kg Delek,<br>Klang, Selangor</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><span>Setiap hari: 10.00 pagi – 10.00 malam</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.</div>
+</div>
+</footer>
+<a class="float" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp</a>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<!-- TAMPAL SKRIP SAMSUNG, TERJEMAHAN DAN ANIMASI DI SINI (dari fail vr-gadget-bahagian-bawah), SEBELUM </body> -->
 </body>
 </html>
