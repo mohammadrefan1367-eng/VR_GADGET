@@ -202,6 +202,26 @@ section[id]{scroll-margin-top:80px}
 .float::after{content:"";position:absolute;inset:0;border:2px solid #25d366;border-radius:99px;opacity:0;pointer-events:none;animation:wapulse 1.4s ease-out 2.5s 2}
 @keyframes wapulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35,1.6);opacity:0}}
 @media (prefers-reduced-motion:reduce){.float::after{animation:none}}
+  /* Footer */
+footer{padding:44px 0 90px}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1.4fr;gap:36px}
+.fcol h3{margin:0 0 16px;font-size:1.15rem;color:var(--ink)}
+.flogo img{width:72px;height:72px;border-radius:10px;display:block;margin-bottom:12px}
+.fabout{margin:0 0 18px;max-width:30em;line-height:1.8}
+.fsoc{display:flex;gap:12px}
+.fsoc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--g1);transition:background .2s,color .2s,transform .12s ease-out}
+.fsoc a:hover{background:var(--g1);color:#080d18}
+.fsoc a:active{transform:translateY(2px)}
+.fsoc svg{width:20px;height:20px}
+.flinks,.fcon{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.flinks a{text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.flinks a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--g1)}
+.flinks a:hover,.fcon a:hover{color:var(--ink)}
+.fcon li{display:flex;gap:12px;align-items:flex-start}
+.fcon svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--g1)}
+.fcon a{text-decoration:none}
+.fbot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line)}
+@media (max-width:700px){.fgrid{grid-template-columns:1fr;gap:28px}}
 </style>
   <script type="application/ld+json">
 {
@@ -382,8 +402,38 @@ section[id]{scroll-margin-top:80px}
   <div id="mdet" hidden></div>
 </dialog>
 <footer>
-<div class="wrap">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.
-<div><a href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener">TikTok: @vrgadget.kgdelek</a></div>
+<div class="wrap">
+  <div class="fgrid">
+    <div class="fcol">
+      <a class="flogo" href="#" aria-label="VR Gadget"><img src="/static/logo.jpeg" alt="Logo VR Gadget"></a>
+      <p class="fabout">Kedai repair iPhone &amp; Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.</p>
+      <div class="fsoc">
+        <a href="https://www.tiktok.com/@vrgadget.kgdelek" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a>
+        <a href="https://wa.me/60176933120" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></a>
+        <a href="https://maps.app.goo.gl/VjD6TXTSQmi4JTyL7" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h3>Pautan pantas</h3>
+      <ul class="flinks">
+        <li><a href="#servis">Servis</a></li>
+        <li><a href="#warranty">Warranty</a></li>
+        <li><a href="#proses">Cara kerja kami</a></li>
+        <li><a href="#faq">Soalan lazim</a></li>
+        <li><a href="#hubungi">Lokasi</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h3>Hubungi kami</h3>
+      <ul class="fcon">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h4l2 5-2.5 1.5a11 11 0 0 0 4 4L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+60176933120">017-693 3120</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><a href="https://wa.me/60176933120" target="_blank" rel="noopener">Chat WhatsApp</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>VR Gadget, Kg Delek,<br>Klang, Selangor</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg><span>Setiap hari: 10.00 pagi – 10.00 malam</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">&copy; <span id="y"></span> VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.</div>
 </div>
 </footer>
 <a class="float" href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20harga%20repair." target="_blank" rel="noopener">WhatsApp</a>
@@ -1029,7 +1079,7 @@ var T={
 "Terbuka":"Open",
 "Website Rasmi":"Official Website",
 "VR Gadget. Website rasmi. Android and iPhone Repairing, Klang.":"VR Gadget. Official website. Android and iPhone repair, Klang.",
-"TikTok kami":"Our TikTok"
+"Pautan pantas":"Quick links", "Hubungi kami":"Contact us", "Kedai repair iPhone & Android di Kg Delek, Klang. Semakan percuma, warranty 1 bulan.":"iPhone & Android repair shop in Kg Delek, Klang. Free checking, 1-month warranty.", "TikTok kami":"Our TikTok"
 };
 var orig=new WeakMap(),cur='ms';
 function nodes(){
