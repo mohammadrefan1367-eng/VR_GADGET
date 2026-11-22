@@ -161,15 +161,12 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .pl svg{width:100%;height:100%!important;display:block}
 .bt{position:absolute;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .bt svg{width:100%;height:100%!important;display:block}
-.lang{display:flex;gap:6px}
-.lang button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-family:inherit;cursor:pointer}
-.lang button.on{background:var(--grad);color:#080d18;border-color:transparent}
   /* ===== Animasi halus ===== */
-.btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{
+.btn,.ask,.float,button.brand,.dh button,.ctl button,.{
   transition:transform .12s ease-out;
 }
 .btn:active,.ask:active,.float:active,button.brand:active,
-.dh button:active,.ctl button:active,.lang button:active{
+.dh button:active,.ctl button:active{
   transform:translateY(2px);
 }
 
@@ -182,7 +179,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{transition:none}
+  .btn,.ask,.float,button.brand,.dh button,.ctl button{transition:none}
 }
  /* Bar bateri */
 .batt{display:block;position:relative;width:40px;height:18px;border:2px solid var(--g1);border-radius:5px;padding:2px;margin-bottom:8px}
@@ -267,7 +264,7 @@ footer{padding:44px 0 90px}
       <a href="#faq">Soalan lazim</a>
       <a href="#hubungi">Lokasi</a>
     </nav>
-    <div class="lang"><button type="button" id="lbm">BM</button><button type="button" id="len">EN</button></div>
+    <!-- butang bahasa dibuang -->
   </div>
 </header>
 
