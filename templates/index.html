@@ -161,12 +161,15 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .pl svg{width:100%;height:100%!important;display:block}
 .bt{position:absolute;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .bt svg{width:100%;height:100%!important;display:block}
+.lang{display:flex;gap:6px}
+.lang button{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-family:inherit;cursor:pointer}
+.lang button.on{background:var(--grad);color:#080d18;border-color:transparent}
   /* ===== Animasi halus ===== */
-.btn,.ask,.float,button.brand,.dh button,.ctl button{
+.btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{
   transition:transform .12s ease-out;
 }
 .btn:active,.ask:active,.float:active,button.brand:active,
-.dh button:active,.ctl button:active{
+.dh button:active,.ctl button:active,.lang button:active{
   transform:translateY(2px);
 }
 
@@ -179,7 +182,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
-  .btn,.ask,.float,button.brand,.dh button,.ctl button{transition:none}
+  .btn,.ask,.float,button.brand,.dh button,.ctl button,.lang button{transition:none}
 }
  /* Bar bateri */
 .batt{display:block;position:relative;width:40px;height:18px;border:2px solid var(--g1);border-radius:5px;padding:2px;margin-bottom:8px}
@@ -264,6 +267,7 @@ footer{padding:44px 0 90px}
       <a href="#faq">Soalan lazim</a>
       <a href="#hubungi">Lokasi</a>
     </nav>
+    <div class="lang"><button type="button" id="lbm">BM</button><button type="button" id="len">EN</button></div>
   </div>
 </header>
 
@@ -306,13 +310,13 @@ footer{padding:44px 0 90px}
     <p class="sub">Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.</p>
     <div class="brands">
       <button type="button" class="brand b-apple" id="openIphone"><div>iPhone<small>Tekan untuk lihat model</small></div></button>
-      <button type="button" class="brand b-samsung" id="openSamsung"><div>SAMSUNG<small>Tekan untuk lihat model</small></div></button>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20OPPO" target="_blank" class="brand b-oppo">OPPO</a>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20vivo" target="_blank" class="brand b-vivo">vivo</a>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20Xiaomi" target="_blank" class="brand b-xiaomi">Xiaomi</a>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20HUAWEI" target="_blank" class="brand b-huawei">HUAWEI</a>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20realme" target="_blank" class="brand b-realme">realme</a>
-      <a href="https://wa.me/60176933120?text=Hi%20VR%20Gadget%2C%20saya%20nak%20tanya%20repair%20HONOR" target="_blank" class="brand b-honor">HONOR</a>
+      <button type="button" class="brand b-samsung" id="openSamsung">   <div>SAMSUNG<small>Tekan untuk lihat model</small></div> </button>
+      <div class="brand b-oppo">OPPO</div>
+      <div class="brand b-vivo">vivo</div>
+      <div class="brand b-xiaomi">Xiaomi</div>
+      <div class="brand b-huawei">HUAWEI</div>
+      <div class="brand b-realme">realme</div>
+      <div class="brand b-honor">HONOR</div>
     </div>
   </div>
 </section>
@@ -437,10 +441,6 @@ footer{padding:44px 0 90px}
 document.getElementById('lg1').src="/static/logo.jpeg";
 document.getElementById('fav').href="/static/logo.jpeg";
 document.getElementById('y').textContent=new Date().getFullYear();
-
-/* =========================================================
-   BAHAGIAN 1: SKRIP iPHONE
-   ========================================================= */
 (function(){
 var M=[
 ["X","m","n","xv",["#d3d6db","#f4f5f7"],4],["XR","m","n","xr",["#eceef2","#ffffff"],5],
@@ -471,6 +471,28 @@ function defs(k,col,wp){
   +'<radialGradient id="sh'+k+'"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>'
   +'</defs>';
 }
+function home(sx,sy,sw,sh){
+  var o='',ic=sw*.19,g=(sw-4*ic)/5,rs=ic*1.22,y0=sy+sh*.135,W="#f6dfe6",i,c;
+  var G={circle:"M12 4a8 8 0 1 0 .01 0z",star:"M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",home:"M4 11l8-7 8 7v9H4z",wave:"M2 12h4l2-6 3 12 3-9 2 3h6",list:"M9 7h11M9 12h11M9 17h11M4.5 7h.1M4.5 12h.1M4.5 17h.1",heart:"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z",envelope:"M3 6h18v12H3zM3 7l9 6 9-6",book:"M4 5h7v14H4zM13 5h7v14h-7z",calc:"M6 3h12v18H6zM9 7h6M9 11h.1M12 11h.1M15 11h.1M9 15h.1M12 15h.1M15 15h.1",folder:"M3 7h7l2 2h9v10H3z",card:"M3 6h18v12H3zM3 10h18",pencil:"M4 20l1-5L16 4l4 4L9 19z",compass:"M12 4a8 8 0 1 0 .01 0zM15 9l-2 5-4 1 2-5z",message:"M4 5h16v11H9l-5 4z",music:"M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-.1 0M19 16a2.5 2.5 0 1 1-.1 0",phone:"M6 4h4l2 5-2.5 1.5a11 11 0 0 0 4 4L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"};
+  function cell(x,y,nm){var k=ic*.5/24;return '<rect x="'+x+'" y="'+y+'" width="'+ic+'" height="'+ic+'" rx="'+ic*.27+'" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".2" stroke-width=".4"/><g transform="translate('+(x+ic/2-12*k)+' '+(y+ic/2-12*k)+') scale('+k+')" fill="none" stroke="'+W+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="'+G[nm]+'"/></g>';}
+  o+='<path d="M'+sx+' '+(sy+sh*.36)+' C'+(sx+sw*.3)+' '+(sy+sh*.28)+' '+(sx+sw*.55)+' '+(sy+sh*.62)+' '+(sx+sw)+' '+(sy+sh*.5)+'" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width=".6"/>';
+  o+='<path d="M'+sx+' '+(sy+sh*.58)+' C'+(sx+sw*.35)+' '+(sy+sh*.5)+' '+(sx+sw*.6)+' '+(sy+sh*.8)+' '+(sx+sw)+' '+(sy+sh*.7)+'" fill="none" stroke="#fff" stroke-opacity=".15" stroke-width=".6"/>';
+  o+='<text x="'+(sx+sw*.1)+'" y="'+(sy+sh*.062)+'" font-family="Arial,sans-serif" font-weight="700" font-size="'+sw*.1+'" fill="#fff">9:41</text>';
+  for(i=0;i<4;i++)o+='<rect x="'+(sx+sw*.62+i*sw*.035)+'" y="'+(sy+sh*.062-(i+1)*sh*.0045)+'" width="'+sw*.022+'" height="'+(i+1)*sh*.0045+'" rx=".3" fill="#fff"/>';
+  o+='<rect x="'+(sx+sw*.8)+'" y="'+(sy+sh*.046)+'" width="'+sw*.11+'" height="'+sh*.017+'" rx="'+sh*.005+'" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".4"/><rect x="'+(sx+sw*.812)+'" y="'+(sy+sh*.0505)+'" width="'+sw*.07+'" height="'+sh*.008+'" rx=".3" fill="#fff"/>';
+  var wx=sx+g,wy=y0,ww=2*ic+g,wh=ic+rs,cx=wx+ww/2,cy=wy+wh/2,r=Math.min(ww,wh)*.4;
+  o+='<rect x="'+wx+'" y="'+wy+'" width="'+ww+'" height="'+wh+'" rx="'+ic*.3+'" fill="#12040a" fill-opacity=".55" stroke="#fff" stroke-opacity=".15" stroke-width=".4"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width=".4"/>';
+  for(i=0;i<12;i++){var a=i*Math.PI/6;o+='<line x1="'+(cx+Math.sin(a)*r*.84)+'" y1="'+(cy-Math.cos(a)*r*.84)+'" x2="'+(cx+Math.sin(a)*r*.95)+'" y2="'+(cy-Math.cos(a)*r*.95)+'" stroke="#fff" stroke-width="'+(i%3?.35:.8)+'" stroke-linecap="round"/>';}
+  o+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+r*.5)+'" y2="'+(cy-r*.28)+'" stroke="#fff" stroke-width=".9" stroke-linecap="round"/><line x1="'+cx+'" y1="'+cy+'" x2="'+(cx-r*.1)+'" y2="'+(cy-r*.78)+'" stroke="#fff" stroke-width=".7" stroke-linecap="round"/>';
+  var seq=["compass","star","home","circle","heart","envelope","list","book","calc","wave","folder","card","pencil","star","circle","list","compass","wave","book","heart"],n=0;
+  for(i=0;i<6;i++)for(c=0;c<4;c++){if(i<2&&c<2)continue;o+=cell(sx+g+c*(ic+g),y0+i*rs,seq[n++]);}
+  for(i=0;i<3;i++)o+='<circle cx="'+(sx+sw/2+(i-1)*sw*.045)+'" cy="'+(sy+sh*.832)+'" r="'+sw*.011+'" fill="#fff" fill-opacity="'+(i?.4:.9)+'"/>';
+  var dx=sx+g*.6,dw=sw-g*1.2,dy=sy+sh*.85,dh=ic*1.25,g2=(dw-4*ic)/5,dk=["phone","compass","message","music"];
+  o+='<rect x="'+dx+'" y="'+dy+'" width="'+dw+'" height="'+dh+'" rx="'+ic*.34+'" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".15" stroke-width=".4"/>';
+  for(i=0;i<4;i++)o+=cell(dx+g2+i*(ic+g2),dy+(dh-ic)/2,dk[i]);
+  return o;
+}
+var FID=0;
 function flower(sx,sy,sw,sh,c){
   var id="fl"+(++FID),cx=sx+sw/2,cy=sy+sh*.52,pr=sh*.17,rx=sw*.075,a,i,o='<clipPath id="'+id+'"><rect x="'+sx+'" y="'+sy+'" width="'+sw+'" height="'+sh+'" rx="'+sw*.12+'"/></clipPath><g clip-path="url(#'+id+')">';
   for(i=0;i<2;i++)for(a=-72;a<=72;a+=24)o+='<ellipse cx="'+cx+'" cy="'+(cy-pr)+'" rx="'+rx+'" ry="'+pr+'" fill="'+mix(c,"#3b2a9c",.45-Math.abs(a)/260)+'" fill-opacity=".5" transform="rotate('+(a+i*180)+' '+cx+' '+cy+')"/>';
@@ -552,7 +574,7 @@ M.forEach(function(m,i){
 });
 g.innerHTML=html;
 var d=document.getElementById('dlg'),det=document.getElementById('mdet'),back=document.getElementById('backM'),dt=document.getElementById('dt'),ds=document.getElementById('dsub');
-var PRICE={}; // ISI HARGA IPHONE DI SINI
+var PRICE={};
 var SV=[["LCD / skrin",1],["Bateri",1],["Charging board",1],["Motherboard",1],["Kamera",1],["Speaker",1],["Water damage",0]];
 var SPEC={"iPhone 18 Pro Max":[["Skrin","OLED Super Retina XDR"],["Saiz skrin","6.9 inci"],["Kadar muat semula","1–120Hz"],["Cip","Apple A20 Pro"],["RAM*","12GB"],["Storan","256GB, 512GB, 1TB, 2TB"],["Sistem operasi","iOS 27"],["Kamera utama","48MP Fusion"],["Kamera Ultra Wide","48MP"],["Kamera Telephoto","48MP"],["Kamera hadapan","18MP"],["Bateri","Sehingga 45 jam video playback (eSIM)"],["Pengecasan","USB-C, MagSafe"],["Rangkaian","5G"],["Wi-Fi","Wi-Fi 7"],["Bluetooth","Bluetooth 6"],["Dynamic Island","Versi baharu"],["Ketahanan","Reka bentuk Pro"],["Bahan","Aluminium unibody, Ceramic Shield 2 (depan), Ceramic Shield (belakang)"],["Warna","Hitam, Perak, Glacier, Burgundy"],["Saiz","163.4 x 78.0 x 8.75 mm"],["Berat","249 g"]]};
 var SPECNOTE={"iPhone 18 Pro Max":"*Apple tidak mengumumkan RAM secara rasmi. Angka 12GB daripada laman spesifikasi pihak ketiga."};
@@ -637,11 +659,7 @@ document.getElementById('closeM').addEventListener('click',function(){d.close();
 d.addEventListener('click',function(e){if(e.target===d)d.close();});
 })();
 </script>
-
 <script>
-/* =========================================================
-   BAHAGIAN 2: SKRIP SAMSUNG
-   ========================================================= */
 (function(){
 if(window.__vrSam)return;window.__vrSam=1;
 var PRICE={}; // ISI HARGA SAMSUNG DI SINI. Contoh: "Galaxy S24 Ultra":{"Bateri":"RM 150"}
@@ -659,8 +677,8 @@ css.textContent='.b-samsung small{letter-spacing:0;color:var(--g1)}'
 +'.sbody{overflow:auto;flex:1;min-height:0}'
 +'.sbody .dtl{overflow:visible}'
 +'.sbody .sl{padding:16px}'
-+'.sbody .sl input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:6px;background:#17120d;color:#f5f1e8}'
-+'.sbody .sl h4{margin:16px 0 8px;font-size:1rem;color:var(--g1)}'
++'.sbody .sl input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:6px}'
++'.sbody .sl h4{margin:16px 0 8px;font-size:1rem}'
 +'.sbody .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}'
 +'.sbody .sg .m{padding:8px 6px}'
 +'.sbody .sg .m span{font-size:.8rem}'
@@ -794,7 +812,6 @@ function screen(sx,sy,sw,sh,k,n){
 function phone(cx,m,k,back,ns){
   var A=m.A,D=dims(A),w=D.w,h=D.h,x=cx-w/2,y=(186-h)/2-2,rx=w*A.rr,o='',bz=A.bz,c=m.c,G=camGeo(A,w,h),i;
   var RX=back?x-1.6:x+w-.8;
-  k = "s" + k;
   if(!ns)o+='<ellipse cx="'+cx+'" cy="'+(y+h+4)+'" rx="'+w*.55+'" ry="5" fill="url(#sh'+k+')"/>';
   if(A.f!=='fc'||!back){
     o+='<rect x="'+RX+'" y="'+(y+h*.22)+'" width="2.4" height="'+h*.1+'" rx="1" fill="url(#fr'+k+')"/><rect x="'+RX+'" y="'+(y+h*.36)+'" width="2.4" height="'+h*.07+'" rx="1" fill="url(#fr'+k+')"/>';
@@ -843,7 +860,7 @@ function phone(cx,m,k,back,ns){
   return o;
 }
 function face(i,back,tag){
-  var m=E[i],D=dims(m.A),w=D.w,h=D.h,y=(186-h)/2-2,k="s"+(tag||'')+i;
+  var m=E[i],D=dims(m.A),w=D.w,h=D.h,y=(186-h)/2-2,k=tag+i;
   return '<svg viewBox="'+(62-w/2-3)+' '+(y-3)+' '+(w+6)+' '+(h+6)+'">'+defs(k,m.c)+phone(62,m,k,back,true)+'</svg>';
 }
 
@@ -868,6 +885,7 @@ function stage(i){
     +pl('left:'+(pad-dep/2)+'px;top:'+(pad+rr)+'px;width:'+dep+'px;height:'+sl+'px;transform:rotateY(-90deg)',left,gs)
     +pl('left:'+(pad+rr)+'px;top:'+(pad-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(90deg)',top,gv)
     +pl('left:'+(pad+rr)+'px;top:'+(pad+h-dep/2)+'px;width:'+tl+'px;height:'+dep+'px;transform:rotateX(-90deg)',bottom,gv);
+  /* tojolan kamera */
   var extra='',G=A.cam==='none'?{L:[],R:null}:camGeo(A,w,h),z0=dep/2+.5,BK=face(i,true,'b'),bl=mix(c[0],c[1],.55),ringc=A.blk?"#2e2e36":mix(c[0],c[1],.5),ringd=A.blk?"#101015":mix(ringc,"#000000",.5);
   function crop(x,y,wd,ht,rad,Z){return '<div class="bt" style="left:'+(W-(pad+x)-wd)+'px;top:'+(pad+y)+'px;width:'+wd+'px;height:'+ht+'px;border-radius:'+rad+'px;transform:rotateY(180deg) translateZ('+Z.toFixed(2)+'px)"><div style="position:absolute;left:-'+(pad+x)+'px;top:-'+(pad+y)+'px;width:'+W+'px;height:'+H+'px">'+BK+'</div></div>';}
   var bH=0;
@@ -884,24 +902,25 @@ function stage(i){
 
 /* ---------- Z Fold / Z Flip: buka & tutup ---------- */
 function openFace(i,part,tag){
-  var m=E[i],A=m.A,D=dims(A),w=D.w,hh=D.h,fl=A.fold==='flip',k="s"+(tag||'')+'o'+i,o='';
+  var m=E[i],A=m.A,D=dims(A),w=D.w,hh=D.h,fl=A.fold==='flip',k=tag+'o'+i,o='';
   var W2=fl?w:2*w,H2=fl?2*hh:hh,x=62-W2/2,y=(186-H2)/2-2,rx=w*A.rr,bz=A.bz;
   o+=defs(k,m.c);
   o+='<rect x="'+x+'" y="'+y+'" width="'+W2+'" height="'+H2+'" rx="'+rx+'" fill="url(#fr'+k+')" stroke="#000" stroke-opacity=".35" stroke-width=".6"/>';
-  
-  var cx0 = fl ? x : x, cy0 = fl ? y : y;
-  var cw  = fl ? W2 : w, ch = fl ? hh : hh;
-  o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
-  var sx2=x+bz, sy2=y+bz, sw2=W2-bz*2, sh2=H2-bz*2;
-  o+=screen(sx2,sy2,sw2,sh2,k,{rx:Math.max(2,rx-bz),tx:.5});
   if(!fl){
+    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="#06060c"/>';
+    var sx2=x+bz, sy2=y+bz, sw2=W2-bz*2, sh2=H2-bz*2;
+    o+=screen(sx2,sy2,sw2,sh2,k,{rx:Math.max(2,rx-bz),tx:.5});
     o+='<line x1="'+(x+w)+'" y1="'+(y+bz)+'" x2="'+(x+w)+'" y2="'+(y+H2-bz)+'" stroke="#000" stroke-opacity=".25" stroke-width="1.2" stroke-dasharray="3 3"/>';
-  }
-  if(fl){
-    o+=dot(x+w/2, y+hh*.045, 1.8, "#000")+dot(x+w/2+.3, y+hh*.042, .6, "#1b1b44");
-  }else{
     o+=dot(x+w*.5, y+hh*.04, 1.8, "#000")+dot(x+w*.5+.3, y+hh*.038, .6, "#1b1b44");
     o+=dot(x+w*1.5, y+hh*.04, 1.8, "#000")+dot(x+w*1.5+.3, y+hh*.038, .6, "#1b1b44");
+  } else {
+    o+='<rect x="'+(x+1.4)+'" y="'+(y+1.4)+'" width="'+(W2-2.8)+'" height="'+(H2-2.8)+'" rx="'+(rx-1.4)+'" fill="url(#bk'+k+')"/>';
+    o+='<path d="M'+(x+w*.55)+' '+y+' L'+(x+w)+' '+y+' L'+(x+w)+' '+(y+h*.5)+' Z" fill="#fff" opacity=".07"/>';
+    var G=camGeo(A,w,h);
+    if(G.R)o+='<rect x="'+(x+G.R.x)+'" y="'+(y+G.R.y)+'" width="'+G.R.w+'" height="'+G.R.h+'" rx="'+G.R.r+'" fill="url(#bp'+k+')" stroke="#000" stroke-opacity=".25" stroke-width=".6"/>';
+    if(G.FP)o+='<circle cx="'+(x+G.FP[0])+'" cy="'+(y+G.FP[1])+'" r="'+G.FP[2]+'" fill="none" stroke="'+rc+'" stroke-opacity=".7" stroke-width=".8"/>';
+    G.L.forEach(function(L){o+=lens(x+L[0],y+L[1],L[2],k,rc);});
+    G.X.forEach(function(P){o+=dot(x+P[0],y+P[1],P[2],P[3]);});
   }
   return o;
 }
@@ -930,6 +949,7 @@ function sGrid(){
   html += '</div>';
   body.innerHTML = html;
 
+  // cari filter
   var inp = document.getElementById('sq');
   inp.addEventListener('input', function(){
     var q = this.value.toLowerCase().trim();
@@ -946,6 +966,7 @@ function sGrid(){
     });
   });
 
+  // klik model → detail
   body.querySelectorAll('.m').forEach(function(a){
     a.addEventListener('click', function(e){
       e.preventDefault();
