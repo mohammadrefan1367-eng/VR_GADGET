@@ -191,11 +191,13 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .batt.low i{width:14%}
 @media (prefers-reduced-motion:reduce){.batt i{transition:none}}
 /* Garisan langkah kerja */
-.steps li::after{content:"";position:absolute;left:29px;top:40px;width:2px;height:calc(100% - 16px);background:var(--g1);transform-origin:top;transition:transform .5s ease-out}
+.steps li::after{content:"";position:absolute;z-index:1;left:29px;top:40px;width:2px;height:calc(100% - 14px);background:var(--g1);transform-origin:top;transition:transform .5s ease-out}
 .steps li:last-child::after{display:none}
 .steps.js li::after{transform:scaleY(0)}
 .steps.js li.drawn::after{transform:scaleY(1)}
 @media (prefers-reduced-motion:reduce){.steps li::after{transition:none}}
+section[id]{scroll-margin-top:80px}
+@media (max-width:700px){section[id]{scroll-margin-top:115px}}
 </style>
   <script type="application/ld+json">
 {
