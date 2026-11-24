@@ -316,6 +316,7 @@ var M=[
 ["18 Pro","m","i","plat3b",["#682233","#98485a"],2,"p"],["18 Pro Max","l","i","plat3b",["#682233","#98485a"],2,"p"]
 ];
 var SC={s:.86,m:1,l:1.1};
+M.forEach(function(m){m[6]="f";});
 function mix(c,t,f){var n=parseInt(c.slice(1),16),a=[n>>16,n>>8&255,n&255],b=parseInt(t.slice(1),16),z=[b>>16,b>>8&255,b&255];
   return "#"+a.map(function(v,i){return ("0"+Math.round(v+(z[i]-v)*f).toString(16)).slice(-2);}).join("");}
 function lens(cx,cy,r,k){return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="url(#rg'+k+')"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.78+'" fill="url(#ln'+k+')"/><circle cx="'+cx+'" cy="'+cy+'" r="'+r*.4+'" fill="#05051c" opacity=".85"/><circle cx="'+(cx-r*.28)+'" cy="'+(cy-r*.3)+'" r="'+r*.15+'" fill="#fff" opacity=".6"/>';}
