@@ -137,6 +137,14 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .pl svg,.bt svg{width:100%;height:100%!important;display:block}
 .dimg svg{width:100%;height:auto;display:block}
 .gnd{position:absolute;left:50%;bottom:4px;height:16px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(15,27,61,.35),transparent)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;padding:16px;overflow:auto}
+#backM{order:3;flex-basis:100%}
+.spec{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.spec h4{margin:0 0 6px;font-size:1.05rem}
+.spec dt{margin:0;padding:9px 0 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.spec dt:first-of-type{border-top:0;padding-top:0}
+.spec dd{margin:0;padding:1px 0 9px;font-weight:700;font-size:.95rem}
+.snote{margin:0;padding-top:8px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -187,7 +195,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
     <h2>Model yang kami repair</h2>
     <p class="sub">Tak jumpa model awak? Hantar nama model di WhatsApp, kami sahkan dulu.</p>
     <div class="brands">
-      <div class="brand b-apple">iPhone</div>
+      <button type="button" class="brand b-apple" id="openIphone"><div>iPhone<small>Tekan untuk lihat model</small></div></button>
       <div class="brand b-samsung">SAMSUNG</div>
       <div class="brand b-oppo">OPPO</div>
       <div class="brand b-vivo">vivo</div>
@@ -256,7 +264,11 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
   </div>
 </section>
 </main>
-
+  <dialog id="dlg" aria-labelledby="dt">
+  <div class="dh"><button type="button" id="backM" hidden>&larr; Semua model</button><div style="flex:1"><h3 id="dt">Pilih model iPhone awak</h3><p id="dsub">iPhone X hingga iPhone 18 Pro Max. Tekan model untuk lihat servis.</p></div><button type="button" id="closeM">Tutup</button></div>
+  <div class="mgrid" id="mgrid"></div>
+  <div id="mdet" hidden></div>
+</dialog>
 <footer>
 <div class="wrap">
   <div class="fgrid">
