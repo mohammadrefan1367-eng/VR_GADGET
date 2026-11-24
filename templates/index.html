@@ -145,6 +145,21 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 .spec dt:first-of-type{border-top:0;padding-top:0}
 .spec dd{margin:0;padding:1px 0 9px;font-weight:700;font-size:.95rem}
 .snote{margin:0;padding-top:8px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.shop{margin:0 0 24px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.shop img{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
+.shop figcaption{padding:10px 14px;font-size:.88rem;color:var(--muted)}
+.herobg{
+  background:
+    linear-gradient(90deg,rgba(8,13,24,.94) 0%,rgba(8,13,24,.82) 50%,rgba(8,13,24,.62) 100%),
+    url(/static/kedai.webp) center 40%/cover no-repeat;
+  border-bottom:1px solid rgba(198,160,95,.35);
+  padding-bottom:12px;
+}
+@media(max-width:700px){
+  .herobg{background:
+    linear-gradient(180deg,rgba(8,13,24,.85),rgba(8,13,24,.9)),
+    url(/static/kedai.webp) center/cover no-repeat}
+}
 </style>
 </head>
 <body>
@@ -157,6 +172,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
 </header>
 
 <main>
+  <div class="herobg">
 <div class="wrap hero">
   <div>
     <h1>Repair iPhone &amp; Android di Klang</h1>
@@ -175,6 +191,7 @@ dialog::backdrop{background:rgba(15,27,61,.6)}
     <div><b>Warranty 1 bulan</b>Bateri, LCD, motherboard, kamera &amp; speaker</div>
   </div>
 </div>
+   </div>
 
 <section id="servis">
   <div class="wrap">
