@@ -171,30 +171,32 @@ html{color-scheme:dark}
 
 [data-theme="light"]{
   color-scheme:light;
-  --bg:#faf6ee;--ink:#2a2118;--muted:#6b5d4a;--card:#fffdf8;--line:#d9c9a8;
-  --g1:#94702f;--g2:#7a5826;--accent:#7a5826;
+  --bg:#f8f3f0;--ink:#10224a;--muted:#51608a;--card:#ffffff;--line:#d9ddea;
+  --g1:#014baa;--g2:#0a3a85;--accent:#014baa;
 }
 [data-theme="light"] body{
-  background-color:#f6f1e7;
-  background-image:radial-gradient(ellipse at 15% 15%,rgba(198,160,95,.25),transparent 38%),radial-gradient(ellipse at 85% 70%,rgba(160,190,230,.25),transparent 45%),linear-gradient(135deg,#faf6ee 0%,#f1e9d9 55%,#faf6ee 100%);
-  color:#2a2118;
+  background-color:#f8f3f0;
+  background-image:radial-gradient(ellipse at 15% 15%,rgba(1,75,170,.10),transparent 40%),radial-gradient(ellipse at 85% 70%,rgba(1,75,170,.07),transparent 45%),linear-gradient(135deg,#f8f3f0 0%,#f3ede8 55%,#f8f3f0 100%);
+  color:#10224a;
 }
-[data-theme="light"] header{background:rgba(250,246,238,.96)}
+[data-theme="light"] header{background:rgba(248,243,240,.96);border-bottom-color:rgba(1,75,170,.25)}
 [data-theme="light"] .lang button.on{color:#fff}
-[data-theme="light"] .brand{background:linear-gradient(145deg,#ffffff,#f1e8d6);color:#2a2118;box-shadow:0 3px 12px rgba(80,60,20,.12);border-color:rgba(148,112,47,.4)}
-[data-theme="light"] .brand small{color:#7a5826}
-[data-theme="light"] .b-apple{color:#2a2118}
+[data-theme="light"] .brand{background:#fff;color:#10224a;box-shadow:0 3px 12px rgba(1,75,170,.12);border-color:rgba(1,75,170,.3)}
+[data-theme="light"] .brand small{color:#014baa}
+[data-theme="light"] .b-apple{color:#10224a}
 [data-theme="light"] .fsoc a:hover{color:#fff}
-[data-theme="light"] .ctl button{background:#fff;color:#2a2118;border-color:rgba(148,112,47,.5)}
-[data-theme="light"] dialog::backdrop{background:rgba(40,30,15,.45)}
+[data-theme="light"] .ctl button{background:#fff;color:#10224a;border-color:rgba(1,75,170,.4)}
+[data-theme="light"] .ask{background:var(--grad);color:#fff}
+[data-theme="light"] dialog::backdrop{background:rgba(16,34,74,.45)}
 [data-theme="light"] .herobg{
   background:
-    linear-gradient(90deg,rgba(250,246,238,.93) 0%,rgba(250,246,238,.78) 55%,rgba(250,246,238,.5) 100%),
+    linear-gradient(90deg,rgba(248,243,240,.93) 0%,rgba(248,243,240,.78) 55%,rgba(248,243,240,.5) 100%),
     url(/static/kedai.webp) center 40%/cover no-repeat;
+  border-bottom-color:rgba(1,75,170,.25);
 }
 @media(max-width:700px){
   [data-theme="light"] .herobg{background:
-    linear-gradient(180deg,rgba(250,246,238,.88),rgba(250,246,238,.9)),
+    linear-gradient(180deg,rgba(248,243,240,.88),rgba(248,243,240,.9)),
     url(/static/kedai.webp) center/cover no-repeat}
 }
 [data-theme="light"] .btn:not(.alt),
