@@ -479,8 +479,9 @@ function phone(cx,s,m,k,back,ns){
      else if(cam==="v2"){var pw=w*.34,ph=h*.255,lr=pw*.38,rc=mix(m[4][1],"#ffffff",.2);
     o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw/2+'" fill="'+bp+'"'+st+'/>'+lens2(bx+pw/2,by+lr+.7,lr,rc,k)+lens2(bx+pw/2,by+ph-lr-.7,lr,rc,k)
       +'<circle cx="'+(bx+pw+w*.075)+'" cy="'+(by+ph*.42)+'" r="'+w*.04+'" fill="#e9ebf3" stroke="'+mix(m[4][0],"#000000",.2)+'" stroke-width=".7"/><circle cx="'+(bx+pw+w*.075)+'" cy="'+(by+ph*.42)+'" r="'+w*.022+'" fill="#fff8d6"/>'+dot(bx+pw+w*.075,by+ph*.2,.6,"#2a2a40");} 
- else if(cam==="x"){var pw=w*.155,ph=h*.17,lr=pw*.36;o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw*.5+'" fill="'+bp+'"'+st+'/>'+lens(bx+pw/2,by+ph*.22,lr,k)+lens(bx+pw/2,by+ph*.78,lr,k)+dot(bx+pw/2,by+ph*.5,pw*.12,F)+dot(bx+pw/2,by+ph*.39,pw*.04,M2);}
-  else if(cam==="bar1"){
+  else if(cam==="x"){var pw=w*.155,ph=h*.17,lr=pw*.36;o+='<rect x="'+bx+'" y="'+by+'" width="'+pw+'" height="'+ph+'" rx="'+pw*.5+'" fill="'+bp+'"'+st+'/>'+lens(bx+pw/2,by+ph*.22,lr,k)+lens(bx+pw/2,by+ph*.78,lr,k)+dot(bx+pw/2,by+ph*.5,pw*.12,F)+dot(bx+pw/2,by+ph*.39,pw*.04,M2);}
+  else if(cam==="bar1"){var bh=h*.1;o+='<rect x="'+(x+w*.04)+'" y="'+by+'" width="'+w*.92+'" height="'+bh+'" rx="'+bh*.3+'" fill="'+bp+'"'+st+'/>'+lens(x+w*.22,by+bh/2,bh*.36,k)+dot(x+w*.78,by+bh*.35,1.8,F)+dot(x+w*.78,by+bh*.72,1,M2);}
+  return o;
 }
 var g=document.getElementById('mgrid'),html='',svgs=[],names=[];
 M.forEach(function(m,i){
